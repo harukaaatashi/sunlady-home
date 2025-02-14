@@ -1,6 +1,10 @@
 import { Metadata } from 'next';
 import { client } from '@/libs/microcms';
 import { News, Partner } from '@/types';
+import { Layout } from '@/components/Layout';
+import { NewsCard } from '@/components/NewsCard';
+import { PartnerCard } from '@/components/PartnerCard';
+import { NewspaperIcon, BuildingOffice2Icon } from '@heroicons/react/24/outline';
 
 export const metadata: Metadata = {
   title: 'Sunlady Home',
@@ -36,51 +40,38 @@ export default async function Home() {
   const [news, partners] = await Promise.all([getNews(), getPartners()]);
 
   return (
-    <main className="min-h-screen p-8">
-      <h1 className="text-4xl font-bold mb-8">Sunlady</h1>
-      
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-4">お知らせ</h2>
-        <div className="space-y-4">
+    <Layout>
+      <section className="mb-16">
+        <div className="flex items-center mb-8">
+          <NewspaperIcon className="h-6 w-6 text-gray-900 mr-2" />
+          <h2 className="text-2xl font-semibold text-gray-900">お知らせ</h2>
+        </div>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {news.length > 0 ? (
-            news.map((item) => (
-              <article key={item.id} className="border p-4 rounded-lg">
-                <time className="text-gray-500 text-sm">{new Date(item.publishedAt).toLocaleDateString('ja-JP')}</time>
-                <h3 className="text-xl font-medium mt-2">{item.title}</h3>
-              </article>
+            news.map((item, index) => (
+              <NewsCard key={item.id} news={item} index={index} />
             ))
           ) : (
-            <p className="text-gray-500">お知らせはありません</p>
+            <p className="text-gray-500 col-span-full">お知らせはありません</p>
           )}
         </div>
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold mb-4">パートナー企業</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="flex items-center mb-8">
+          <BuildingOffice2Icon className="h-6 w-6 text-gray-900 mr-2" />
+          <h2 className="text-2xl font-semibold text-gray-900">パートナー企業</h2>
+        </div>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {partners.length > 0 ? (
-            partners.map((partner) => (
-              <div key={partner.id} className="border p-4 rounded-lg">
-                {partner.logo && (
-                  <div className="mb-4">
-                    <img
-                      src={partner.logo.url}
-                      alt={partner.name}
-                      width={partner.logo.width}
-                      height={partner.logo.height}
-                      className="w-full h-auto"
-                    />
-                  </div>
-                )}
-                <h3 className="text-xl font-medium mb-2">{partner.name}</h3>
-                <p className="text-gray-600">{partner.description}</p>
-              </div>
+            partners.map((partner, index) => (
+              <PartnerCard key={partner.id} partner={partner} index={index} />
             ))
           ) : (
-            <p className="text-gray-500">パートナー企業の情報はありません</p>
+            <p className="text-gray-500 col-span-full">パートナー企業の情報はありません</p>
           )}
         </div>
       </section>
-    </main>
+    </Layout>
   );
 }
