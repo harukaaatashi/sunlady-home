@@ -2,12 +2,15 @@ import { client } from '@/libs/microcms';
 import { News } from '@/types/news';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
+import { Metadata } from 'next';
 
-export async function generateMetadata({
-  params,
-}: {
+type Props = {
   params: { id: string };
-}) {
+};
+
+export async function generateMetadata(
+  { params }: Props
+): Promise<Metadata> {
   const news = await getNewsDetail(params.id);
   
   if (!news) {
@@ -37,9 +40,7 @@ async function getNewsDetail(id: string) {
 
 export default async function NewsDetailPage({
   params,
-}: {
-  params: { id: string };
-}) {
+}: Props) {
   const news = await getNewsDetail(params.id);
 
   if (!news) {
@@ -68,4 +69,4 @@ export default async function NewsDetailPage({
       />
     </article>
   );
-} 
+}

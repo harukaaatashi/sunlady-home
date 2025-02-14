@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { client } from '@/libs/microcms';
-import { News, Partner } from '@/types';
+import { News } from '@/types/news';
+import { Partner } from '@/types/partner';
 import { Layout } from '@/components/Layout';
 import { PartnerCard } from '@/components/PartnerCard';
 import { NewspaperIcon, BuildingOffice2Icon } from '@heroicons/react/24/outline';
