@@ -2,10 +2,10 @@ import { Metadata } from 'next';
 import { client } from '@/libs/microcms';
 import { News, Partner } from '@/types';
 import { Layout } from '@/components/Layout';
-import { NewsCard } from '@/components/NewsCard';
 import { PartnerCard } from '@/components/PartnerCard';
 import { NewspaperIcon, BuildingOffice2Icon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Sunlady Home',
@@ -49,13 +49,23 @@ export default async function Home() {
         <div className="space-y-6">
           {latestNews.map((news) => (
             <article key={news.id} className="border rounded-lg p-6">
-              <Link href={`/news/${news.id}`}>
-                <h2 className="text-xl font-semibold mb-2 hover:text-blue-600">
-                  {news.title}
-                </h2>
-                <p className="text-gray-600 text-sm">
-                  {new Date(news.publishedAt).toLocaleDateString('ja-JP')}
-                </p>
+              <Link href={`/news/${news.id}`} className="flex gap-6">
+                <div className="w-48 h-32 relative flex-shrink-0">
+                  <Image
+                    src={news.image.url}
+                    alt={news.title}
+                    fill
+                    className="object-cover rounded-lg"
+                  />
+                </div>
+                <div>
+                  <h2 className="text-xl font-semibold mb-2 hover:text-blue-600">
+                    {news.title}
+                  </h2>
+                  <p className="text-gray-600 text-sm">
+                    {new Date(news.publishedAt).toLocaleDateString('ja-JP')}
+                  </p>
+                </div>
               </Link>
             </article>
           ))}

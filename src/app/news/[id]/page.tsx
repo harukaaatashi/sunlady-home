@@ -1,6 +1,7 @@
 import { client } from '@/libs/microcms';
 import { News } from '@/types/news';
 import { notFound } from 'next/navigation';
+import Image from 'next/image';
 
 export async function generateMetadata({
   params,
@@ -48,10 +49,18 @@ export default async function NewsDetailPage({
   return (
     <article className="max-w-3xl mx-auto">
       <h1 className="text-3xl font-bold mb-4">{news.title}</h1>
-      <div className="text-gray-600 mb-8">
+      <div className="text-gray-600 mb-4">
         <time dateTime={news.publishedAt}>
           {new Date(news.publishedAt).toLocaleDateString('ja-JP')}
         </time>
+      </div>
+      <div className="mb-8 relative aspect-video">
+        <Image
+          src={news.image.url}
+          alt={news.title}
+          fill
+          className="object-cover rounded-lg"
+        />
       </div>
       <div
         className="prose max-w-none"

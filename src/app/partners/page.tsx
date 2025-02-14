@@ -28,28 +28,40 @@ export default async function PartnersPage() {
           <div key={partner.id} className="border rounded-lg p-6">
             <div className="aspect-w-16 aspect-h-9 mb-4">
               <Image
-                src={partner.logo.url}
+                src={partner.image.url}
                 alt={partner.name}
-                width={partner.logo.width}
-                height={partner.logo.height}
+                width={partner.image.width}
+                height={partner.image.height}
                 className="object-contain"
               />
             </div>
             <h2 className="text-xl font-semibold mb-2">{partner.name}</h2>
-            <p className="text-gray-700 mb-4">{partner.description}</p>
-            {partner.website && (
-              <a
-                href={partner.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:text-blue-800"
-              >
-                ウェブサイトを見る →
-              </a>
-            )}
+            <p className="text-gray-700 mb-4">{partner.subtitle}</p>
+            <div className="flex space-x-4">
+              {partner.homelink && (
+                <a
+                  href={partner.homelink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:text-blue-800"
+                >
+                  ウェブサイト →
+                </a>
+              )}
+              {partner.snslink && (
+                <a
+                  href={partner.snslink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:text-blue-800"
+                >
+                  SNS →
+                </a>
+              )}
+            </div>
           </div>
         ))}
       </div>
     </div>
   );
-} 
+}
