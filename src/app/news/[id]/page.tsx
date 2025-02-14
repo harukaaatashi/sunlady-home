@@ -4,16 +4,16 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { Metadata, ResolvingMetadata } from 'next';
 
-type Props = {
+interface PageProps {
   params: { id: string };
   searchParams: { [key: string]: string | string[] | undefined };
-};
+}
 
 export async function generateMetadata(
-  props: Props,
+  { params }: PageProps,
   _parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const news = await getNewsDetail(props.params.id);
+  const news = await getNewsDetail(params.id);
   
   if (!news) {
     return {
@@ -40,8 +40,11 @@ async function getNewsDetail(id: string) {
   }
 }
 
-export default async function NewsDetailPage(props: Props) {
-  const news = await getNewsDetail(props.params.id);
+export default async function NewsDetailPage({
+  params,
+  searchParams,
+}: PageProps) {
+  const news = await getNewsDetail(params.id);
 
   if (!news) {
     notFound();
