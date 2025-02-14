@@ -11,7 +11,7 @@ type Props = {
 
 export async function generateMetadata(
   props: Props,
-  parent: ResolvingMetadata
+  _parent: ResolvingMetadata
 ): Promise<Metadata> {
   const news = await getNewsDetail(props.params.id);
   
@@ -35,7 +35,7 @@ async function getNewsDetail(id: string) {
       contentId: id,
     });
     return news;
-  } catch (error) {
+  } catch (_error) {
     return null;
   }
 }
