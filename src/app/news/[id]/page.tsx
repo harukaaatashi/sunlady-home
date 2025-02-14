@@ -2,14 +2,16 @@ import { client } from '@/libs/microcms';
 import { News } from '@/types/news';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
-import { Metadata } from 'next';
+import { Metadata, ResolvingMetadata } from 'next';
 
 type Props = {
   params: { id: string };
+  searchParams: { [key: string]: string | string[] | undefined };
 };
 
 export async function generateMetadata(
-  { params }: Props
+  { params }: Props,
+  parent: ResolvingMetadata
 ): Promise<Metadata> {
   const news = await getNewsDetail(params.id);
   
@@ -40,6 +42,7 @@ async function getNewsDetail(id: string) {
 
 export default async function NewsDetailPage({
   params,
+  searchParams,
 }: Props) {
   const news = await getNewsDetail(params.id);
 
