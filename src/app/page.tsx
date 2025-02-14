@@ -27,7 +27,7 @@ async function getLatestNews() {
 async function getPartners() {
   try {
     const response = await client.getList<Partner>({
-      endpoint: 'partner',
+      endpoint: 'partners',
     });
     return response.contents;
   } catch (error) {
