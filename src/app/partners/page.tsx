@@ -1,0 +1,55 @@
+import { client } from '@/libs/microcms';
+import { Partner } from '@/types/partner';
+import Image from 'next/image';
+
+export const metadata = {
+  title: 'パートナー一覧 | Sunlady Home',
+  description: 'Sunladyのパートナー企業一覧です。',
+};
+
+async function getPartnersList() {
+  const response = await client.getList<Partner>({
+    endpoint: 'partners',
+    queries: {
+      orders: 'name',
+    },
+  });
+  return response.contents;
+}
+
+export default async function PartnersPage() {
+  const partners = await getPartnersList();
+
+  return (
+    <div>
+      <h1 className="text-3xl font-bold mb-8">パートナー企業</h1>
+      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {partners.map((partner) => (
+          <div key={partner.id} className="border rounded-lg p-6">
+            <div className="aspect-w-16 aspect-h-9 mb-4">
+              <Image
+                src={partner.logo.url}
+                alt={partner.name}
+                width={partner.logo.width}
+                height={partner.logo.height}
+                className="object-contain"
+              />
+            </div>
+            <h2 className="text-xl font-semibold mb-2">{partner.name}</h2>
+            <p className="text-gray-700 mb-4">{partner.description}</p>
+            {partner.website && (
+              <a
+                href={partner.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:text-blue-800"
+              >
+                ウェブサイトを見る →
+              </a>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+} 

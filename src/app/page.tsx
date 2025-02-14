@@ -5,23 +5,22 @@ import { Layout } from '@/components/Layout';
 import { NewsCard } from '@/components/NewsCard';
 import { PartnerCard } from '@/components/PartnerCard';
 import { NewspaperIcon, BuildingOffice2Icon } from '@heroicons/react/24/outline';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Sunlady Home',
   description: 'Sunlady公式ウェブサイト',
 };
 
-async function getNews() {
-  try {
-    const response = await client.getList<News>({
-      endpoint: 'news',
-      queries: { limit: 3 },
-    });
-    return response.contents;
-  } catch (error) {
-    console.error('ニュースの取得に失敗しました:', error);
-    return [];
-  }
+async function getLatestNews() {
+  const response = await client.getList<News>({
+    endpoint: 'news',
+    queries: {
+      limit: 3,
+      orders: '-publishedAt',
+    },
+  });
+  return response.contents;
 }
 
 async function getPartners() {
@@ -37,7 +36,8 @@ async function getPartners() {
 }
 
 export default async function Home() {
-  const [news, partners] = await Promise.all([getNews(), getPartners()]);
+  const latestNews = await getLatestNews();
+  const [partners] = await Promise.all([getPartners()]);
 
   return (
     <Layout>
@@ -46,14 +46,27 @@ export default async function Home() {
           <NewspaperIcon className="h-6 w-6 text-gray-900 mr-2" />
           <h2 className="text-2xl font-semibold text-gray-900">お知らせ</h2>
         </div>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {news.length > 0 ? (
-            news.map((item, index) => (
-              <NewsCard key={item.id} news={item} index={index} />
-            ))
-          ) : (
-            <p className="text-gray-500 col-span-full">お知らせはありません</p>
-          )}
+        <div className="space-y-6">
+          {latestNews.map((news) => (
+            <article key={news.id} className="border rounded-lg p-6">
+              <Link href={`/news/${news.id}`}>
+                <h2 className="text-xl font-semibold mb-2 hover:text-blue-600">
+                  {news.title}
+                </h2>
+                <p className="text-gray-600 text-sm">
+                  {new Date(news.publishedAt).toLocaleDateString('ja-JP')}
+                </p>
+              </Link>
+            </article>
+          ))}
+        </div>
+        <div className="mt-8">
+          <Link
+            href="/news"
+            className="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700"
+          >
+            ニュース一覧へ
+          </Link>
         </div>
       </section>
 
