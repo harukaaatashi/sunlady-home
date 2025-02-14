@@ -2,7 +2,6 @@ import { Metadata } from 'next';
 import { client } from '@/libs/microcms';
 import { News } from '@/types/news';
 import { Partner } from '@/types/partner';
-import { Layout } from '@/components/Layout';
 import { PartnerCard } from '@/components/PartnerCard';
 import { NewspaperIcon, BuildingOffice2Icon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
@@ -14,14 +13,19 @@ export const metadata: Metadata = {
 };
 
 async function getLatestNews() {
-  const response = await client.getList<News>({
-    endpoint: 'news',
-    queries: {
-      limit: 3,
-      orders: '-publishedAt',
-    },
-  });
-  return response.contents;
+  try {
+    const response = await client.getList<News>({
+      endpoint: 'news',
+      queries: {
+        limit: 3,
+        orders: '-publishedAt',
+      },
+    });
+    return response.contents;
+  } catch (error) {
+    console.error('ニュースの取得に失敗しました:', error);
+    return [];
+  }
 }
 
 async function getPartners() {
@@ -37,39 +41,42 @@ async function getPartners() {
 }
 
 export default async function Home() {
-  const latestNews = await getLatestNews();
-  const [partners] = await Promise.all([getPartners()]);
+  const [latestNews, partners] = await Promise.all([getLatestNews(), getPartners()]);
 
   return (
-    <Layout>
+    <div>
       <section className="mb-16">
         <div className="flex items-center mb-8">
           <NewspaperIcon className="h-6 w-6 text-gray-900 mr-2" />
           <h2 className="text-2xl font-semibold text-gray-900">お知らせ</h2>
         </div>
         <div className="space-y-6">
-          {latestNews.map((news) => (
-            <article key={news.id} className="border rounded-lg p-6">
-              <Link href={`/news/${news.id}`} className="flex gap-6">
-                <div className="w-48 h-32 relative flex-shrink-0">
-                  <Image
-                    src={news.image.url}
-                    alt={news.title}
-                    fill
-                    className="object-cover rounded-lg"
-                  />
-                </div>
-                <div>
-                  <h2 className="text-xl font-semibold mb-2 hover:text-blue-600">
-                    {news.title}
-                  </h2>
-                  <p className="text-gray-600 text-sm">
-                    {new Date(news.publishedAt).toLocaleDateString('ja-JP')}
-                  </p>
-                </div>
-              </Link>
-            </article>
-          ))}
+          {latestNews && latestNews.length > 0 ? (
+            latestNews.map((news) => (
+              <article key={news.id} className="border rounded-lg p-6">
+                <Link href={`/news/${news.id}`} className="flex gap-6">
+                  <div className="w-48 h-32 relative flex-shrink-0">
+                    <Image
+                      src={news.image.url}
+                      alt={news.title}
+                      fill
+                      className="object-cover rounded-lg"
+                    />
+                  </div>
+                  <div>
+                    <h2 className="text-xl font-semibold mb-2 hover:text-blue-600">
+                      {news.title}
+                    </h2>
+                    <p className="text-gray-600 text-sm">
+                      {new Date(news.publishedAt).toLocaleDateString('ja-JP')}
+                    </p>
+                  </div>
+                </Link>
+              </article>
+            ))
+          ) : (
+            <p className="text-gray-500">お知らせはありません</p>
+          )}
         </div>
         <div className="mt-8">
           <Link
@@ -87,7 +94,7 @@ export default async function Home() {
           <h2 className="text-2xl font-semibold text-gray-900">パートナー企業</h2>
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {partners.length > 0 ? (
+          {partners && partners.length > 0 ? (
             partners.map((partner, index) => (
               <PartnerCard key={partner.id} partner={partner} index={index} />
             ))
@@ -96,6 +103,6 @@ export default async function Home() {
           )}
         </div>
       </section>
-    </Layout>
+    </div>
   );
 }
