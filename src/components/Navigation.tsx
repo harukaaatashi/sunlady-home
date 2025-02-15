@@ -70,34 +70,34 @@ export const Navigation = () => {
                 Sunlady
               </span>
             </Link>
-            <div className="hidden md:flex items-center ml-8 space-x-1">
-              {menuItems.map((item) => (
-                item.isExternal ? (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 text-blue-600 hover:bg-blue-50 hover:text-blue-700 flex items-center gap-1"
-                  >
-                    {item.label}
-                    <ArrowTopRightOnSquareIcon className="h-4 w-4" />
-                  </a>
-                ) : (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
-                      isActive(item.href)
-                        ? 'bg-blue-50 text-blue-600'
-                        : 'text-gray-600 hover:bg-gray-50 hover:text-blue-600'
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                )
-              ))}
-            </div>
+          </div>
+          <div className="hidden md:flex items-center space-x-1">
+            {menuItems.map((item) => (
+              item.isExternal ? (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 text-blue-600 hover:bg-blue-50 hover:text-blue-700 flex items-center gap-1"
+                >
+                  {item.label}
+                  <ArrowTopRightOnSquareIcon className="h-4 w-4" />
+                </a>
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+                    isActive(item.href)
+                      ? 'bg-blue-50 text-blue-600'
+                      : 'text-gray-600 hover:bg-gray-50 hover:text-blue-600'
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              )
+            ))}
           </div>
           <div className="md:hidden flex items-center">
             <button
