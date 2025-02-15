@@ -17,6 +17,11 @@ export const Navigation = () => {
     { href: '/news', label: 'NEWS' },
     { href: '/partners', label: 'PARTNERS' },
     { href: '/about', label: 'ABOUT' },
+    { 
+      href: 'https://www.google.com/maps/search/?api=1&query=東京都XX区XX町X-X-X', 
+      label: 'ACCESS',
+      isExternal: true 
+    },
   ];
 
   return (
@@ -49,17 +54,29 @@ export const Navigation = () => {
             </Link>
             <div className="hidden md:flex items-center space-x-1">
               {menuItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
-                    isActive(item.href)
-                      ? 'bg-blue-50 text-blue-600'
-                      : 'text-gray-600 hover:bg-gray-50 hover:text-blue-600'
-                  }`}
-                >
-                  {item.label}
-                </Link>
+                item.isExternal ? (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 text-gray-600 hover:bg-gray-50 hover:text-blue-600`}
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+                      isActive(item.href)
+                        ? 'bg-blue-50 text-blue-600'
+                        : 'text-gray-600 hover:bg-gray-50 hover:text-blue-600'
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                )
               ))}
             </div>
           </div>
@@ -111,18 +128,31 @@ export const Navigation = () => {
           >
             <div className="px-2 pt-2 pb-3 space-y-1 bg-white shadow-lg">
               {menuItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setIsOpen(false)}
-                  className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
-                    isActive(item.href)
-                      ? 'bg-blue-50 text-blue-600'
-                      : 'text-gray-600 hover:bg-gray-50 hover:text-blue-600'
-                  }`}
-                >
-                  {item.label}
-                </Link>
+                item.isExternal ? (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setIsOpen(false)}
+                    className="block px-3 py-2 rounded-md text-base font-medium transition-colors text-gray-600 hover:bg-gray-50 hover:text-blue-600"
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                      isActive(item.href)
+                        ? 'bg-blue-50 text-blue-600'
+                        : 'text-gray-600 hover:bg-gray-50 hover:text-blue-600'
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                )
               ))}
             </div>
           </motion.div>
