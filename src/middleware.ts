@@ -10,11 +10,12 @@ const rateLimit = new LRUCache({
 // CSPポリシーの定義
 const cspHeader = `
   default-src 'self';
-  script-src 'self' 'unsafe-inline' 'unsafe-eval';
+  script-src 'self' 'unsafe-inline' 'unsafe-eval' https://maps.googleapis.com;
   style-src 'self' 'unsafe-inline';
-  img-src 'self' https://images.microcms-assets.io data:;
-  font-src 'self';
-  connect-src 'self' https://api.microcms.io;
+  img-src 'self' https://images.microcms-assets.io data: https://*.googleapis.com https://*.gstatic.com;
+  font-src 'self' https://fonts.gstatic.com;
+  frame-src 'self' https://www.google.com;
+  connect-src 'self' https://api.microcms.io https://*.googleapis.com;
   frame-ancestors 'none';
   form-action 'self';
   upgrade-insecure-requests;
