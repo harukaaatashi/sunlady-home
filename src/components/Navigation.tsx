@@ -17,6 +17,7 @@ export const Navigation = () => {
     { href: '/news', label: 'NEWS' },
     { href: '/partners', label: 'PARTNERS' },
     { href: '/about', label: 'ABOUT' },
+    { href: '/shop', label: 'SHOP' },
     { 
       href: 'https://www.google.com/maps/search/?api=1&query=東京都渋谷区恵比寿西1-32-11+ヴァイスハイム+3F', 
       label: 'ACCESS',
