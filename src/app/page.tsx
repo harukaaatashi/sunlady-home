@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { client } from '@/libs/microcms';
 import { News } from '@/types/news';
 import { Partner } from '@/types/partner';
-import { PartnerCard } from '@/components/PartnerCard';
+import PartnerCard from '@/components/PartnerCard';
 import { NewspaperIcon, BuildingOffice2Icon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import Image from 'next/image';

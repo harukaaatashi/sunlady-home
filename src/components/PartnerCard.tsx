@@ -9,7 +9,7 @@ type PartnerCardProps = {
   index: number;
 };
 
-export function PartnerCard({ partner, index }: PartnerCardProps) {
+export default function PartnerCard({ partner, index }: PartnerCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
