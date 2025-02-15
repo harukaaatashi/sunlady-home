@@ -79,25 +79,25 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
           viewport={{ once: true }}
         >
           <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-            <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mb-4">
+            <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-lg flex items-center justify-center mb-4">
               <ChartBarIcon className="h-6 w-6 text-blue-600 dark:text-blue-400" />
             </div>
-            <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">高い技術力</h3>
-            <p className="text-gray-600 dark:text-gray-200">最新のテクノロジーと豊富な経験を活かし、質の高いソリューションを提供します。</p>
+            <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-blue-100">高い技術力</h3>
+            <p className="text-gray-600 dark:text-gray-300">最新のテクノロジーと豊富な経験を活かし、質の高いソリューションを提供します。</p>
           </div>
           <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-            <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mb-4">
+            <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-lg flex items-center justify-center mb-4">
               <UserGroupIcon className="h-6 w-6 text-blue-600 dark:text-blue-400" />
             </div>
-            <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">信頼のサポート</h3>
-            <p className="text-gray-600 dark:text-gray-200">お客様に寄り添い、プロジェクトの成功まで責任を持ってサポートいたします。</p>
+            <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-blue-100">信頼のサポート</h3>
+            <p className="text-gray-600 dark:text-gray-300">お客様に寄り添い、プロジェクトの成功まで責任を持ってサポートいたします。</p>
           </div>
           <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-            <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mb-4">
+            <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-lg flex items-center justify-center mb-4">
               <GlobeAltIcon className="h-6 w-6 text-blue-600 dark:text-blue-400" />
             </div>
-            <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">グローバル展開</h3>
-            <p className="text-gray-600 dark:text-gray-200">国内外のネットワークを活かし、グローバルなビジネス展開をサポートします。</p>
+            <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-blue-100">グローバル展開</h3>
+            <p className="text-gray-600 dark:text-gray-300">国内外のネットワークを活かし、グローバルなビジネス展開をサポートします。</p>
           </div>
         </motion.div>
       </section>
@@ -106,7 +106,7 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center">
-            <NewspaperIcon className="h-6 w-6 text-gray-900 dark:text-gray-100 mr-2" />
+            <NewspaperIcon className="h-6 w-6 text-gray-900 dark:text-blue-400 mr-2" />
             <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">新着ニュース</h2>
           </div>
           <Link
@@ -160,17 +160,17 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center">
-            <BuildingOffice2Icon className="h-6 w-6 text-gray-900 dark:text-gray-100 mr-2" />
+            <BuildingOffice2Icon className="h-6 w-6 text-gray-900 dark:text-blue-400 mr-2" />
             <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">パートナー企業</h2>
           </div>
           <div className="flex gap-2">
-            <button className="partner-prev-button p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+            <button className="partner-prev-button p-2 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 text-gray-600 dark:text-gray-300">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
               </svg>
             </button>
-            <button className="partner-next-button p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+            <button className="partner-next-button p-2 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 text-gray-600 dark:text-gray-300">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
               </svg>
             </button>
