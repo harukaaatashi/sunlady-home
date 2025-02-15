@@ -45,10 +45,10 @@ export default async function PartnersPage() {
     <div className="max-w-7xl mx-auto">
       <div className="text-center mb-12">
         <div className="flex items-center justify-center mb-4">
-          <BuildingOffice2Icon className="h-8 w-8 text-blue-600 mr-3" />
-          <h1 className="text-3xl sm:text-4xl font-bold">パートナー企業</h1>
+          <BuildingOffice2Icon className="h-8 w-8 text-blue-600 dark:text-blue-400 mr-3" />
+          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">パートナー企業</h1>
         </div>
-        <p className="text-gray-600 max-w-2xl mx-auto">
+        <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
           Sunladyは、多くの優れた企業様とパートナーシップを結び、
           共に成長し、新しい価値を創造することを目指しています。
           各企業様との強固な協力関係により、より良いサービスを提供しています。
@@ -60,10 +60,10 @@ export default async function PartnersPage() {
           partners.map((partner) => (
             <div 
               key={partner.id} 
-              className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 group"
+              className="bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 group"
             >
               <div className="p-6">
-                <div className="aspect-w-16 aspect-h-9 mb-4 bg-gray-50 rounded-lg overflow-hidden">
+                <div className="aspect-w-16 aspect-h-9 mb-4 bg-gray-50 dark:bg-gray-700 rounded-lg overflow-hidden">
                   <Image
                     src={partner.image.url}
                     alt={partner.name}
@@ -72,10 +72,10 @@ export default async function PartnersPage() {
                     className="object-contain transform group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
-                <h2 className="text-xl font-semibold mb-2 group-hover:text-blue-600 transition-colors">
+                <h2 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                   {partner.name}
                 </h2>
-                <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+                <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-2">
                   {partner.subtitle}
                 </p>
                 <div className="flex space-x-4">
@@ -84,7 +84,7 @@ export default async function PartnersPage() {
                       href={partner.homelink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center text-blue-600 hover:text-blue-800 text-sm font-medium group"
+                      className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 text-sm font-medium group"
                     >
                       ウェブサイト
                       <svg
@@ -107,7 +107,7 @@ export default async function PartnersPage() {
                       href={partner.snslink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center text-blue-600 hover:text-blue-800 text-sm font-medium group"
+                      className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 text-sm font-medium group"
                     >
                       SNS
                       <svg
