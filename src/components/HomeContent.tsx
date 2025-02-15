@@ -22,7 +22,7 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
       <section className="mb-16">
         <div className="flex items-center mb-8">
           <NewspaperIcon className="h-6 w-6 text-gray-900 mr-2" />
-          <h2 className="text-2xl font-semibold text-gray-900">お知らせ</h2>
+          <h2 className="text-2xl font-semibold text-gray-900">新着ニュース</h2>
         </div>
         <div className="space-y-6">
           {latestNews && latestNews.length > 0 ? (
@@ -49,7 +49,7 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
               </article>
             ))
           ) : (
-            <p className="text-gray-500">お知らせはありません</p>
+            <p className="text-gray-500">新着ニュースはありません</p>
           )}
         </div>
         <div className="mt-8">
