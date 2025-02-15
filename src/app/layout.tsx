@@ -27,7 +27,7 @@ export default function RootLayout({
     <html lang="ja">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Navigation />
-        <main className="max-w-7xl mx-auto px-4 py-8">
+        <main className="max-w-7xl mx-auto px-4 py-8 mt-20">
           {children}
         </main>
       </body>
