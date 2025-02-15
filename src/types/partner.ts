@@ -7,6 +7,7 @@ export type Partner = {
     height: number;
   };
   subtitle: string;
+  description?: string;
   homelink?: string;
   snslink?: string;
 }; 
