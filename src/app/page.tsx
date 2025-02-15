@@ -1,3 +1,5 @@
+'use client';
+
 import { Metadata } from 'next';
 import { client } from '@/libs/microcms';
 import { News } from '@/types/news';
@@ -6,6 +8,10 @@ import PartnerCard from '@/components/PartnerCard';
 import { NewspaperIcon, BuildingOffice2Icon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 export const metadata: Metadata = {
   title: 'Sunlady Home',
@@ -113,14 +119,26 @@ export default async function Home() {
           <BuildingOffice2Icon className="h-6 w-6 text-gray-900 mr-2" />
           <h2 className="text-2xl font-semibold text-gray-900">パートナー企業</h2>
         </div>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {partners && partners.length > 0 ? (
-            partners.map((partner, index) => (
-              <PartnerCard key={partner.id} partner={partner} index={index} />
-            ))
-          ) : (
-            <p className="text-gray-500 col-span-full">パートナー企業の情報はありません</p>
-          )}
+        <div className="relative">
+          <Swiper
+            modules={[Navigation, Autoplay]}
+            spaceBetween={20}
+            slidesPerView="auto"
+            navigation
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            loop={true}
+            className="!overflow-visible"
+          >
+            {partners && partners.length > 0 ? (
+              partners.map((partner, index) => (
+                <SwiperSlide key={partner.id} className="!w-auto">
+                  <PartnerCard partner={partner} index={index} />
+                </SwiperSlide>
+              ))
+            ) : (
+              <p className="text-gray-500">パートナー企業の情報はありません</p>
+            )}
+          </Swiper>
         </div>
       </section>
     </div>
