@@ -25,12 +25,13 @@
     --foreground: #ffffff;
     --primary: #ffffff;
     --primary-dark: #e0e0e0;
-    --secondary: #a0a0a0;
+    --secondary: #d0d0d0;
+    --accent: #b0b0b0;
     --gray-100: #1e1e1e;
     --gray-200: #2d2d2d;
     --gray-300: #404040;
-    --gray-400: #757575;
-    --gray-500: #a0a0a0;
+    --gray-400: #a0a0a0;
+    --gray-500: #d0d0d0;
   }
 }
 
