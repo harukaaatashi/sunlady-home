@@ -29,7 +29,7 @@ export const Navigation = () => {
     { href: '/partners', label: 'PARTNERS' },
     { href: '/about', label: 'ABOUT' },
     { 
-      href: 'https://sunlady.shop-pro.jp', 
+      href: 'https://sunlady.base.shop/', 
       label: 'SHOP',
       isExternal: true 
     },
