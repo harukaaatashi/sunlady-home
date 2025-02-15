@@ -70,16 +70,30 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
         <div className="relative">
           <Swiper
             modules={[Navigation, Autoplay]}
-            spaceBetween={20}
-            slidesPerView="auto"
+            spaceBetween={30}
+            slidesPerView={4}
             navigation
             autoplay={{ delay: 3000, disableOnInteraction: false }}
             loop={true}
+            breakpoints={{
+              320: {
+                slidesPerView: 2,
+                spaceBetween: 20
+              },
+              640: {
+                slidesPerView: 3,
+                spaceBetween: 30
+              },
+              1024: {
+                slidesPerView: 4,
+                spaceBetween: 30
+              }
+            }}
             className="!overflow-visible"
           >
             {partners && partners.length > 0 ? (
               partners.map((partner, index) => (
-                <SwiperSlide key={partner.id} className="!w-auto">
+                <SwiperSlide key={partner.id}>
                   <PartnerCard partner={partner} index={index} />
                 </SwiperSlide>
               ))
