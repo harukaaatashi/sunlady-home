@@ -13,6 +13,7 @@ async function getPartnersList() {
       endpoint: 'partner',
       queries: {
         orders: 'name',
+        limit: 100
       },
     });
     return response.contents;

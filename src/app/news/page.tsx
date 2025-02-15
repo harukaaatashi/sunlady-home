@@ -13,6 +13,7 @@ async function getNewsList() {
     endpoint: 'news',
     queries: {
       orders: '-publishedAt',
+      limit: 100
     },
   });
   return response.contents;
