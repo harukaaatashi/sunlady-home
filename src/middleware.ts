@@ -1,5 +1,4 @@
 import { NextResponse, type NextRequest } from 'next/server';
-import { headers } from 'next/headers';
 import { LRUCache } from 'lru-cache';
 
 // レート制限の設定

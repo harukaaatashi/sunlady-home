@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { CalendarIcon } from '@heroicons/react/24/outline';
 import { News } from '@/types';
 import Link from 'next/link';
+import Image from 'next/image';
 
 type NewsCardProps = {
   news: News;
@@ -20,10 +21,11 @@ export function NewsCard({ news, index }: NewsCardProps) {
       >
         {news.image && (
           <div className="relative h-48 overflow-hidden">
-            <img
+            <Image
               src={news.image.url}
               alt={news.title}
-              className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+              fill
+              className="object-cover transform group-hover:scale-105 transition-transform duration-300"
             />
           </div>
         )}

@@ -6,6 +6,11 @@ export type News = {
   revisedAt: string;
   title: string;
   content: string;
+  image?: {
+    url: string;
+    width: number;
+    height: number;
+  };
 };
 
 export type Partner = {

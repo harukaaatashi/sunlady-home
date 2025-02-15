@@ -6,8 +6,7 @@ import { Metadata, ResolvingMetadata } from 'next';
 import Link from 'next/link';
 
 export async function generateMetadata(
-  { params }: { params: { id: string } },
-  _parent: ResolvingMetadata
+  { params }: { params: { id: string } }
 ): Promise<Metadata> {
   const news = await getNewsDetail(params.id);
   
@@ -31,7 +30,7 @@ async function getNewsDetail(id: string) {
       contentId: id,
     });
     return news;
-  } catch (_error) {
+  } catch {
     return null;
   }
 }
