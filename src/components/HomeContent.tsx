@@ -37,24 +37,29 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
             >
               {latestNews.map((news) => (
                 <SwiperSlide key={news.id}>
-                  <article className="border rounded-lg p-4 sm:p-6">
-                    <Link href={`/news/${news.id}`} className="flex flex-col sm:flex-row gap-4 sm:gap-6">
-                      <div className="w-full sm:w-48 h-24 sm:h-32 relative flex-shrink-0">
+                  <article className="relative h-[400px] rounded-xl overflow-hidden group">
+                    <Link href={`/news/${news.id}`} className="block h-full">
+                      <div className="absolute inset-0">
                         <Image
                           src={news.image.url}
                           alt={news.title}
                           fill
-                          className="object-cover rounded-lg"
-                          sizes="(max-width: 640px) 100vw, 192px"
+                          className="object-cover transition-transform duration-700 group-hover:scale-110"
+                          sizes="(max-width: 1280px) 100vw, 1280px"
+                          priority
                         />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                       </div>
-                      <div className="flex-1">
-                        <h2 className="text-base sm:text-xl font-semibold mb-2 hover:text-blue-600 line-clamp-2">
-                          {news.title}
-                        </h2>
-                        <p className="text-gray-600 text-sm">
+                      <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 text-white">
+                        <p className="text-sm sm:text-base mb-2 opacity-90">
                           {new Date(news.publishedAt).toLocaleDateString('ja-JP')}
                         </p>
+                        <h2 className="text-xl sm:text-2xl font-bold mb-4 line-clamp-2">
+                          {news.title}
+                        </h2>
+                        <span className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-lg text-sm transition-colors hover:bg-white/30">
+                          詳細を見る
+                        </span>
                       </div>
                     </Link>
                   </article>
