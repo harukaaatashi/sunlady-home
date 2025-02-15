@@ -33,7 +33,8 @@ async function getPartners() {
     const response = await client.getList<Partner>({
       endpoint: 'partner',
       queries: {
-        limit: 100
+        limit: 100,
+        orders: 'publishedAt'
       }
     });
     return response.contents;
