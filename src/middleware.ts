@@ -1,7 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { headers } from 'next/headers';
 import { LRUCache } from 'lru-cache';
-import helmet from 'helmet';
 
 // レート制限の設定
 const rateLimit = new LRUCache({
@@ -16,7 +15,7 @@ const cspHeader = `
   style-src 'self' 'unsafe-inline';
   img-src 'self' https://images.microcms-assets.io data:;
   font-src 'self';
-  connect-src 'self' https://api.microcms.io https://*.sentry.io;
+  connect-src 'self' https://api.microcms.io;
   frame-ancestors 'none';
   form-action 'self';
   upgrade-insecure-requests;
