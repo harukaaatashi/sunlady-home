@@ -82,21 +82,21 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
             <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-lg flex items-center justify-center mb-4">
               <ChartBarIcon className="h-6 w-6 text-blue-600 dark:text-blue-400" />
             </div>
-            <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-blue-100">高い技術力</h3>
+            <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">高い技術力</h3>
             <p className="text-gray-600 dark:text-gray-300">最新のテクノロジーと豊富な経験を活かし、質の高いソリューションを提供します。</p>
           </div>
           <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
             <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-lg flex items-center justify-center mb-4">
               <UserGroupIcon className="h-6 w-6 text-blue-600 dark:text-blue-400" />
             </div>
-            <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-blue-100">信頼のサポート</h3>
+            <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">信頼のサポート</h3>
             <p className="text-gray-600 dark:text-gray-300">お客様に寄り添い、プロジェクトの成功まで責任を持ってサポートいたします。</p>
           </div>
           <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
             <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-lg flex items-center justify-center mb-4">
               <GlobeAltIcon className="h-6 w-6 text-blue-600 dark:text-blue-400" />
             </div>
-            <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-blue-100">グローバル展開</h3>
+            <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">グローバル展開</h3>
             <p className="text-gray-600 dark:text-gray-300">国内外のネットワークを活かし、グローバルなビジネス展開をサポートします。</p>
           </div>
         </motion.div>
