@@ -30,14 +30,30 @@ async function getLatestNews() {
 
 async function getPartners() {
   try {
-    const response = await client.getList<Partner>({
+    // まず総件数を取得
+    const totalResponse = await client.getList<Partner>({
       endpoint: 'partner',
-      queries: {
-        limit: 100,
-        orders: 'publishedAt'
-      }
+      queries: { limit: 0 }
     });
-    return response.contents;
+
+    const allPartners = [];
+    const limit = 100;
+    const totalCount = totalResponse.totalCount;
+
+    // 全件を取得
+    for (let offset = 0; offset < totalCount; offset += limit) {
+      const response = await client.getList<Partner>({
+        endpoint: 'partner',
+        queries: {
+          orders: '-createdAt',
+          limit,
+          offset,
+        },
+      });
+      allPartners.push(...response.contents);
+    }
+
+    return allPartners;
   } catch (error) {
     console.error('パートナー企業の取得に失敗しました:', error);
     return [];
