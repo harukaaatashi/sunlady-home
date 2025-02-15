@@ -42,8 +42,8 @@ export const Navigation = () => {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled ? 'bg-white/90 shadow-sm backdrop-blur-md' : 'bg-white/80 backdrop-blur-md'
-    } border-b border-gray-100`}>
+      scrolled ? 'bg-white/90 dark:bg-gray-900/90 shadow-sm backdrop-blur-md' : 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md'
+    } border-b border-gray-100 dark:border-gray-800`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between h-16 sm:h-20">
           <div className="flex items-center">
@@ -66,7 +66,7 @@ export const Navigation = () => {
                   />
                 </motion.svg>
               </div>
-              <span className="ml-2 text-base sm:text-lg font-semibold tracking-tight text-gray-900">
+              <span className="ml-2 text-base sm:text-lg font-semibold tracking-tight text-gray-900 dark:text-white">
                 Sunlady
               </span>
             </Link>
@@ -79,7 +79,7 @@ export const Navigation = () => {
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 text-blue-600 hover:bg-blue-50 hover:text-blue-700 flex items-center gap-1"
+                  className="px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/50 hover:text-blue-700 dark:hover:text-blue-300 flex items-center gap-1"
                 >
                   {item.label}
                   <ArrowTopRightOnSquareIcon className="h-4 w-4" />
@@ -90,8 +90,8 @@ export const Navigation = () => {
                   href={item.href}
                   className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
                     isActive(item.href)
-                      ? 'bg-blue-50 text-blue-600'
-                      : 'text-gray-600 hover:bg-gray-50 hover:text-blue-600'
+                      ? 'bg-blue-50 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400'
+                      : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-blue-600 dark:hover:text-blue-400'
                   }`}
                 >
                   {item.label}

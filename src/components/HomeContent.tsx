@@ -78,26 +78,26 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-              <ChartBarIcon className="h-6 w-6 text-blue-600" />
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+            <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mb-4">
+              <ChartBarIcon className="h-6 w-6 text-blue-600 dark:text-blue-400" />
             </div>
-            <h3 className="text-xl font-semibold mb-3">高い技術力</h3>
-            <p className="text-gray-600">最新のテクノロジーと豊富な経験を活かし、質の高いソリューションを提供します。</p>
+            <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">高い技術力</h3>
+            <p className="text-gray-600 dark:text-gray-300">最新のテクノロジーと豊富な経験を活かし、質の高いソリューションを提供します。</p>
           </div>
-          <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-              <UserGroupIcon className="h-6 w-6 text-blue-600" />
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+            <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mb-4">
+              <UserGroupIcon className="h-6 w-6 text-blue-600 dark:text-blue-400" />
             </div>
-            <h3 className="text-xl font-semibold mb-3">信頼のサポート</h3>
-            <p className="text-gray-600">お客様に寄り添い、プロジェクトの成功まで責任を持ってサポートいたします。</p>
+            <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">信頼のサポート</h3>
+            <p className="text-gray-600 dark:text-gray-300">お客様に寄り添い、プロジェクトの成功まで責任を持ってサポートいたします。</p>
           </div>
-          <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-              <GlobeAltIcon className="h-6 w-6 text-blue-600" />
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+            <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mb-4">
+              <GlobeAltIcon className="h-6 w-6 text-blue-600 dark:text-blue-400" />
             </div>
-            <h3 className="text-xl font-semibold mb-3">グローバル展開</h3>
-            <p className="text-gray-600">国内外のネットワークを活かし、グローバルなビジネス展開をサポートします。</p>
+            <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">グローバル展開</h3>
+            <p className="text-gray-600 dark:text-gray-300">国内外のネットワークを活かし、グローバルなビジネス展開をサポートします。</p>
           </div>
         </motion.div>
       </section>
@@ -106,12 +106,12 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center">
-            <NewspaperIcon className="h-6 w-6 text-gray-900 mr-2" />
-            <h2 className="text-2xl font-semibold text-gray-900">新着ニュース</h2>
+            <NewspaperIcon className="h-6 w-6 text-gray-900 dark:text-white mr-2" />
+            <h2 className="text-2xl font-semibold text-gray-900 dark:text-white">新着ニュース</h2>
           </div>
           <Link
             href="/news"
-            className="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors"
+            className="inline-flex items-center text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
           >
             一覧を見る
             <svg className="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -119,14 +119,14 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
             </svg>
           </Link>
         </div>
-        <div className="bg-white rounded-xl shadow-sm overflow-hidden">
+        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden">
           {latestNews && latestNews.length > 0 ? (
-            <div className="divide-y divide-gray-100">
+            <div className="divide-y divide-gray-100 dark:divide-gray-700">
               {latestNews.map((news) => (
                 <Link 
                   key={news.id} 
                   href={`/news/${news.id}`}
-                  className="block p-4 hover:bg-gray-50 transition-colors"
+                  className="block p-4 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
                 >
                   <div className="flex items-start gap-4">
                     <div className="relative w-24 h-16 flex-shrink-0 rounded-lg overflow-hidden">
@@ -139,10 +139,10 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
                       />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm text-gray-500 mb-1">
+                      <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">
                         {new Date(news.publishedAt).toLocaleDateString('ja-JP')}
                       </p>
-                      <h3 className="text-base font-medium text-gray-900 line-clamp-2">
+                      <h3 className="text-base font-medium text-gray-900 dark:text-white line-clamp-2">
                         {news.title}
                       </h3>
                     </div>
@@ -151,7 +151,7 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
               ))}
             </div>
           ) : (
-            <p className="text-gray-500 p-4">新着ニュースはありません</p>
+            <p className="text-gray-500 dark:text-gray-400 p-4">新着ニュースはありません</p>
           )}
         </div>
       </section>

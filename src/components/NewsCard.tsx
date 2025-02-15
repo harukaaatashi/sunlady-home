@@ -17,7 +17,7 @@ export function NewsCard({ news, index }: NewsCardProps) {
         animate={{ opacity: 1, y: 0 }}
         whileHover={{ y: -4 }}
         transition={{ duration: 0.3, delay: index * 0.1 }}
-        className="group bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100"
+        className="group bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700"
       >
         {news.image && (
           <div className="relative h-48 overflow-hidden">
@@ -30,17 +30,17 @@ export function NewsCard({ news, index }: NewsCardProps) {
           </div>
         )}
         <div className="p-6">
-          <div className="flex items-center text-gray-500 text-sm mb-3">
+          <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm mb-3">
             <CalendarIcon className="h-4 w-4 mr-1" />
             <time>{new Date(news.publishedAt).toLocaleDateString('ja-JP')}</time>
           </div>
-          <h3 className="text-xl font-medium text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+          <h3 className="text-xl font-medium text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
             {news.title}
           </h3>
-          <p className="text-gray-600 line-clamp-2 text-sm leading-relaxed">
+          <p className="text-gray-600 dark:text-gray-300 line-clamp-2 text-sm leading-relaxed">
             {news.content}
           </p>
-          <div className="mt-4 flex items-center text-blue-600 text-sm font-medium">
+          <div className="mt-4 flex items-center text-blue-600 dark:text-blue-400 text-sm font-medium">
             続きを読む
             <svg
               className="ml-1 w-4 h-4 transform group-hover:translate-x-1 transition-transform"
