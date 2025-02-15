@@ -12,6 +12,12 @@ const notoSansJP = Noto_Sans_JP({
 export const metadata: Metadata = {
   title: "Sunlady Home",
   description: "Sunlady official website",
+  icons: {
+    icon: {
+      url: '/favicon.svg',
+      type: 'image/svg+xml',
+    },
+  },
 };
 
 export default function RootLayout({
