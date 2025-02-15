@@ -32,9 +32,9 @@ export default function PartnerCard({ partner, index }: PartnerCardProps) {
         <h3 className="text-lg font-medium text-gray-900 text-center group-hover:text-blue-600 transition-colors">
           {partner.name}
         </h3>
-        {partner.description && (
+        {partner.subtitle && (
           <p className="mt-2 text-sm text-gray-600 text-center line-clamp-2">
-            {partner.description}
+            {partner.subtitle}
           </p>
         )}
         <div className="mt-4 flex items-center text-blue-600 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
