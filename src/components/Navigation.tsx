@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
 
 export const Navigation = () => {
   const pathname = usePathname();
@@ -17,7 +18,11 @@ export const Navigation = () => {
     { href: '/news', label: 'NEWS' },
     { href: '/partners', label: 'PARTNERS' },
     { href: '/about', label: 'ABOUT' },
-    { href: '/shop', label: 'SHOP' },
+    { 
+      href: 'https://sunlady.shop-pro.jp', 
+      label: 'SHOP',
+      isExternal: true 
+    },
     { 
       href: 'https://www.google.com/maps/search/?api=1&query=東京都渋谷区恵比寿西1-32-11+ヴァイスハイム+3F', 
       label: 'ACCESS',
@@ -61,9 +66,10 @@ export const Navigation = () => {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 text-gray-600 hover:bg-gray-50 hover:text-blue-600`}
+                    className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 text-blue-600 hover:bg-blue-50 hover:text-blue-700 flex items-center gap-1`}
                   >
                     {item.label}
+                    <ArrowTopRightOnSquareIcon className="h-4 w-4" />
                   </a>
                 ) : (
                   <Link
@@ -136,9 +142,10 @@ export const Navigation = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setIsOpen(false)}
-                    className="block px-3 py-2 rounded-md text-base font-medium transition-colors text-gray-600 hover:bg-gray-50 hover:text-blue-600"
+                    className="block px-3 py-2 rounded-md text-base font-medium transition-colors text-blue-600 hover:bg-blue-50 hover:text-blue-700 flex items-center gap-1"
                   >
                     {item.label}
+                    <ArrowTopRightOnSquareIcon className="h-4 w-4" />
                   </a>
                 ) : (
                   <Link
