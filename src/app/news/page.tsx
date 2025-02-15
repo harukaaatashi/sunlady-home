@@ -46,7 +46,7 @@ export default async function NewsPage({
               href={`/news/${news.id}`} 
               className="block sm:flex gap-4 sm:gap-6 h-full"
             >
-              <div className="relative w-full sm:w-48 h-48 sm:h-32 flex-shrink-0">
+              <div className="relative w-full sm:w-48 h-32 sm:h-32 flex-shrink-0">
                 <Image
                   src={news.image.url}
                   alt={news.title}
