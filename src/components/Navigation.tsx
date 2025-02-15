@@ -48,7 +48,7 @@ export const Navigation = () => {
               ABOUT
             </Link>
             <a
-              href="https://shop-url.com" // ショップのURLを実際のものに変更してください
+              href="https://sunlady.base.shop/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-600 hover:text-blue-600"
