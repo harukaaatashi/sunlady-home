@@ -32,7 +32,8 @@ async function getPartnersList() {
       allPartners.push(...response.contents);
     }
 
-    return allPartners;
+    // 配列を反転させて返す
+    return allPartners.reverse();
   } catch (error) {
     console.error('パートナー企業の取得に失敗しました:', error);
     return [];
