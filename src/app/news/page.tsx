@@ -2,6 +2,7 @@ import { client } from '@/libs/microcms';
 import { News } from '@/types/news';
 import Link from 'next/link';
 import Image from 'next/image';
+import { CalendarIcon } from '@heroicons/react/24/outline';
 
 export const metadata = {
   title: 'ニュース一覧 | Sunlady Home',
@@ -33,28 +34,36 @@ export default async function NewsPage({
   const totalPages = Math.ceil(totalCount / PER_PAGE);
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold mb-8">ニュース一覧</h1>
-      <div className="space-y-6">
+    <div className="max-w-4xl mx-auto">
+      <h1 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8">ニュース一覧</h1>
+      <div className="space-y-4 sm:space-y-6">
         {newsList.map((news) => (
-          <article key={news.id} className="border rounded-lg p-6">
-            <Link href={`/news/${news.id}`} className="flex gap-6">
-              <div className="w-48 h-32 relative flex-shrink-0">
+          <article 
+            key={news.id} 
+            className="bg-white border rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
+          >
+            <Link 
+              href={`/news/${news.id}`} 
+              className="block sm:flex gap-4 sm:gap-6 h-full"
+            >
+              <div className="relative w-full sm:w-48 h-48 sm:h-32 flex-shrink-0">
                 <Image
                   src={news.image.url}
                   alt={news.title}
                   fill
-                  className="object-cover rounded-lg"
+                  className="object-cover rounded-t-lg sm:rounded-l-lg sm:rounded-t-none"
+                  sizes="(max-width: 640px) 100vw, 192px"
                 />
               </div>
-              <div>
-                <h2 className="text-xl font-semibold mb-2 hover:text-blue-600">
+              <div className="p-4 sm:p-6 flex-1">
+                <div className="flex items-center text-gray-500 text-sm mb-2">
+                  <CalendarIcon className="h-4 w-4 mr-1" />
+                  <time>{new Date(news.publishedAt).toLocaleDateString('ja-JP')}</time>
+                </div>
+                <h2 className="text-lg sm:text-xl font-semibold mb-2 text-gray-900 hover:text-blue-600 transition-colors line-clamp-2">
                   {news.title}
                 </h2>
-                <p className="text-gray-600 text-sm mb-4">
-                  {new Date(news.publishedAt).toLocaleDateString('ja-JP')}
-                </p>
-                <div className="text-gray-700 line-clamp-2">
+                <div className="text-sm sm:text-base text-gray-600 line-clamp-2 leading-relaxed">
                   {news.content.replace(/<[^>]*>/g, '')}
                 </div>
               </div>
@@ -64,15 +73,15 @@ export default async function NewsPage({
       </div>
 
       {totalPages > 1 && (
-        <div className="flex justify-center gap-2 mt-8">
+        <div className="flex justify-center gap-2 mt-8 pb-8">
           {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
             <Link
               key={page}
               href={`/news?page=${page}`}
-              className={`px-4 py-2 rounded ${
+              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                 currentPage === page
                   ? 'bg-blue-600 text-white'
-                  : 'bg-gray-100 hover:bg-gray-200'
+                  : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
               }`}
             >
               {page}
