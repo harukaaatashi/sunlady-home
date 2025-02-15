@@ -2,13 +2,23 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
 
 export const Navigation = () => {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const isActive = (path: string) => {
     return pathname === path;
@@ -31,18 +41,20 @@ export const Navigation = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex justify-between h-20">
-          <div className="flex items-center space-x-8">
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      scrolled ? 'bg-white/90 shadow-sm backdrop-blur-md' : 'bg-white/80 backdrop-blur-md'
+    } border-b border-gray-100`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="flex justify-between h-16 sm:h-20">
+          <div className="flex items-center">
             <Link href="/" className="flex items-center group">
               <div className="relative">
                 <motion.svg
-                  width="40"
-                  height="40"
+                  width="32"
+                  height="32"
                   viewBox="0 0 1000 1000"
                   whileHover={{ scale: 1.05 }}
-                  className="transition-transform"
+                  className="transition-transform sm:w-10 sm:h-10"
                 >
                   <path
                     fill="#e60012"
@@ -54,11 +66,11 @@ export const Navigation = () => {
                   />
                 </motion.svg>
               </div>
-              <span className="ml-2 text-lg font-semibold tracking-tight text-gray-900">
+              <span className="ml-2 text-base sm:text-lg font-semibold tracking-tight text-gray-900">
                 Sunlady
               </span>
             </Link>
-            <div className="hidden md:flex items-center space-x-1">
+            <div className="hidden md:flex items-center ml-8 space-x-1">
               {menuItems.map((item) => (
                 item.isExternal ? (
                   <a
@@ -66,7 +78,7 @@ export const Navigation = () => {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 text-blue-600 hover:bg-blue-50 hover:text-blue-700 flex items-center gap-1`}
+                    className="px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 text-blue-600 hover:bg-blue-50 hover:text-blue-700 flex items-center gap-1"
                   >
                     {item.label}
                     <ArrowTopRightOnSquareIcon className="h-4 w-4" />
@@ -75,7 +87,7 @@ export const Navigation = () => {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+                    className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
                       isActive(item.href)
                         ? 'bg-blue-50 text-blue-600'
                         : 'text-gray-600 hover:bg-gray-50 hover:text-blue-600'
@@ -97,7 +109,7 @@ export const Navigation = () => {
               <span className="sr-only">メニューを開く</span>
               <motion.svg
                 animate={isOpen ? "open" : "closed"}
-                className="block h-6 w-6"
+                className="block h-5 w-5"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -131,9 +143,9 @@ export const Navigation = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden"
+            className="md:hidden overflow-hidden"
           >
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-white shadow-lg">
+            <div className="px-3 pt-2 pb-3 space-y-1 bg-white shadow-lg">
               {menuItems.map((item) => (
                 item.isExternal ? (
                   <a
@@ -142,7 +154,7 @@ export const Navigation = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setIsOpen(false)}
-                    className="block px-3 py-2 rounded-md text-base font-medium transition-colors text-blue-600 hover:bg-blue-50 hover:text-blue-700 flex items-center gap-1"
+                    className="block px-3 py-2.5 rounded-md text-sm font-medium transition-colors text-blue-600 hover:bg-blue-50 hover:text-blue-700 flex items-center gap-1"
                   >
                     {item.label}
                     <ArrowTopRightOnSquareIcon className="h-4 w-4" />
@@ -152,7 +164,7 @@ export const Navigation = () => {
                     key={item.href}
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                    className={`block px-3 py-2.5 rounded-md text-sm font-medium transition-colors ${
                       isActive(item.href)
                         ? 'bg-blue-50 text-blue-600'
                         : 'text-gray-600 hover:bg-gray-50 hover:text-blue-600'
