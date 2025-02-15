@@ -1,16 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "@/components/Navigation";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const notoSansJP = Noto_Sans_JP({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-noto-sans-jp",
 });
 
 export const metadata: Metadata = {
@@ -24,12 +20,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+    <html lang="ja" className={notoSansJP.variable}>
+      <body className="min-h-screen flex flex-col antialiased">
         <Navigation />
-        <main className="max-w-7xl mx-auto px-4 py-8 mt-20">
+        <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8 mt-20">
           {children}
         </main>
+        <footer className="bg-gray-100 dark:bg-gray-900 py-8 mt-auto">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <p className="text-center text-gray-600 dark:text-gray-400">© 2024 Sunlady. All rights reserved.</p>
+          </div>
+        </footer>
       </body>
     </html>
   );
