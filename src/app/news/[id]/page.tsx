@@ -3,6 +3,7 @@ import { News } from '@/types/news';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { Metadata, ResolvingMetadata } from 'next';
+import Link from 'next/link';
 
 export async function generateMetadata(
   { params }: { params: { id: string } },
@@ -48,6 +49,14 @@ export default async function NewsDetailPage({
 
   return (
     <article className="max-w-3xl mx-auto">
+      <div className="mb-8">
+        <Link
+          href="/news"
+          className="inline-block px-6 py-2 text-sm bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+        >
+          ← ニュース一覧へ戻る
+        </Link>
+      </div>
       <h1 className="text-3xl font-bold mb-4">{news.title}</h1>
       <div className="text-gray-600 mb-4">
         <time dateTime={news.publishedAt}>
