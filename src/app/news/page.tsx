@@ -8,19 +8,29 @@ export const metadata = {
   description: 'Sunladyからのお知らせ一覧です。',
 };
 
-async function getNewsList() {
+const PER_PAGE = 10;
+
+async function getNewsList(offset = 0) {
   const response = await client.getList<News>({
     endpoint: 'news',
     queries: {
       orders: '-publishedAt',
-      limit: 100
+      limit: PER_PAGE,
+      offset,
     },
   });
-  return response.contents;
+  return response;
 }
 
-export default async function NewsPage() {
-  const newsList = await getNewsList();
+export default async function NewsPage({
+  searchParams,
+}: {
+  searchParams: { page?: string };
+}) {
+  const currentPage = Number(searchParams.page) || 1;
+  const offset = (currentPage - 1) * PER_PAGE;
+  const { contents: newsList, totalCount } = await getNewsList(offset);
+  const totalPages = Math.ceil(totalCount / PER_PAGE);
 
   return (
     <div>
@@ -52,6 +62,24 @@ export default async function NewsPage() {
           </article>
         ))}
       </div>
+
+      {totalPages > 1 && (
+        <div className="flex justify-center gap-2 mt-8">
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+            <Link
+              key={page}
+              href={`/news?page=${page}`}
+              className={`px-4 py-2 rounded ${
+                currentPage === page
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-100 hover:bg-gray-200'
+              }`}
+            >
+              {page}
+            </Link>
+          ))}
+        </div>
+      )}
     </div>
   );
 } 
