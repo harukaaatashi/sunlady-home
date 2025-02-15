@@ -27,18 +27,19 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
         <div className="space-y-6">
           {latestNews && latestNews.length > 0 ? (
             latestNews.map((news) => (
-              <article key={news.id} className="border rounded-lg p-6">
-                <Link href={`/news/${news.id}`} className="flex gap-6">
-                  <div className="w-48 h-32 relative flex-shrink-0">
+              <article key={news.id} className="border rounded-lg p-4 sm:p-6">
+                <Link href={`/news/${news.id}`} className="flex flex-col sm:flex-row gap-4 sm:gap-6">
+                  <div className="w-full sm:w-48 h-24 sm:h-32 relative flex-shrink-0">
                     <Image
                       src={news.image.url}
                       alt={news.title}
                       fill
                       className="object-cover rounded-lg"
+                      sizes="(max-width: 640px) 100vw, 192px"
                     />
                   </div>
-                  <div>
-                    <h2 className="text-xl font-semibold mb-2 hover:text-blue-600">
+                  <div className="flex-1">
+                    <h2 className="text-base sm:text-xl font-semibold mb-2 hover:text-blue-600 line-clamp-2">
                       {news.title}
                     </h2>
                     <p className="text-gray-600 text-sm">
