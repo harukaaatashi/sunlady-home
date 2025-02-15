@@ -45,12 +45,12 @@ export default async function PartnersPage() {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-8">パートナー企業</h1>
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <h1 className="text-2xl font-bold mb-6">パートナー企業</h1>
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {partners && partners.length > 0 ? (
           partners.map((partner) => (
-            <div key={partner.id} className="border rounded-lg p-6">
-              <div className="aspect-w-16 aspect-h-9 mb-4">
+            <div key={partner.id} className="border rounded-lg p-4">
+              <div className="aspect-w-16 aspect-h-9 mb-3">
                 <Image
                   src={partner.image.url}
                   alt={partner.name}
@@ -59,15 +59,15 @@ export default async function PartnersPage() {
                   className="object-contain"
                 />
               </div>
-              <h2 className="text-xl font-semibold mb-2">{partner.name}</h2>
-              <p className="text-gray-700 mb-4">{partner.subtitle}</p>
-              <div className="flex space-x-4">
+              <h2 className="text-lg font-semibold mb-1">{partner.name}</h2>
+              <p className="text-gray-700 text-sm mb-3">{partner.subtitle}</p>
+              <div className="flex space-x-3">
                 {partner.homelink && (
                   <a
                     href={partner.homelink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-600 hover:text-blue-800"
+                    className="text-blue-600 hover:text-blue-800 text-sm"
                   >
                     ウェブサイト →
                   </a>
@@ -77,7 +77,7 @@ export default async function PartnersPage() {
                     href={partner.snslink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-600 hover:text-blue-800"
+                    className="text-blue-600 hover:text-blue-800 text-sm"
                   >
                     SNS →
                   </a>
