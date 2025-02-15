@@ -104,64 +104,55 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
 
       {/* ニュースセクション */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center mb-8">
-          <NewspaperIcon className="h-6 w-6 text-gray-900 mr-2" />
-          <h2 className="text-2xl font-semibold text-gray-900">新着ニュース</h2>
-        </div>
-        <div className="space-y-6">
-          {latestNews && latestNews.length > 0 ? (
-            <Swiper
-              modules={[Navigation, Autoplay, EffectFade]}
-              effect="fade"
-              spaceBetween={30}
-              slidesPerView={1}
-              navigation
-              autoplay={{ delay: 5000, disableOnInteraction: false }}
-              loop={true}
-              className="!overflow-visible"
-            >
-              {latestNews.map((news) => (
-                <SwiperSlide key={news.id}>
-                  <article className="relative h-[500px] rounded-xl overflow-hidden group">
-                    <Link href={`/news/${news.id}`} className="block h-full">
-                      <div className="absolute inset-0">
-                        <Image
-                          src={news.image.url}
-                          alt={news.title}
-                          fill
-                          className="object-cover transition-transform duration-700 group-hover:scale-110"
-                          sizes="(max-width: 1280px) 100vw, 1280px"
-                          priority
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-                      </div>
-                      <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-                        <p className="text-base mb-2 opacity-90">
-                          {new Date(news.publishedAt).toLocaleDateString('ja-JP')}
-                        </p>
-                        <h2 className="text-2xl font-bold mb-4 line-clamp-2">
-                          {news.title}
-                        </h2>
-                        <span className="inline-block px-6 py-2 bg-white/20 backdrop-blur-sm rounded-lg text-sm transition-colors hover:bg-white/30">
-                          詳細を見る
-                        </span>
-                      </div>
-                    </Link>
-                  </article>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          ) : (
-            <p className="text-gray-500">新着ニュースはありません</p>
-          )}
-        </div>
-        <div className="mt-8 text-center">
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center">
+            <NewspaperIcon className="h-6 w-6 text-gray-900 mr-2" />
+            <h2 className="text-2xl font-semibold text-gray-900">新着ニュース</h2>
+          </div>
           <Link
             href="/news"
-            className="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+            className="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors"
           >
-            ニュース一覧へ
+            一覧を見る
+            <svg className="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
           </Link>
+        </div>
+        <div className="bg-white rounded-xl shadow-sm overflow-hidden">
+          {latestNews && latestNews.length > 0 ? (
+            <div className="divide-y divide-gray-100">
+              {latestNews.map((news) => (
+                <Link 
+                  key={news.id} 
+                  href={`/news/${news.id}`}
+                  className="block p-4 hover:bg-gray-50 transition-colors"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="relative w-24 h-16 flex-shrink-0 rounded-lg overflow-hidden">
+                      <Image
+                        src={news.image.url}
+                        alt={news.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 96px, 96px"
+                      />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm text-gray-500 mb-1">
+                        {new Date(news.publishedAt).toLocaleDateString('ja-JP')}
+                      </p>
+                      <h3 className="text-base font-medium text-gray-900 line-clamp-2">
+                        {news.title}
+                      </h3>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <p className="text-gray-500 p-4">新着ニュースはありません</p>
+          )}
         </div>
       </section>
 
