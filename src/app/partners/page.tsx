@@ -23,7 +23,7 @@ async function getPartnersList() {
       const response = await client.getList<Partner>({
         endpoint: 'partner',
         queries: {
-          orders: '-createdAt',
+          orders: 'createdAt',
           limit,
           offset,
         },
