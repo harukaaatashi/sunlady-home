@@ -167,38 +167,71 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
 
       {/* パートナー企業セクション */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center mb-8">
-          <BuildingOffice2Icon className="h-6 w-6 text-gray-900 mr-2" />
-          <h2 className="text-2xl font-semibold text-gray-900">パートナー企業</h2>
+        <div className="flex items-center justify-between mb-8">
+          <div className="flex items-center">
+            <BuildingOffice2Icon className="h-6 w-6 text-gray-900 mr-2" />
+            <h2 className="text-2xl font-semibold text-gray-900">パートナー企業</h2>
+          </div>
+          <div className="flex gap-2">
+            <button className="partner-prev-button p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+              </svg>
+            </button>
+            <button className="partner-next-button p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+              </svg>
+            </button>
+          </div>
         </div>
         <div className="relative">
           <Swiper
             modules={[Navigation, Autoplay]}
             spaceBetween={30}
             slidesPerView={4}
-            navigation
-            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            navigation={{
+              prevEl: '.partner-prev-button',
+              nextEl: '.partner-next-button',
+            }}
+            autoplay={{ 
+              delay: 3000, 
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true
+            }}
             loop={true}
+            speed={800}
             breakpoints={{
               320: {
-                slidesPerView: 2,
+                slidesPerView: 1.2,
                 spaceBetween: 20
               },
               640: {
-                slidesPerView: 3,
+                slidesPerView: 2.2,
                 spaceBetween: 30
               },
               1024: {
-                slidesPerView: 4,
+                slidesPerView: 3.2,
+                spaceBetween: 30
+              },
+              1280: {
+                slidesPerView: 4.2,
                 spaceBetween: 30
               }
             }}
-            className="!overflow-visible"
+            className="!overflow-visible partner-swiper"
           >
             {partners && partners.length > 0 ? (
               partners.map((partner, index) => (
                 <SwiperSlide key={partner.id}>
-                  <PartnerCard partner={partner} index={index} />
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                  >
+                    <PartnerCard partner={partner} index={index} />
+                  </motion.div>
                 </SwiperSlide>
               ))
             ) : (
