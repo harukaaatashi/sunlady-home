@@ -12,7 +12,7 @@ export const metadata = {
 
 export const revalidate = 60; // 1分ごとに再検証
 
-const PER_PAGE = 10;
+const PER_PAGE = 6;
 
 type Props = {
   searchParams: { page?: string };
