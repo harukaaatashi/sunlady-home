@@ -24,25 +24,11 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
     <div className="w-full">
       {/* ヒーローセクション */}
       <section className="relative h-[60vh] sm:h-[80vh] min-h-[400px] sm:min-h-[600px] -mt-6 w-full" aria-label="ヒーローセクション">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-800">
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40" aria-hidden="true" />
+        <div className="absolute inset-0 bg-white dark:bg-gray-900">
+          <div className="absolute inset-0" aria-hidden="true" />
         </div>
         <div className="relative h-full w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-center h-full">
-            <motion.div 
-              className="relative w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] lg:w-[400px] lg:h-[400px]"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8 }}
-            >
-              <Image
-                src="/hero-logo.svg"
-                alt="Sunlady Logo"
-                fill
-                className="object-contain"
-                priority
-              />
-            </motion.div>
           </div>
         </div>
       </section>
