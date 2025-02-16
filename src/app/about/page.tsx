@@ -16,9 +16,6 @@ export default function AboutPage() {
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             会社概要
           </h1>
-          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto text-lg">
-            1968年の創業以来、ファッション業界における革新的なソリューションを提供し続けています。
-          </p>
         </div>
 
         {/* 企業情報セクション */}
