@@ -1,6 +1,6 @@
 'use client';
 
-import { BuildingOffice2Icon, MapPinIcon, PhoneIcon, EnvelopeIcon, ClockIcon } from '@heroicons/react/24/outline';
+import { BuildingOffice2Icon, MapPinIcon, ClockIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
