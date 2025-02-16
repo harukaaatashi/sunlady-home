@@ -11,7 +11,7 @@ type NewsCardProps = {
   index: number;
 };
 
-const NewsCard = ({ news, index }: NewsCardProps) => {
+export default function NewsCard({ news, index }: NewsCardProps) {
   return (
     <Link 
       href={`/news/${news.id}`}
@@ -68,6 +68,4 @@ const NewsCard = ({ news, index }: NewsCardProps) => {
       </motion.article>
     </Link>
   );
-};
-
-export default NewsCard;
+}
