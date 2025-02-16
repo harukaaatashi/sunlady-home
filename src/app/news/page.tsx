@@ -3,6 +3,7 @@ import { News } from '@/types/news';
 import NewsCard from '@/components/NewsCard';
 import { NewspaperIcon } from '@heroicons/react/24/outline';
 import { Suspense } from 'react';
+import Pagination from '@/components/Pagination';
 
 export const metadata = {
   title: 'ニュース一覧 | Sunlady Home',
@@ -11,19 +12,32 @@ export const metadata = {
 
 export const revalidate = 60; // 1分ごとに再検証
 
-async function getNewsList() {
+const PER_PAGE = 10;
+
+type Props = {
+  searchParams: { page?: string };
+};
+
+async function getNewsList(page: number) {
   try {
     const response = await client.getList<News>({
       endpoint: 'news',
       queries: {
         orders: '-publishedAt',
-        limit: 100,
+        limit: PER_PAGE,
+        offset: (page - 1) * PER_PAGE,
       },
     });
-    return response.contents;
+    return {
+      contents: response.contents,
+      totalCount: response.totalCount,
+    };
   } catch (error) {
     console.error('ニュースの取得に失敗しました:', error);
-    return [];
+    return {
+      contents: [],
+      totalCount: 0,
+    };
   }
 }
 
@@ -42,8 +56,10 @@ function LoadingNews() {
   );
 }
 
-export default async function NewsPage() {
-  const news = await getNewsList();
+export default async function NewsPage({ searchParams }: Props) {
+  const currentPage = Number(searchParams.page) || 1;
+  const { contents: news, totalCount } = await getNewsList(currentPage);
+  const totalPages = Math.ceil(totalCount / PER_PAGE);
 
   return (
     <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-12 w-full">
@@ -71,6 +87,13 @@ export default async function NewsPage() {
             </div>
           )}
         </div>
+        {totalPages > 1 && (
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            basePath="/news"
+          />
+        )}
       </Suspense>
     </div>
   );
