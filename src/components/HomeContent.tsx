@@ -3,7 +3,7 @@
 import { News } from '@/types/news';
 import { Partner } from '@/types/partner';
 import PartnerCard from '@/components/PartnerCard';
-import NewsCard from '@/components/NewsCard';
+import { NewsCard } from '@/components/NewsCard';
 import { NewspaperIcon, BuildingOffice2Icon, ChartBarIcon, UserGroupIcon, GlobeAltIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import Image from 'next/image';
