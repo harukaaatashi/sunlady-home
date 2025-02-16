@@ -30,7 +30,7 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
         <div className="relative h-full w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-center h-full">
             <motion.div 
-              className="relative w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] lg:w-[400px] lg:h-[400px] [&_.logo-blue]:text-[#1C2788] dark:[&_.logo-blue]:text-white"
+              className="relative w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] lg:w-[400px] lg:h-[400px] [&_.logo-blue]:text-[#1C2788] dark:[&_.logo-blue]:text-white [&_.logo-blue]:fill-current"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
@@ -39,7 +39,7 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
                 src="/hero-logo.svg"
                 alt="Sunlady Logo"
                 fill
-                className="object-contain dark:[&_*]:fill-white dark:[&_*]:stroke-white"
+                className="object-contain"
                 priority
               />
             </motion.div>
