@@ -23,7 +23,7 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
   return (
     <div className="space-y-24">
       {/* ヒーローセクション */}
-      <section className="relative h-[80vh] min-h-[600px] -mt-6" aria-label="ヒーローセクション">
+      <section className="relative h-[60vh] sm:h-[80vh] min-h-[400px] sm:min-h-[600px] -mt-6" aria-label="ヒーローセクション">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-800">
           {/* 一時的にヒーロー画像を非表示にします */}
           {/* <Image
@@ -38,16 +38,16 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
         <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col justify-center h-full">
             <motion.h1 
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              未来を創る、<br />
+              未来を創る、<br className="sm:hidden" />
               ビジネスパートナー
             </motion.h1>
             <motion.p 
-              className="text-xl text-white/90 max-w-2xl mb-8"
+              className="text-base sm:text-lg md:text-xl text-white/90 max-w-2xl mb-6 sm:mb-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -60,30 +60,30 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
       </section>
 
       {/* 特徴セクション */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-labelledby="features-heading">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-24" aria-labelledby="features-heading">
         <h2 id="features-heading" className="sr-only">Sunladyの特徴</h2>
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+          <div className="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
             <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-lg flex items-center justify-center mb-4" aria-hidden="true">
               <ChartBarIcon className="h-6 w-6 text-blue-600 dark:text-blue-400" />
             </div>
             <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">高い技術力</h3>
             <p className="text-gray-600 dark:text-gray-300">最新のテクノロジーと豊富な経験を活かし、質の高いソリューションを提供します。</p>
           </div>
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+          <div className="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
             <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-lg flex items-center justify-center mb-4" aria-hidden="true">
               <UserGroupIcon className="h-6 w-6 text-blue-600 dark:text-blue-400" />
             </div>
             <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">信頼のサポート</h3>
             <p className="text-gray-600 dark:text-gray-300">お客様に寄り添い、プロジェクトの成功まで責任を持ってサポートいたします。</p>
           </div>
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+          <div className="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
             <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-lg flex items-center justify-center mb-4" aria-hidden="true">
               <GlobeAltIcon className="h-6 w-6 text-blue-600 dark:text-blue-400" />
             </div>
@@ -94,7 +94,7 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
       </section>
 
       {/* ニュースセクション */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-labelledby="news-heading">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-24" aria-labelledby="news-heading">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center">
             <NewspaperIcon className="h-6 w-6 text-gray-900 dark:text-blue-400 mr-2" aria-hidden="true" />
@@ -118,11 +118,11 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
                 <Link 
                   key={news.id} 
                   href={`/news/${news.id}`}
-                  className="block p-4 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-inset"
+                  className="block p-3 sm:p-4 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-inset"
                   aria-label={`${news.title}の詳細を読む`}
                 >
-                  <div className="flex items-start gap-4">
-                    <div className="relative w-24 h-16 flex-shrink-0 rounded-lg overflow-hidden">
+                  <div className="flex items-start gap-3 sm:gap-4">
+                    <div className="relative w-20 h-14 sm:w-24 sm:h-16 flex-shrink-0 rounded-lg overflow-hidden">
                       <Image
                         src={news.image.url}
                         alt={`${news.title}のサムネイル画像`}
@@ -132,10 +132,10 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
                       />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <time className="text-sm text-gray-500 dark:text-gray-400 mb-1" dateTime={news.publishedAt}>
+                      <time className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-1" dateTime={news.publishedAt}>
                         {new Date(news.publishedAt).toLocaleDateString('ja-JP')}
                       </time>
-                      <h3 className="text-base font-medium text-gray-900 dark:text-white line-clamp-2">
+                      <h3 className="text-sm sm:text-base font-medium text-gray-900 dark:text-white line-clamp-2">
                         {news.title}
                       </h3>
                     </div>
@@ -150,7 +150,7 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
       </section>
 
       {/* パートナー企業セクション */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-labelledby="partners-heading">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-24" aria-labelledby="partners-heading">
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center">
             <BuildingOffice2Icon className="h-6 w-6 text-gray-900 dark:text-blue-400 mr-2" aria-hidden="true" />
@@ -193,19 +193,23 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
             speed={800}
             breakpoints={{
               320: {
-                slidesPerView: 1.2,
+                slidesPerView: 1.1,
+                spaceBetween: 16
+              },
+              480: {
+                slidesPerView: 1.5,
                 spaceBetween: 20
               },
               640: {
-                slidesPerView: 2.2,
-                spaceBetween: 30
+                slidesPerView: 2.1,
+                spaceBetween: 24
               },
               1024: {
-                slidesPerView: 3.2,
+                slidesPerView: 3.1,
                 spaceBetween: 30
               },
               1280: {
-                slidesPerView: 4.2,
+                slidesPerView: 4,
                 spaceBetween: 30
               }
             }}
