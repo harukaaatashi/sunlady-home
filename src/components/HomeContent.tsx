@@ -39,7 +39,7 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
                 src="/hero-logo.svg"
                 alt="Sunlady Logo"
                 fill
-                className="object-contain"
+                className="object-contain [&_path]:dark:fill-white"
                 priority
               />
             </motion.div>
