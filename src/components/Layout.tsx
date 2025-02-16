@@ -33,13 +33,15 @@ export function Layout({ children }: LayoutProps) {
             </div>
             <div>
               <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">お問い合わせ</h3>
-              <p className="text-sm sm:text-base text-gray-600">メール: info@sunlady.co.jp</p>
-              <p className="text-sm sm:text-base text-gray-600">電話: 03-XXXX-XXXX</p>
+              <p className="text-sm sm:text-base text-gray-600">TEL: 03-3462-2751</p>
+              <p className="text-sm sm:text-base text-gray-600">FAX: 03-3462-2750</p>
             </div>
             <div className="sm:col-span-2 lg:col-span-1">
               <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">所在地</h3>
-              <p className="text-sm sm:text-base text-gray-600">〒XXX-XXXX</p>
-              <p className="text-sm sm:text-base text-gray-600">東京都XX区XX町X-X-X</p>
+              <p className="text-sm sm:text-base text-gray-600">〒150-0021</p>
+              <p className="text-sm sm:text-base text-gray-600">東京都渋谷区恵比寿西1-32-11 ヴァイスハイム 3F</p>
+              <p className="text-sm sm:text-base text-gray-600 mt-2">JR恵比寿駅西口より徒歩5分</p>
+              <p className="text-sm sm:text-base text-gray-600">東京メトロ日比谷線恵比寿駅より徒歩7分</p>
             </div>
           </div>
           <div className="border-t mt-6 sm:mt-8 pt-6 sm:pt-8">
