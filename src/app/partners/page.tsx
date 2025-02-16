@@ -60,11 +60,6 @@ export default async function PartnersPage() {
           <BuildingOffice2Icon className="h-8 w-8 text-blue-600 dark:text-blue-400 mr-3" />
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">パートナー企業</h1>
         </div>
-        <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-          Sunladyは、多くの優れた企業様とパートナーシップを結び、
-          共に成長し、新しい価値を創造することを目指しています。
-          各企業様との強固な協力関係により、より良いサービスを提供しています。
-        </p>
       </div>
 
       <Suspense fallback={<LoadingPartners />}>
