@@ -15,7 +15,7 @@ export const revalidate = 60; // 1分ごとに再検証
 async function getPartnersList() {
   try {
     const response = await client.getList<Partner>({
-      endpoint: 'partners',
+      endpoint: 'partner',
       queries: {
         orders: '-publishedAt',
         limit: 100,

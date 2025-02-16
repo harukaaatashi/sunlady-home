@@ -11,7 +11,7 @@ type NewsCardProps = {
   index: number;
 };
 
-const NewsCard = ({ news, index }: NewsCardProps) => {
+export default function NewsCard({ news, index }: NewsCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -68,6 +68,4 @@ const NewsCard = ({ news, index }: NewsCardProps) => {
       </Link>
     </motion.div>
   );
-};
-
-export default NewsCard;
+}
