@@ -22,7 +22,7 @@ const nextConfig = {
   experimental: {
     // Server Actionsの設定
     serverActions: {
-      allowedOrigins: ['localhost:3000'],
+      allowedOrigins: ['localhost:3000', '127.0.0.1:3000', '0.0.0.0:3000'],
       bodySizeLimit: '2mb'
     },
   },
@@ -37,6 +37,12 @@ const nextConfig = {
     maxInactiveAge: 25 * 1000,
     // メモリに保持するページの最大数
     pagesBufferLength: 2,
+  },
+  // 開発サーバーの設定を追加
+  devServer: {
+    host: '0.0.0.0',
+    port: 3000,
+    allowedHosts: ['localhost', '127.0.0.1', '0.0.0.0'],
   },
 };
 

@@ -1,13 +1,10 @@
+'use client';
+
 import { client } from '@/libs/microcms';
 import { Partner } from '@/types/partner';
 import Image from 'next/image';
 import { BuildingOffice2Icon } from '@heroicons/react/24/outline';
 import { Suspense } from 'react';
-
-export const metadata = {
-  title: 'パートナー一覧 | Sunlady Home',
-  description: 'Sunladyのパートナー企業をご紹介。共に成長し、価値を創造するビジネスパートナーとして、多くの企業様と協力関係を築いています。',
-};
 
 export const revalidate = 60; // 1分ごとに再検証
 
