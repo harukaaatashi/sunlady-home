@@ -1,11 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   typescript: {
-    // ビルド時の型チェックを無効化（開発時のパフォーマンス向上）
+    // 開発時の型チェックを無効化
     ignoreBuildErrors: true,
   },
   eslint: {
-    // 開発時のESLintチェックを無効化（パフォーマンス向上）
+    // 開発時のESLintチェックを無効化
     ignoreDuringBuilds: true,
   },
   images: {
@@ -24,19 +24,6 @@ const nextConfig = {
     serverActions: {
       allowedOrigins: ['localhost:3000'],
       bodySizeLimit: '2mb'
-    },
-    // 開発時のパフォーマンス向上のための設定
-    turbo: {
-      loaders: {
-        // ローダーの最適化
-        '.svg': ['@svgr/webpack'],
-      },
-    },
-    // メモリ使用量の最適化
-    optimizeCss: true,
-    // ビルドキャッシュの有効化
-    turbotrace: {
-      memoryLimit: 4000,
     },
   },
   // 静的エクスポートを無効化
