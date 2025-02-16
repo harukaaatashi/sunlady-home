@@ -25,36 +25,24 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
       {/* ヒーローセクション */}
       <section className="relative h-[60vh] sm:h-[80vh] min-h-[400px] sm:min-h-[600px] -mt-6 w-full" aria-label="ヒーローセクション">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-800">
-          {/* 一時的にヒーロー画像を非表示にします */}
-          {/* <Image
-            src="/hero-image.jpg"
-            alt="Sunladyのビジネスイメージ - オフィスでの打ち合わせシーン"
-            fill
-            className="object-cover"
-            priority
-          /> */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40" aria-hidden="true" />
         </div>
         <div className="relative h-full w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col justify-center h-full">
-            <motion.h1 
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+          <div className="flex items-center justify-center h-full">
+            <motion.div 
+              className="relative w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] lg:w-[400px] lg:h-[400px]"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
             >
-              未来を創る、<br className="sm:hidden" />
-              ビジネスパートナー
-            </motion.h1>
-            <motion.p 
-              className="text-base sm:text-lg md:text-xl text-white/90 max-w-2xl mb-6 sm:mb-8"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              Sunladyは、革新的なソリューションと確かな技術力で、
-              お客様のビジネスの成功をサポートします。
-            </motion.p>
+              <Image
+                src="/hero-logo.svg"
+                alt="Sunlady Logo"
+                fill
+                className="object-contain"
+                priority
+              />
+            </motion.div>
           </div>
         </div>
       </section>
