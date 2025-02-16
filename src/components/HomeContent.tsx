@@ -21,9 +21,9 @@ type HomeContentProps = {
 
 export default function HomeContent({ latestNews, partners }: HomeContentProps) {
   return (
-    <div className="space-y-24">
+    <div className="w-full">
       {/* ヒーローセクション */}
-      <section className="relative h-[60vh] sm:h-[80vh] min-h-[400px] sm:min-h-[600px] -mt-6" aria-label="ヒーローセクション">
+      <section className="relative h-[60vh] sm:h-[80vh] min-h-[400px] sm:min-h-[600px] -mt-6 w-full" aria-label="ヒーローセクション">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-800">
           {/* 一時的にヒーロー画像を非表示にします */}
           {/* <Image
@@ -35,7 +35,7 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
           /> */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40" aria-hidden="true" />
         </div>
-        <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative h-full w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col justify-center h-full">
             <motion.h1 
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6"
@@ -60,7 +60,7 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
       </section>
 
       {/* 特徴セクション */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-24" aria-labelledby="features-heading">
+      <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-24" aria-labelledby="features-heading">
         <h2 id="features-heading" className="sr-only">Sunladyの特徴</h2>
         <motion.div 
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
@@ -94,7 +94,7 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
       </section>
 
       {/* ニュースセクション */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-24" aria-labelledby="news-heading">
+      <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-24" aria-labelledby="news-heading">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center">
             <NewspaperIcon className="h-6 w-6 text-gray-900 dark:text-blue-400 mr-2" aria-hidden="true" />
@@ -150,7 +150,7 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
       </section>
 
       {/* パートナー企業セクション */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-24" aria-labelledby="partners-heading">
+      <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-24" aria-labelledby="partners-heading">
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center">
             <BuildingOffice2Icon className="h-6 w-6 text-gray-900 dark:text-blue-400 mr-2" aria-hidden="true" />
@@ -175,7 +175,7 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
             </button>
           </div>
         </div>
-        <div className="relative">
+        <div className="relative w-full">
           <Swiper
             modules={[Navigation, Autoplay]}
             spaceBetween={30}
@@ -213,7 +213,7 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
                 spaceBetween: 30
               }
             }}
-            className="!overflow-visible partner-swiper"
+            className="!overflow-visible partner-swiper w-full"
             aria-label="パートナー企業スライダー"
           >
             {partners && partners.length > 0 ? (
