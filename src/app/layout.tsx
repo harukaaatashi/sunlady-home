@@ -42,7 +42,7 @@ export default function RootLayout({
               <div>
                 <h2 className="text-base font-semibold mb-4 text-gray-900 dark:text-white">会社情報</h2>
                 <div className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
-                  <p>株式会社FDサンレディ</p>
+                  <p>株式会社フォーチュンダイナミクスサンレディ</p>
                   <p>〒150-0021</p>
                   <p>東京都渋谷区恵比寿西1-32-11</p>
                   <p>ヴァイスハイム 3F</p>
@@ -58,7 +58,6 @@ export default function RootLayout({
               <div>
                 <h2 className="text-base font-semibold mb-4 text-gray-900 dark:text-white">お問い合わせ</h2>
                 <div className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
-                  <p>お気軽にお問い合わせください</p>
                   <a href="mailto:sunlady2@bp.iij4u.or.jp" className="block hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                     sunlady2@bp.iij4u.or.jp
                   </a>
