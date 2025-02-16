@@ -17,7 +17,7 @@ export default function PartnerCard({ partner, index }: PartnerCardProps) {
       target="_blank"
       rel="noopener noreferrer"
       className="group block bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden h-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-      aria-label={`${partner.name}のホームページを開く`}
+      aria-label="パートナー企業のホームページを開く"
     >
       <motion.div
         className="p-6"
@@ -28,13 +28,13 @@ export default function PartnerCard({ partner, index }: PartnerCardProps) {
         <div className="relative w-16 h-16 mb-4">
           <Image
             src={partner.image.url}
-            alt={`${partner.name}のロゴ`}
+            alt="パートナー企業のロゴ"
             fill
             className="object-contain"
           />
         </div>
         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-          {partner.name}
+          パートナー企業
         </h3>
         <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-3 mb-4">
           {partner.description}
