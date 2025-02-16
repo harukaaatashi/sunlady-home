@@ -28,6 +28,7 @@ export const Navigation = () => {
   }, [router]);
 
   const menuItems = [
+    { href: '/', label: 'HOME' },
     { href: '/news', label: 'NEWS' },
     { href: '/partners', label: 'PARTNERS' },
     { href: '/about', label: 'ABOUT' },
