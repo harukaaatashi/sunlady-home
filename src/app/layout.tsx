@@ -65,9 +65,13 @@ export default function RootLayout({
                 <h2 className="text-lg font-semibold mb-4">お問い合わせ</h2>
                 <ul className="space-y-3">
                   <li className="text-gray-600 dark:text-gray-300">
+                    <span className="block">株式会社ファッションディレクトサンレディ</span>
                     <span className="block">〒150-0021</span>
                     <span className="block">東京都渋谷区恵比寿西1-32-11</span>
                     <span className="block">ヴァイスハイム 3F</span>
+                    <a href="mailto:sunlady2@bp.iij4u.or.jp" className="block mt-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                      sunlady2@bp.iij4u.or.jp
+                    </a>
                   </li>
                 </ul>
               </div>
