@@ -7,7 +7,7 @@ import Pagination from '@/components/Pagination';
 
 export const metadata = {
   title: 'ニュース一覧 | Sunlady Home',
-  description: 'Sunladyの最新ニュースをお届けします。企業の最新情報、イベント情報、プレスリリースなどを掲載しています。',
+  description: 'Sunladyの最新ニュースをお届けします。イベント情報、プレスリリースなどを掲載しています。',
 };
 
 export const revalidate = 60; // 1分ごとに再検証
@@ -65,8 +65,8 @@ export default async function NewsPage({ searchParams }: Props) {
     <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-12 w-full">
       <div className="text-center mb-6 sm:mb-12">
         <div className="flex items-center justify-center mb-3 sm:mb-4">
-          <NewspaperIcon className="h-6 w-6 sm:h-8 sm:w-8 text-blue-600 dark:text-blue-400 mr-2 sm:mr-3" />
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">ニュース一覧</h1>
+          <NewspaperIcon className="h-8 w-8 text-blue-600 dark:text-blue-400 mr-3" />
+          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">ニュース一覧</h1>
         </div>
         <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-4">
           Sunladyの最新ニュースをお届けします。
