@@ -21,31 +21,6 @@ export default function AboutPage() {
           </p>
         </div>
 
-        {/* ミッションセクション */}
-        <motion.section 
-          className="max-w-4xl mx-auto mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <div className="bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 p-8 sm:p-12 rounded-2xl text-center">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-blue-900 dark:text-blue-100">
-              企業理念
-            </h2>
-            <p className="text-blue-800 dark:text-blue-200 text-xl sm:text-2xl font-medium leading-relaxed mb-8">
-              「ファッションを通じて、人々の生活に彩りと喜びを」
-            </p>
-            <p className="text-blue-700 dark:text-blue-300 text-lg leading-relaxed max-w-3xl mx-auto">
-              Sunladyは、ファッション業界における革新的なソリューションの提供を通じて、
-              お客様のビジネスの成功と社会の発展に貢献してまいりました。
-              私たちは、常に最新のトレンドと技術を取り入れながら、
-              確かな品質とサービスを提供し続けることで、
-              お客様との長期的な信頼関係を築いています。
-            </p>
-          </div>
-        </motion.section>
-
         {/* 企業情報セクション */}
         <motion.section 
           className="max-w-4xl mx-auto"
