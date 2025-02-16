@@ -27,7 +27,7 @@ export function Layout({ children }: LayoutProps) {
       </main>
       <footer className="bg-white border-t mt-12 sm:mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             <div>
               <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">所在地</h3>
               <p className="text-sm sm:text-base text-gray-600">〒150-0021</p>
@@ -75,6 +75,19 @@ export function Layout({ children }: LayoutProps) {
                   </a>
                 </li>
               </ul>
+            </div>
+            <div className="lg:col-span-2">
+              <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">お問い合わせ</h3>
+              <p className="text-sm sm:text-base text-gray-600 mb-2">お気軽にお問い合わせください。</p>
+              <Link 
+                href="/contact" 
+                className="inline-flex items-center text-sm sm:text-base text-gray-600 hover:text-gray-900 transition-colors"
+              >
+                お問い合わせフォームはこちら
+                <svg className="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </Link>
             </div>
           </div>
           <div className="border-t mt-6 sm:mt-8 pt-6 sm:pt-8">
