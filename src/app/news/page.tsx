@@ -38,9 +38,9 @@ export default async function NewsPage({
       <div className="text-center mb-12">
         <div className="flex items-center justify-center mb-4">
           <NewspaperIcon className="h-8 w-8 text-blue-600 mr-3" />
-          <h1 className="text-3xl sm:text-4xl font-bold">ニュース一覧</h1>
+          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900">ニュース一覧</h1>
         </div>
-        <p className="text-gray-600 max-w-2xl mx-auto">
+        <p className="text-gray-700 max-w-2xl mx-auto">
           Sunladyからの最新のお知らせやプレスリリース、イベント情報をご覧いただけます。
           最新のトレンドや業界の動向もお届けしています。
         </p>
