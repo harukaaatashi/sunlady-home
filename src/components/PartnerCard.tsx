@@ -28,7 +28,7 @@ export default function PartnerCard({ partner, index }: PartnerCardProps) {
         <div className="relative w-16 h-16 mb-4">
           <Image
             src={partner.image.url}
-            alt="パートナー企業のロゴ"
+            alt="パートナーのロゴ"
             fill
             className="object-contain"
           />

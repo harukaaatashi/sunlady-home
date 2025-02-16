@@ -31,7 +31,7 @@ async function getPartnersList() {
 
     return allPartners;
   } catch (error) {
-    console.error('パートナー企業の取得に失敗しました:', error);
+    console.error('パートナーの取得に失敗しました:', error);
     return [];
   }
 }
@@ -58,7 +58,7 @@ export default async function PartnersPage() {
       <div className="text-center mb-12">
         <div className="flex items-center justify-center mb-4">
           <BuildingOffice2Icon className="h-8 w-8 text-blue-600 dark:text-blue-400 mr-3" />
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">パートナー企業</h1>
+          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">パートナー</h1>
         </div>
       </div>
 
@@ -141,7 +141,7 @@ export default async function PartnersPage() {
           ) : (
             <div className="col-span-full text-center py-12">
               <BuildingOffice2Icon className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-              <p className="text-gray-500 text-lg">パートナー企業の情報は現在ありません</p>
+              <p className="text-gray-500 text-lg">パートナーの情報は現在ありません</p>
             </div>
           )}
         </div>

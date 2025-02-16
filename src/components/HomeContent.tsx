@@ -108,12 +108,12 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center">
             <BuildingOffice2Icon className="h-6 w-6 text-gray-900 dark:text-blue-400 mr-2" aria-hidden="true" />
-            <h2 id="partners-heading" className="text-2xl font-semibold text-gray-900 dark:text-gray-100">パートナー一覧</h2>
+            <h2 id="partners-heading" className="text-2xl font-semibold text-gray-900 dark:text-gray-100">パートナー</h2>
           </div>
           <div className="flex gap-2">
             <button 
               className="partner-prev-button p-2 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
-              aria-label="前のパートナー企業を表示"
+              aria-label="前のパートナーを表示"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 text-gray-600 dark:text-gray-300" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
@@ -121,7 +121,7 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
             </button>
             <button 
               className="partner-next-button p-2 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
-              aria-label="次のパートナー企業を表示"
+              aria-label="次のパートナーを表示"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 text-gray-600 dark:text-gray-300" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
@@ -168,7 +168,7 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
               }
             }}
             className="partner-swiper"
-            aria-label="パートナー企業スライダー"
+            aria-label="パートナースライダー"
           >
             {partners && partners.length > 0 ? (
               partners.map((partner, index) => (
@@ -184,7 +184,7 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
                 </SwiperSlide>
               ))
             ) : (
-              <p className="text-gray-500" role="status">パートナー企業の情報はありません</p>
+              <p className="text-gray-500" role="status">パートナーの情報はありません</p>
             )}
           </Swiper>
         </div>
