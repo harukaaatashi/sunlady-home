@@ -6,12 +6,20 @@ import { News } from '@/types/news';
 import Link from 'next/link';
 import Image from 'next/image';
 
+// HTMLタグを除去する関数
+function stripHtmlTags(html: string): string {
+  return html.replace(/<[^>]*>/g, '');
+}
+
 type NewsCardProps = {
   news: News;
   index: number;
 };
 
 export default function NewsCard({ news, index }: NewsCardProps) {
+  // 本文からHTMLタグを除去
+  const plainContent = stripHtmlTags(news.content);
+
   return (
     <Link 
       href={`/news/${news.id}`}
@@ -47,7 +55,7 @@ export default function NewsCard({ news, index }: NewsCardProps) {
             {news.title}
           </h3>
           <p className="text-gray-600 dark:text-gray-300 line-clamp-2 text-xs sm:text-sm leading-relaxed mb-3 flex-grow">
-            {news.content}
+            {plainContent}
           </p>
           <div className="flex items-center text-blue-600 dark:text-blue-400 text-sm font-medium mt-auto">
             続きを読む
