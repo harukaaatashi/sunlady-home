@@ -68,7 +68,7 @@ export default async function NewsPage({
                   <CalendarIcon className="h-4 w-4 mr-1" />
                   <time>{new Date(news.publishedAt).toLocaleDateString('ja-JP')}</time>
                 </div>
-                <h2 className="text-xl font-semibold mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">
+                <h2 className="text-xl font-semibold mb-3 text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2">
                   {news.title}
                 </h2>
                 <p className="text-gray-600 text-sm line-clamp-3 mb-4">
