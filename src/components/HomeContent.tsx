@@ -55,19 +55,6 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
               Sunladyは、革新的なソリューションと確かな技術力で、
               お客様のビジネスの成功をサポートします。
             </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <Link
-                href="/contact"
-                className="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg text-lg font-medium hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                aria-label="お問い合わせページへ移動"
-              >
-                お問い合わせ
-              </Link>
-            </motion.div>
           </div>
         </div>
       </section>
