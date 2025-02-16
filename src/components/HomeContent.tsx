@@ -147,23 +147,23 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
             speed={800}
             breakpoints={{
               320: {
-                slidesPerView: 1.1,
+                slidesPerView: 2,
                 spaceBetween: 16
               },
               480: {
-                slidesPerView: 1.5,
+                slidesPerView: 3,
                 spaceBetween: 20
               },
               640: {
-                slidesPerView: 2.1,
+                slidesPerView: 4,
                 spaceBetween: 24
               },
               1024: {
-                slidesPerView: 3.1,
+                slidesPerView: 5,
                 spaceBetween: 30
               },
               1280: {
-                slidesPerView: 4,
+                slidesPerView: 6,
                 spaceBetween: 30
               }
             }}
