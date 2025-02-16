@@ -51,8 +51,8 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
       <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-24" aria-labelledby="news-heading">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center">
-            <NewspaperIcon className="h-6 w-6 text-gray-900 dark:text-blue-400 mr-2" aria-hidden="true" />
-            <h2 id="news-heading" className="text-2xl font-semibold text-gray-900 dark:text-gray-100">新着ニュース</h2>
+            <NewspaperIcon className="h-8 w-8 text-blue-600 dark:text-blue-400 mr-3" aria-hidden="true" />
+            <h2 id="news-heading" className="text-3xl font-semibold text-gray-900 dark:text-gray-100">新着ニュース</h2>
           </div>
           <Link
             href="/news"
@@ -107,8 +107,8 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
       <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-24 overflow-hidden" aria-labelledby="partners-heading">
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center">
-            <BuildingOffice2Icon className="h-6 w-6 text-gray-900 dark:text-blue-400 mr-2" aria-hidden="true" />
-            <h2 id="partners-heading" className="text-2xl font-semibold text-gray-900 dark:text-gray-100">パートナー</h2>
+            <BuildingOffice2Icon className="h-8 w-8 text-blue-600 dark:text-blue-400 mr-3" aria-hidden="true" />
+            <h2 id="partners-heading" className="text-3xl font-semibold text-gray-900 dark:text-gray-100">パートナー</h2>
           </div>
           <div className="flex gap-2">
             <button 
