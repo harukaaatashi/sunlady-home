@@ -150,7 +150,7 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
       </section>
 
       {/* パートナー企業セクション */}
-      <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-24" aria-labelledby="partners-heading">
+      <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-24 overflow-hidden" aria-labelledby="partners-heading">
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center">
             <BuildingOffice2Icon className="h-6 w-6 text-gray-900 dark:text-blue-400 mr-2" aria-hidden="true" />
@@ -175,7 +175,7 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
             </button>
           </div>
         </div>
-        <div className="relative w-full">
+        <div className="relative w-full overflow-hidden">
           <Swiper
             modules={[Navigation, Autoplay]}
             spaceBetween={30}
@@ -213,7 +213,7 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
                 spaceBetween: 30
               }
             }}
-            className="!overflow-visible partner-swiper w-full"
+            className="partner-swiper"
             aria-label="パートナー企業スライダー"
           >
             {partners && partners.length > 0 ? (
