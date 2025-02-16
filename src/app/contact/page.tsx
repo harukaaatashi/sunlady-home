@@ -1,12 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'お問い合わせ | Sunlady',
-  description: 'サンレディへのお問い合わせはこちらから。ご質問、ご相談、お見積もりなど、お気軽にお問い合わせください。',
-};
 
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
