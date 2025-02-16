@@ -7,11 +7,6 @@ import { BuildingOffice2Icon, GlobeAltIcon, ChatBubbleLeftRightIcon } from '@her
 import { Suspense } from 'react';
 import { motion } from 'framer-motion';
 
-export const metadata = {
-  title: 'パートナー一覧 | Sunlady Home',
-  description: 'Sunladyのパートナー企業をご紹介。共に成長し、価値を創造するビジネスパートナーとして、多くの企業様と協力関係を築いています。',
-};
-
 export const revalidate = 60; // 1分ごとに再検証
 
 function LoadingPartners() {
