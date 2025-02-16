@@ -59,40 +59,6 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
         </div>
       </section>
 
-      {/* 特徴セクション */}
-      <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-24" aria-labelledby="features-heading">
-        <h2 id="features-heading" className="sr-only">Sunladyの特徴</h2>
-        <motion.div 
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <div className="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-            <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-lg flex items-center justify-center mb-4" aria-hidden="true">
-              <ChartBarIcon className="h-6 w-6 text-blue-600 dark:text-blue-400" />
-            </div>
-            <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">高い技術力</h3>
-            <p className="text-gray-600 dark:text-gray-300">最新のテクノロジーと豊富な経験を活かし、質の高いソリューションを提供します。</p>
-          </div>
-          <div className="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-            <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-lg flex items-center justify-center mb-4" aria-hidden="true">
-              <UserGroupIcon className="h-6 w-6 text-blue-600 dark:text-blue-400" />
-            </div>
-            <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">信頼のサポート</h3>
-            <p className="text-gray-600 dark:text-gray-300">お客様に寄り添い、プロジェクトの成功まで責任を持ってサポートいたします。</p>
-          </div>
-          <div className="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-            <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 rounded-lg flex items-center justify-center mb-4" aria-hidden="true">
-              <GlobeAltIcon className="h-6 w-6 text-blue-600 dark:text-blue-400" />
-            </div>
-            <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">グローバル展開</h3>
-            <p className="text-gray-600 dark:text-gray-300">国内外のネットワークを活かし、グローバルなビジネス展開をサポートします。</p>
-          </div>
-        </motion.div>
-      </section>
-
       {/* ニュースセクション */}
       <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-24" aria-labelledby="news-heading">
         <div className="flex items-center justify-between mb-6">
