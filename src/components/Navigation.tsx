@@ -55,7 +55,7 @@ export const Navigation = () => {
           <div className="flex-shrink-0 flex items-center">
             <button
               onClick={() => handleInternalNavigation('/')}
-              className="focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg"
+              className="focus:outline-none focus:ring-1 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg transition-shadow duration-300"
             >
               <Image
                 src="/sunlady-partner-logo.svg"
@@ -74,7 +74,7 @@ export const Navigation = () => {
                 <a
                   key={item.href}
                   href={item.href}
-                  className="inline-flex items-center px-1 pt-1 text-sm font-medium relative group transition-colors duration-300 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline-none"
+                  className="inline-flex items-center px-1 pt-1 text-sm font-medium relative group transition-all duration-300 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline-none focus:ring-0"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -88,7 +88,7 @@ export const Navigation = () => {
                 <button
                   key={item.href}
                   onClick={() => handleInternalNavigation(item.href)}
-                  className={`inline-flex items-center px-1 pt-1 text-sm font-medium relative group transition-colors duration-300 focus:outline-none ${
+                  className={`inline-flex items-center px-1 pt-1 text-sm font-medium relative group transition-all duration-300 focus:outline-none focus:ring-0 ${
                     pathname === item.href
                       ? 'text-gray-900 dark:text-white'
                       : 'text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white'
@@ -108,7 +108,7 @@ export const Navigation = () => {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-gray-200 dark:focus:ring-gray-700 transition-all duration-300"
             >
               <span className="sr-only">{isOpen ? "メニューを閉じる" : "メニューを開く"}</span>
               <motion.svg
@@ -154,7 +154,7 @@ export const Navigation = () => {
                   <a
                     key={item.href}
                     href={item.href}
-                    className="block px-3 py-2 rounded-md text-base font-medium relative group transition-colors duration-300 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+                    className="block px-3 py-2 rounded-md text-base font-medium relative group transition-all duration-300 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setIsOpen(false)}
@@ -169,7 +169,7 @@ export const Navigation = () => {
                   <button
                     key={item.href}
                     onClick={() => handleInternalNavigation(item.href)}
-                    className={`w-full text-left block px-3 py-2 rounded-md text-base font-medium relative group transition-colors duration-300 focus:outline-none ${
+                    className={`w-full text-left block px-3 py-2 rounded-md text-base font-medium relative group transition-all duration-300 focus:outline-none focus:ring-0 ${
                       pathname === item.href
                         ? 'text-gray-900 dark:text-white'
                         : 'text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white'
