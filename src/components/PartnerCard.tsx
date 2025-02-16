@@ -13,9 +13,11 @@ type PartnerCardProps = {
 export default function PartnerCard({ partner, index }: PartnerCardProps) {
   return (
     <Link
-      href={`/partners/${partner.id}`}
+      href={partner.homelink || '#'}
+      target="_blank"
+      rel="noopener noreferrer"
       className="group block bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden h-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-      aria-label={`${partner.name}の詳細を見る`}
+      aria-label={`${partner.name}のホームページを開く`}
     >
       <motion.div
         className="p-6"
