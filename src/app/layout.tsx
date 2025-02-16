@@ -56,19 +56,37 @@ export default function RootLayout({
                   <li>
                     <a href="/news" className="group flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                       <span className="inline-block w-1 h-1 bg-gray-400 group-hover:bg-blue-400 rounded-full mr-2 transition-colors"></span>
-                      ニュース
+                      NEWS
                     </a>
                   </li>
                   <li>
                     <a href="/partners" className="group flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                       <span className="inline-block w-1 h-1 bg-gray-400 group-hover:bg-blue-400 rounded-full mr-2 transition-colors"></span>
-                      パートナー企業
+                      PARTNERS
                     </a>
                   </li>
                   <li>
                     <a href="/about" className="group flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                       <span className="inline-block w-1 h-1 bg-gray-400 group-hover:bg-blue-400 rounded-full mr-2 transition-colors"></span>
-                      会社概要
+                      ABOUT
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://sunlady.base.shop/" target="_blank" rel="noopener noreferrer" className="group flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                      <span className="inline-block w-1 h-1 bg-gray-400 group-hover:bg-blue-400 rounded-full mr-2 transition-colors"></span>
+                      SHOP
+                      <svg className="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.google.com/maps/search/?api=1&query=東京都渋谷区恵比寿西1-32-11+ヴァイスハイム+3F" target="_blank" rel="noopener noreferrer" className="group flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                      <span className="inline-block w-1 h-1 bg-gray-400 group-hover:bg-blue-400 rounded-full mr-2 transition-colors"></span>
+                      ACCESS
+                      <svg className="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
                     </a>
                   </li>
                 </ul>
