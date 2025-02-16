@@ -91,7 +91,10 @@ export function Layout({ children }: LayoutProps) {
             </div>
           </div>
           <div className="border-t mt-6 sm:mt-8 pt-6 sm:pt-8">
-            <p className="text-center text-sm text-gray-500">© 2024 Sunlady. All rights reserved.</p>
+            <div className="text-center space-y-2">
+              <p className="text-sm text-gray-500">株式会社ファッションディレクトサンレディ</p>
+              <p className="text-sm text-gray-500">© 2024 Sunlady. All rights reserved.</p>
+            </div>
           </div>
         </div>
       </footer>
