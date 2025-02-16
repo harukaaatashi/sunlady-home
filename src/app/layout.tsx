@@ -42,7 +42,7 @@ export default function RootLayout({
               <div>
                 <h2 className="text-base font-semibold mb-4 text-gray-900 dark:text-white">会社情報</h2>
                 <div className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
-                  <p>株式会社フォーチュンダイナミクスサンレディ</p>
+                  <p>株式会社 ファッション ディレクト サンレディ</p>
                   <p>〒150-0021</p>
                   <p>東京都渋谷区恵比寿西1-32-11</p>
                   <p>ヴァイスハイム 3F</p>
