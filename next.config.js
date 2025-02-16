@@ -1,11 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   typescript: {
-    // ビルド時の型チェックを無効化（一時的な対応）
+    // ビルド時の型チェックを無効化（開発時のパフォーマンス向上）
     ignoreBuildErrors: true,
   },
   eslint: {
-    // ビルド時のESLintチェックを無効化（一時的な対応）
+    // 開発時のESLintチェックを無効化（パフォーマンス向上）
     ignoreDuringBuilds: true,
   },
   images: {
@@ -15,6 +15,41 @@ const nextConfig = {
         hostname: 'images.microcms-assets.io',
       },
     ],
+    dangerouslyAllowSVG: true,
+    contentDispositionType: 'attachment',
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+  },
+  experimental: {
+    // Server Actionsの設定
+    serverActions: {
+      allowedOrigins: ['localhost:3000'],
+      bodySizeLimit: '2mb'
+    },
+    // 開発時のパフォーマンス向上のための設定
+    turbo: {
+      loaders: {
+        // ローダーの最適化
+        '.svg': ['@svgr/webpack'],
+      },
+    },
+    // メモリ使用量の最適化
+    optimizeCss: true,
+    // ビルドキャッシュの有効化
+    turbotrace: {
+      memoryLimit: 4000,
+    },
+  },
+  // 静的エクスポートを無効化
+  output: 'standalone',
+  // ページ遷移の最適化
+  reactStrictMode: true,
+  poweredByHeader: false,
+  // キャッシュの設定
+  onDemandEntries: {
+    // ページをメモリに保持する時間
+    maxInactiveAge: 25 * 1000,
+    // メモリに保持するページの最大数
+    pagesBufferLength: 2,
   },
 };
 

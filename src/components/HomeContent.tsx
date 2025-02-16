@@ -23,14 +23,15 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
     <div className="space-y-24">
       {/* ヒーローセクション */}
       <section className="relative h-[80vh] min-h-[600px] -mt-6" aria-label="ヒーローセクション">
-        <div className="absolute inset-0">
-          <Image
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-800">
+          {/* 一時的にヒーロー画像を非表示にします */}
+          {/* <Image
             src="/hero-image.jpg"
             alt="Sunladyのビジネスイメージ - オフィスでの打ち合わせシーン"
             fill
             className="object-cover"
             priority
-          />
+          /> */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40" aria-hidden="true" />
         </div>
         <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

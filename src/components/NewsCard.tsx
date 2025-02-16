@@ -1,6 +1,8 @@
+'use client';
+
 import { motion } from 'framer-motion';
 import { CalendarIcon } from '@heroicons/react/24/outline';
-import { News } from '@/types';
+import { News } from '@/types/news';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -9,7 +11,7 @@ type NewsCardProps = {
   index: number;
 };
 
-export function NewsCard({ news, index }: NewsCardProps) {
+const NewsCard = ({ news, index }: NewsCardProps) => {
   return (
     <Link 
       href={`/news/${news.id}`}
@@ -66,4 +68,6 @@ export function NewsCard({ news, index }: NewsCardProps) {
       </motion.article>
     </Link>
   );
-} 
+};
+
+export default NewsCard;

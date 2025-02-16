@@ -3,6 +3,8 @@ export const metadata = {
   description: 'Sunladyの会社概要ページです。1968年の創業以来、ファッション業界で革新的なソリューションを提供し続けています。',
 };
 
+export const dynamic = 'force-static';
+
 export default function AboutPage() {
   return (
     <div className="max-w-4xl mx-auto">
