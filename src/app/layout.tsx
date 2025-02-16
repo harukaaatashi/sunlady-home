@@ -49,10 +49,6 @@ export default function RootLayout({
                     className="h-8 w-auto"
                   />
                 </h2>
-                <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4">
-                  ファッションディレクトサンレディは、お客様のニーズに合わせた最適なソリューションを提供し、
-                  ファッション業界の発展に貢献します。
-                </p>
               </div>
               <div className="space-y-4">
                 <h2 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">リンク</h2>
