@@ -63,7 +63,7 @@ export const Navigation = () => {
                 width={160}
                 height={40}
                 priority
-                className="h-8 w-auto"
+                className="h-8 w-auto dark:brightness-0 dark:invert"
               />
             </button>
           </div>
