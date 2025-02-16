@@ -1,5 +1,3 @@
-'use client';
-
 import { client } from '@/libs/microcms';
 import { Partner } from '@/types/partner';
 import Image from 'next/image';
