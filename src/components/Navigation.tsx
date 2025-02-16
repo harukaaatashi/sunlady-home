@@ -32,6 +32,7 @@ export const Navigation = () => {
     { href: '/news', label: 'NEWS' },
     { href: '/partners', label: 'PARTNERS' },
     { href: '/about', label: 'ABOUT' },
+    { href: '/contact', label: 'CONTACT' },
     { 
       href: 'https://sunlady.base.shop/', 
       label: 'SHOP',
