@@ -74,24 +74,32 @@ export const Navigation = () => {
                 <a
                   key={item.href}
                   href={item.href}
-                  className="inline-flex items-center px-1 pt-1 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+                  className="inline-flex items-center px-1 pt-1 text-sm font-medium relative group transition-colors duration-300 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline-none"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {item.label}
+                  <span className="relative">
+                    {item.label}
+                    <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-gray-900 dark:bg-white transition-all duration-300 group-hover:w-full"></span>
+                  </span>
                   <ArrowTopRightOnSquareIcon className="ml-1 h-4 w-4" />
                 </a>
               ) : (
                 <button
                   key={item.href}
                   onClick={() => handleInternalNavigation(item.href)}
-                  className={`inline-flex items-center px-1 pt-1 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg ${
+                  className={`inline-flex items-center px-1 pt-1 text-sm font-medium relative group transition-colors duration-300 focus:outline-none ${
                     pathname === item.href
-                      ? 'text-blue-600 dark:text-blue-400'
-                      : 'text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white'
+                      ? 'text-gray-900 dark:text-white'
+                      : 'text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white'
                   }`}
                 >
-                  {item.label}
+                  <span className="relative">
+                    {item.label}
+                    <span className={`absolute -bottom-1 left-0 h-[1px] bg-gray-900 dark:bg-white transition-all duration-300 ${
+                      pathname === item.href ? 'w-full' : 'w-0 group-hover:w-full'
+                    }`}></span>
+                  </span>
                 </button>
               )
             ))}
@@ -146,28 +154,32 @@ export const Navigation = () => {
                   <a
                     key={item.href}
                     href={item.href}
-                    className="block px-3 py-2 rounded-md text-base font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+                    className="block px-3 py-2 rounded-md text-base font-medium relative group transition-colors duration-300 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setIsOpen(false)}
                   >
-                    <span className="flex items-center">
+                    <span className="flex items-center relative">
                       {item.label}
                       <ArrowTopRightOnSquareIcon className="ml-1 h-4 w-4" />
+                      <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-gray-900 dark:bg-white transition-all duration-300 group-hover:w-full"></span>
                     </span>
                   </a>
                 ) : (
                   <button
                     key={item.href}
                     onClick={() => handleInternalNavigation(item.href)}
-                    className={`w-full text-left block px-3 py-2 rounded-md text-base font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                    className={`w-full text-left block px-3 py-2 rounded-md text-base font-medium relative group transition-colors duration-300 focus:outline-none ${
                       pathname === item.href
-                        ? 'text-blue-600 dark:text-blue-400'
-                        : 'text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white'
+                        ? 'text-gray-900 dark:text-white'
+                        : 'text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white'
                     }`}
                   >
-                    <span className="flex items-center">
+                    <span className="flex items-center relative">
                       {item.label}
+                      <span className={`absolute -bottom-1 left-0 h-[1px] bg-gray-900 dark:bg-white transition-all duration-300 ${
+                        pathname === item.href ? 'w-full' : 'w-0 group-hover:w-full'
+                      }`}></span>
                     </span>
                   </button>
                 )
