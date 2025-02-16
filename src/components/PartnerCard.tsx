@@ -34,7 +34,7 @@ export default function PartnerCard({ partner, index }: PartnerCardProps) {
           />
         </div>
         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-          パートナー企業
+          パートナー一覧
         </h3>
         <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-3 mb-4">
           {partner.description}

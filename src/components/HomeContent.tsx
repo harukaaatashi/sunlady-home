@@ -108,7 +108,7 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center">
             <BuildingOffice2Icon className="h-6 w-6 text-gray-900 dark:text-blue-400 mr-2" aria-hidden="true" />
-            <h2 id="partners-heading" className="text-2xl font-semibold text-gray-900 dark:text-gray-100">パートナー企業</h2>
+            <h2 id="partners-heading" className="text-2xl font-semibold text-gray-900 dark:text-gray-100">パートナー一覧</h2>
           </div>
           <div className="flex gap-2">
             <button 
