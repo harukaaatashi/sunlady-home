@@ -80,16 +80,6 @@ export default function RootLayout({
                     <span className="block">東京都渋谷区恵比寿西1-32-11</span>
                     <span className="block">ヴァイスハイム 3F</span>
                   </li>
-                  <li>
-                    <a href="tel:+81-3-XXXX-XXXX" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                      03-XXXX-XXXX
-                    </a>
-                  </li>
-                  <li>
-                    <a href="mailto:info@sunlady.co.jp" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                      info@sunlady.co.jp
-                    </a>
-                  </li>
                 </ul>
               </div>
             </div>

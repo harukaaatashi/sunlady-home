@@ -39,18 +39,6 @@ export default function AboutPage() {
                 </dd>
               </div>
               <div className="px-6 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-8 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
-                <dt className="text-sm font-medium text-gray-900 dark:text-white">TEL</dt>
-                <dd className="mt-1 text-sm text-gray-700 dark:text-gray-300 sm:col-span-2 sm:mt-0">
-                  03-3462-2751
-                </dd>
-              </div>
-              <div className="px-6 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-8 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
-                <dt className="text-sm font-medium text-gray-900 dark:text-white">FAX</dt>
-                <dd className="mt-1 text-sm text-gray-700 dark:text-gray-300 sm:col-span-2 sm:mt-0">
-                  03-3462-2750
-                </dd>
-              </div>
-              <div className="px-6 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-8 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
                 <dt className="text-sm font-medium text-gray-900 dark:text-white">営業時間</dt>
                 <dd className="mt-1 text-sm text-gray-700 dark:text-gray-300 sm:col-span-2 sm:mt-0">
                   平日 9:00 - 18:00

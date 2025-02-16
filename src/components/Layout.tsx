@@ -32,11 +32,6 @@ export function Layout({ children }: LayoutProps) {
               <p className="text-sm sm:text-base text-gray-600">最高品質のサービスを提供し、お客様の満足を追求します。</p>
             </div>
             <div>
-              <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">お問い合わせ</h3>
-              <p className="text-sm sm:text-base text-gray-600">TEL: 03-3462-2751</p>
-              <p className="text-sm sm:text-base text-gray-600">FAX: 03-3462-2750</p>
-            </div>
-            <div className="sm:col-span-2 lg:col-span-1">
               <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">所在地</h3>
               <p className="text-sm sm:text-base text-gray-600">〒150-0021</p>
               <p className="text-sm sm:text-base text-gray-600">東京都渋谷区恵比寿西1-32-11 ヴァイスハイム 3F</p>
