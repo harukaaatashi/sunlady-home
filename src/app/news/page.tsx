@@ -29,12 +29,13 @@ async function getNewsList() {
 
 function LoadingNews() {
   return (
-    <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full">
       {[...Array(6)].map((_, index) => (
-        <div key={index} className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-4 sm:p-6 animate-pulse">
-          <div className="aspect-[16/9] mb-4 bg-gray-200 dark:bg-gray-700 rounded-lg" />
-          <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded mb-2" />
-          <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-3/4" />
+        <div key={index} className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-3 sm:p-4 animate-pulse w-full">
+          <div className="aspect-[16/9] mb-3 sm:mb-4 bg-gray-200 dark:bg-gray-700 rounded-lg w-full" />
+          <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded mb-2 w-1/3" />
+          <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-full mb-2" />
+          <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-2/3" />
         </div>
       ))}
     </div>
@@ -45,20 +46,20 @@ export default async function NewsPage() {
   const news = await getNewsList();
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-      <div className="text-center mb-8 sm:mb-12">
+    <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-12 w-full">
+      <div className="text-center mb-6 sm:mb-12">
         <div className="flex items-center justify-center mb-3 sm:mb-4">
           <NewspaperIcon className="h-6 w-6 sm:h-8 sm:w-8 text-blue-600 dark:text-blue-400 mr-2 sm:mr-3" />
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">ニュース一覧</h1>
         </div>
-        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-4">
           Sunladyの最新ニュースをお届けします。
           企業の最新情報、イベント情報、プレスリリースなどを掲載しています。
         </p>
       </div>
 
       <Suspense fallback={<LoadingNews />}>
-        <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full">
           {news && news.length > 0 ? (
             news.map((item, index) => (
               <NewsCard key={item.id} news={item} index={index} />
