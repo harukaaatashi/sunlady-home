@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ReactNode } from 'react';
 import { Navigation } from './Navigation';
+import Link from 'next/link';
 
 type LayoutProps = {
   children: ReactNode;
@@ -33,6 +34,47 @@ export function Layout({ children }: LayoutProps) {
               <p className="text-sm sm:text-base text-gray-600">東京都渋谷区恵比寿西1-32-11 ヴァイスハイム 3F</p>
               <p className="text-sm sm:text-base text-gray-600 mt-2">JR恵比寿駅西口より徒歩5分</p>
               <p className="text-sm sm:text-base text-gray-600">東京メトロ日比谷線恵比寿駅より徒歩7分</p>
+            </div>
+            <div>
+              <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">メニュー</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link href="/" className="text-sm sm:text-base text-gray-600 hover:text-gray-900 transition-colors">
+                    HOME
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/news" className="text-sm sm:text-base text-gray-600 hover:text-gray-900 transition-colors">
+                    NEWS
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/partners" className="text-sm sm:text-base text-gray-600 hover:text-gray-900 transition-colors">
+                    PARTNERS
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/about" className="text-sm sm:text-base text-gray-600 hover:text-gray-900 transition-colors">
+                    ABOUT
+                  </Link>
+                </li>
+                <li>
+                  <a href="https://sunlady.base.shop/" target="_blank" rel="noopener noreferrer" className="text-sm sm:text-base text-gray-600 hover:text-gray-900 transition-colors inline-flex items-center">
+                    SHOP
+                    <svg className="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.google.com/maps/search/?api=1&query=東京都渋谷区恵比寿西1-32-11+ヴァイスハイム+3F" target="_blank" rel="noopener noreferrer" className="text-sm sm:text-base text-gray-600 hover:text-gray-900 transition-colors inline-flex items-center">
+                    ACCESS
+                    <svg className="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
           <div className="border-t mt-6 sm:mt-8 pt-6 sm:pt-8">
