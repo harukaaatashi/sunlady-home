@@ -1,3 +1,5 @@
+'use client';
+
 import { Metadata } from 'next';
 import { BuildingOffice2Icon, MapPinIcon, PhoneIcon, EnvelopeIcon, ClockIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
