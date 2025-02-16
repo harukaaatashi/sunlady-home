@@ -1,6 +1,8 @@
+'use client';
+
 import { client } from '@/libs/microcms';
 import { Partner } from '@/types/partner';
-import Image from 'next/image';
+import PartnerCard from '@/components/PartnerCard';
 import { BuildingOffice2Icon, GlobeAltIcon, ChatBubbleLeftRightIcon } from '@heroicons/react/24/outline';
 import { Suspense } from 'react';
 import { motion } from 'framer-motion';
@@ -11,22 +13,6 @@ export const metadata = {
 };
 
 export const revalidate = 60; // 1分ごとに再検証
-
-async function getPartnersList() {
-  try {
-    const response = await client.getList<Partner>({
-      endpoint: 'partner',
-      queries: {
-        orders: '-publishedAt',
-        limit: 100,
-      },
-    });
-    return response.contents;
-  } catch (error) {
-    console.error('パートナー情報の取得に失敗しました:', error);
-    return [];
-  }
-}
 
 function LoadingPartners() {
   return (
@@ -113,81 +99,7 @@ export default async function PartnersPage() {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 group h-full">
-                    <div className="p-6">
-                      <div className="flex items-center mb-4">
-                        <div className="relative w-16 h-16 bg-gray-50 dark:bg-gray-700 rounded-lg overflow-hidden">
-                          <Image
-                            src={partner.image.url}
-                            alt={partner.name}
-                            fill
-                            className="object-contain"
-                          />
-                        </div>
-                        <div className="ml-4">
-                          <h2 className="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                            {partner.name}
-                          </h2>
-                          <p className="text-sm text-gray-600 dark:text-gray-300">
-                            {partner.subtitle}
-                          </p>
-                        </div>
-                      </div>
-                      
-                      <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3">
-                        {partner.description}
-                      </p>
-
-                      <div className="flex space-x-4">
-                        {partner.homelink && (
-                          <a
-                            href={partner.homelink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 text-sm font-medium group"
-                          >
-                            ウェブサイト
-                            <svg
-                              className="ml-1 w-4 h-4 transform group-hover:translate-x-1 transition-transform"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M9 5l7 7-7 7"
-                              />
-                            </svg>
-                          </a>
-                        )}
-                        {partner.snslink && (
-                          <a
-                            href={partner.snslink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 text-sm font-medium group"
-                          >
-                            SNS
-                            <svg
-                              className="ml-1 w-4 h-4 transform group-hover:translate-x-1 transition-transform"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M9 5l7 7-7 7"
-                              />
-                            </svg>
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                  </div>
+                  <PartnerCard partner={partner} index={index} />
                 </motion.div>
               ))
             ) : (
@@ -209,4 +121,20 @@ export default async function PartnersPage() {
       </div>
     </main>
   );
+}
+
+async function getPartnersList() {
+  try {
+    const response = await client.getList<Partner>({
+      endpoint: 'partner',
+      queries: {
+        orders: '-publishedAt',
+        limit: 100,
+      },
+    });
+    return response.contents;
+  } catch (error) {
+    console.error('パートナー情報の取得に失敗しました:', error);
+    return [];
+  }
 }
