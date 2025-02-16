@@ -1,14 +1,8 @@
 'use client';
 
-import { Metadata } from 'next';
 import { BuildingOffice2Icon, MapPinIcon, PhoneIcon, EnvelopeIcon, ClockIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-
-export const metadata: Metadata = {
-  title: '会社概要 | Sunlady Home',
-  description: 'Sunladyの企業理念、ビジョン、会社概要をご紹介します。',
-};
 
 export default function AboutPage() {
   return (
