@@ -53,7 +53,7 @@ export default async function NewsPage({
             href={`/news/${news.id}`}
             className="group"
           >
-            <article className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden h-full">
+            <article className="bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden h-full">
               <div className="relative aspect-video">
                 <Image
                   src={news.image.url}
@@ -64,17 +64,17 @@ export default async function NewsPage({
                 />
               </div>
               <div className="p-6">
-                <div className="flex items-center text-gray-500 text-sm mb-3">
+                <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm mb-3">
                   <CalendarIcon className="h-4 w-4 mr-1" />
                   <time>{new Date(news.publishedAt).toLocaleDateString('ja-JP')}</time>
                 </div>
-                <h2 className="text-xl font-semibold mb-3 text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2">
+                <h2 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
                   {news.title}
                 </h2>
-                <p className="text-gray-600 text-sm line-clamp-3 mb-4">
+                <p className="text-gray-600 dark:text-gray-300 text-sm line-clamp-3 mb-4">
                   {news.content.replace(/<[^>]*>/g, '')}
                 </p>
-                <div className="flex items-center text-blue-600 text-sm font-medium">
+                <div className="flex items-center text-blue-600 dark:text-blue-400 text-sm font-medium">
                   続きを読む
                   <svg
                     className="ml-1 w-4 h-4 transform group-hover:translate-x-1 transition-transform"
@@ -105,7 +105,7 @@ export default async function NewsPage({
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                 currentPage === page
                   ? 'bg-blue-600 text-white shadow-md'
-                  : 'bg-white hover:bg-gray-50 text-gray-700 shadow-sm'
+                  : 'bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 shadow-sm'
               }`}
             >
               {page}
