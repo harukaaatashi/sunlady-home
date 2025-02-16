@@ -16,7 +16,7 @@ type NewsCardProps = {
   index: number;
 };
 
-export default function NewsCard({ news, index }: NewsCardProps) {
+export const NewsCard = ({ news, index }: NewsCardProps) => {
   // 本文からHTMLタグを除去
   const plainContent = stripHtmlTags(news.content);
 
@@ -44,7 +44,7 @@ export default function NewsCard({ news, index }: NewsCardProps) {
             />
           </div>
         )}
-        <div className="p-3 sm:p-4 flex flex-col flex-grow">
+        <div className="p-4 sm:p-6 flex flex-col flex-grow">
           <div className="flex items-center text-gray-500 dark:text-gray-400 text-xs sm:text-sm mb-2">
             <CalendarIcon className="h-4 w-4 mr-1 flex-shrink-0" aria-hidden="true" />
             <time dateTime={news.publishedAt} className="truncate">
@@ -78,4 +78,6 @@ export default function NewsCard({ news, index }: NewsCardProps) {
       </motion.article>
     </Link>
   );
-}
+};
+
+export default NewsCard;

@@ -21,10 +21,7 @@ const nextConfig = {
   },
   experimental: {
     // Server Actionsの設定
-    serverActions: {
-      allowedOrigins: ['localhost:3000', '127.0.0.1:3000', '0.0.0.0:3000'],
-      bodySizeLimit: '2mb'
-    },
+    serverActions: true,
   },
   // 静的エクスポートを無効化
   output: 'standalone',
@@ -43,6 +40,14 @@ const nextConfig = {
     host: '0.0.0.0',
     port: 3000,
     allowedHosts: ['localhost', '127.0.0.1', '0.0.0.0'],
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'http://localhost:3000/api/:path*',
+      },
+    ];
   },
 };
 
