@@ -51,8 +51,9 @@ export default function RootLayout({
               <div>
                 <h2 className="text-base font-semibold mb-4 text-gray-900 dark:text-white">アクセス</h2>
                 <div className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
-                  <p>JR恵比寿駅西口より徒歩5分</p>
-                  <p>東京メトロ日比谷線恵比寿駅より徒歩7分</p>
+                  <p>東急東横線 / 代官山駅 徒歩約3分</p>
+                  <p>JR山手線 / 恵比寿駅 徒歩約4分</p>
+                  <p>東京メトロ日比谷線 / 恵比寿駅 徒歩約4分</p>
                 </div>
               </div>
               <div>

@@ -47,8 +47,9 @@ export default function AboutPage() {
               <div className="px-6 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-8 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
                 <dt className="text-sm font-medium text-gray-900 dark:text-white">アクセス</dt>
                 <dd className="mt-1 text-sm text-gray-700 dark:text-gray-300 sm:col-span-2 sm:mt-0">
-                  JR恵比寿駅西口より徒歩5分<br />
-                  東京メトロ日比谷線恵比寿駅より徒歩7分
+                  東急東横線 / 代官山駅 徒歩約3分<br />
+                  JR山手線 / 恵比寿駅 徒歩約4分<br />
+                  東京メトロ日比谷線 / 恵比寿駅 徒歩約4分
                 </dd>
               </div>
             </dl>
