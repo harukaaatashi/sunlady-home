@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 type PaginationProps = {
   currentPage: number;
@@ -10,39 +11,46 @@ type PaginationProps = {
 export default function Pagination({ currentPage, totalPages, basePath }: PaginationProps) {
   return (
     <div className="flex justify-center items-center space-x-2 mt-8">
-      <Link
-        href={`${basePath}?page=${currentPage - 1}`}
-        className={`p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors ${
-          currentPage <= 1 ? 'pointer-events-none opacity-50' : ''
-        }`}
-        aria-disabled={currentPage <= 1}
+      <Button
+        variant="outline"
+        size="icon"
+        asChild
+        disabled={currentPage <= 1}
       >
-        <ChevronLeftIcon className="h-5 w-5" />
-      </Link>
+        <Link
+          href={`${basePath}?page=${currentPage - 1}`}
+          aria-disabled={currentPage <= 1}
+        >
+          <ChevronLeft className="h-4 w-4" />
+        </Link>
+      </Button>
       
       {[...Array(totalPages)].map((_, i) => (
-        <Link
+        <Button
           key={i}
-          href={`${basePath}?page=${i + 1}`}
-          className={`px-3 py-1 rounded-lg transition-colors ${
-            currentPage === i + 1
-              ? 'bg-blue-600 text-white'
-              : 'hover:bg-gray-100 dark:hover:bg-gray-700'
-          }`}
+          variant={currentPage === i + 1 ? "default" : "outline"}
+          size="sm"
+          asChild
         >
-          {i + 1}
-        </Link>
+          <Link href={`${basePath}?page=${i + 1}`}>
+            {i + 1}
+          </Link>
+        </Button>
       ))}
 
-      <Link
-        href={`${basePath}?page=${currentPage + 1}`}
-        className={`p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors ${
-          currentPage >= totalPages ? 'pointer-events-none opacity-50' : ''
-        }`}
-        aria-disabled={currentPage >= totalPages}
+      <Button
+        variant="outline"
+        size="icon"
+        asChild
+        disabled={currentPage >= totalPages}
       >
-        <ChevronRightIcon className="h-5 w-5" />
-      </Link>
+        <Link
+          href={`${basePath}?page=${currentPage + 1}`}
+          aria-disabled={currentPage >= totalPages}
+        >
+          <ChevronRight className="h-4 w-4" />
+        </Link>
+      </Button>
     </div>
   );
 } 
