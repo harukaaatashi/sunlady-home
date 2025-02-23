@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'パートナー | Sunlady Home',
-  description: 'Sunladyのパートナーをご紹介。共に成長し、価値を創造するビジネスパートナーとして、多くの企業様と協力関係を築いています。',
+  title: 'パートナー企業 | Sunlady Home',
+  description: 'Sunladyのパートナー企業をご紹介します。',
 };
 
 export default function PartnersLayout({

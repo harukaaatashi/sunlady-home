@@ -1,38 +1,18 @@
+'use client';
+
 import { client } from '@/libs/microcms';
 import { Partner } from '@/types/partner';
-import { Container } from '@/components/ui/container';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Globe, Instagram } from 'lucide-react';
 import Link from 'next/link';
 
-export const metadata = {
-  title: 'パートナー企業 | Sunlady Home',
-  description: 'Sunladyのパートナー企業をご紹介します。',
-};
-
-async function getPartnersList() {
-  try {
-    const response = await client.getList<Partner>({
-      endpoint: 'partner',
-      queries: {
-        orders: '-publishedAt',
-        limit: 100,
-      },
-    });
-    return response.contents;
-  } catch (error) {
-    console.error('パートナー企業の取得に失敗しました:', error);
-    return [];
-  }
-}
-
 export default async function PartnersPage() {
   const partners = await getPartnersList();
 
   return (
-    <Container>
+    <div className="container mx-auto px-4 py-12 sm:py-16 lg:py-20">
       <h1 className="text-3xl font-bold mb-8 text-center">パートナー企業</h1>
       <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {partners.map((partner, index) => (
@@ -86,6 +66,22 @@ export default async function PartnersPage() {
           </motion.div>
         ))}
       </div>
-    </Container>
+    </div>
   );
+}
+
+async function getPartnersList() {
+  try {
+    const response = await client.getList<Partner>({
+      endpoint: 'partner',
+      queries: {
+        orders: '-publishedAt',
+        limit: 100,
+      },
+    });
+    return response.contents;
+  } catch (error) {
+    console.error('パートナー企業の取得に失敗しました:', error);
+    return [];
+  }
 }
