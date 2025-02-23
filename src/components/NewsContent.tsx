@@ -1,9 +1,9 @@
 'use client';
 
 import { News } from '@/types/news';
-import Link from 'next/link';
-import Pagination from '@/components/Pagination';
+import { motion } from 'framer-motion';
 import NewsCard from './NewsCard';
+import Pagination from './Pagination';
 
 type NewsContentProps = {
   news: News[];
@@ -14,7 +14,14 @@ type NewsContentProps = {
 export default function NewsContent({ news, currentPage, totalPages }: NewsContentProps) {
   return (
     <div className="py-12">
-      <h1 className="text-4xl font-light mb-12">ニュース一覧</h1>
+      <motion.h1
+        className="text-4xl font-light mb-12"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        ニュース一覧
+      </motion.h1>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {news.map((item, index) => (
           <NewsCard key={item.id} news={item} index={index} />

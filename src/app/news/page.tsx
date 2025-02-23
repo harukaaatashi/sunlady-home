@@ -9,7 +9,8 @@ export const metadata: Metadata = {
   description: 'Sunladyの最新ニュースをお届けします。イベント情報、プレスリリースなどを掲載しています。',
 };
 
-export const revalidate = 60; // 1分ごとに再検証
+export const dynamic = 'force-dynamic';
+export const revalidate = 60;
 
 const PER_PAGE = 6;
 
@@ -17,38 +18,43 @@ type Props = {
   searchParams: { page?: string };
 };
 
-async function getNewsList(page: number) {
+export default function NewsPage({ searchParams }: Props) {
+  return (
+    <Container>
+      <NewsPageContent searchParams={searchParams} />
+    </Container>
+  );
+}
+
+async function NewsPageContent({ searchParams }: Props) {
+  const page = searchParams?.page;
+  const currentPage = Math.max(1, Number(page) || 1);
+
   try {
     const response = await client.getList<News>({
       endpoint: 'news',
       queries: {
         orders: '-publishedAt',
         limit: PER_PAGE,
-        offset: (page - 1) * PER_PAGE,
+        offset: (currentPage - 1) * PER_PAGE,
       },
     });
-    return {
-      contents: response.contents,
-      totalCount: response.totalCount,
-    };
+
+    const { contents: news, totalCount } = response;
+    const totalPages = Math.ceil(totalCount / PER_PAGE);
+
+    return <NewsContent news={news} currentPage={currentPage} totalPages={totalPages} />;
   } catch (error) {
     console.error('ニュースの取得に失敗しました:', error);
-    return {
-      contents: [],
-      totalCount: 0,
-    };
+    return (
+      <div className="py-12 text-center">
+        <h1 className="text-4xl font-light mb-6">エラーが発生しました</h1>
+        <p className="text-muted-foreground">
+          申し訳ありません。ニュースの取得中にエラーが発生しました。
+          <br />
+          しばらく時間をおいて再度お試しください。
+        </p>
+      </div>
+    );
   }
-}
-
-export default async function NewsPage({ searchParams }: Props) {
-  const page = searchParams?.page;
-  const currentPage = Math.max(1, Number(page) || 1);
-  const { contents: news, totalCount } = await getNewsList(currentPage);
-  const totalPages = Math.ceil(totalCount / PER_PAGE);
-
-  return (
-    <Container>
-      <NewsContent news={news} currentPage={currentPage} totalPages={totalPages} />
-    </Container>
-  );
 } 
