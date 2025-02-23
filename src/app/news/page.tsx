@@ -1,9 +1,10 @@
+import { Metadata } from 'next';
 import { client } from '@/libs/microcms';
 import { News } from '@/types/news';
 import { Container } from '@/components/ui/container';
 import NewsContent from '@/components/NewsContent';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'ニュース一覧 | Sunlady Home',
   description: 'Sunladyの最新ニュースをお届けします。イベント情報、プレスリリースなどを掲載しています。',
 };
@@ -40,8 +41,8 @@ async function getNewsList(page: number) {
 }
 
 export default async function NewsPage({ searchParams }: Props) {
-  const pageParam = typeof searchParams.page === 'string' ? searchParams.page : '1';
-  const currentPage = Math.max(1, parseInt(pageParam, 10) || 1);
+  const pageParam = (await searchParams)?.page;
+  const currentPage = Math.max(1, parseInt(typeof pageParam === 'string' ? pageParam : '1', 10));
 
   const { contents: news, totalCount } = await getNewsList(currentPage);
   const totalPages = Math.ceil(totalCount / PER_PAGE);
