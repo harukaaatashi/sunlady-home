@@ -40,7 +40,8 @@ async function getNewsList(page: number) {
 }
 
 export default async function NewsPage({ searchParams }: Props) {
-  const pageParam = typeof searchParams?.page === 'string' ? searchParams.page : '1';
+  const page = await Promise.resolve(searchParams?.page);
+  const pageParam = typeof page === 'string' ? page : '1';
   const currentPage = Math.max(1, parseInt(pageParam, 10) || 1);
 
   const { contents: news, totalCount } = await getNewsList(currentPage);
