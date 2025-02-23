@@ -2,20 +2,17 @@ import { Container } from '@/components/ui/container';
 import { client } from '@/libs/microcms';
 import { News } from '@/types/news';
 import NewsContent from '@/components/NewsContent';
-
-export const metadata = {
-  title: 'ニュース一覧 | Sunlady Home',
-  description: 'Sunladyの最新ニュースをお届けします。イベント情報、プレスリリースなどを掲載しています。',
-};
-
-export const dynamic = 'force-dynamic';
-export const revalidate = 60;
+import { Suspense } from 'react';
 
 const PER_PAGE = 6;
 
+type Props = {
+  searchParams: { page?: string };
+};
+
 async function getNewsList(page: number) {
   try {
-    const response = await client.getList<News>({
+    const { contents, totalCount } = await client.getList<News>({
       endpoint: 'news',
       queries: {
         orders: '-publishedAt',
@@ -23,31 +20,30 @@ async function getNewsList(page: number) {
         offset: (page - 1) * PER_PAGE,
       },
     });
-    return response;
-  } catch (error) {
-    console.error('ニュースの取得に失敗しました:', error);
-    return { contents: [], totalCount: 0 };
+    return { contents, totalPages: Math.ceil(totalCount / PER_PAGE) };
+  } catch (err) {
+    console.error('ニュースの取得に失敗しました:', err);
+    return { contents: [], totalPages: 0 };
   }
 }
 
-export default async function Page({
-  searchParams,
-}: {
-  searchParams: { page?: string };
-}) {
-  const page = searchParams?.page;
-  const currentPage = Math.max(1, Number(page) || 1);
-
-  const { contents: news, totalCount } = await getNewsList(currentPage);
-  const totalPages = Math.ceil(totalCount / PER_PAGE);
+export default async function Page({ searchParams }: Props) {
+  const currentPage = Math.max(1, Number(searchParams?.page) || 1);
+  const { contents: news, totalPages } = await getNewsList(currentPage);
 
   return (
     <Container>
-      <NewsContent
-        news={news}
-        currentPage={currentPage}
-        totalPages={totalPages}
-      />
+      <Suspense fallback={
+        <div className="py-12 text-center">
+          <h1 className="text-4xl font-light mb-6">読み込み中...</h1>
+        </div>
+      }>
+        <NewsContent
+          news={news}
+          currentPage={currentPage}
+          totalPages={totalPages}
+        />
+      </Suspense>
     </Container>
   );
 } 

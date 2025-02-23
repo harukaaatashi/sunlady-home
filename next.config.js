@@ -21,7 +21,9 @@ const nextConfig = {
   },
   experimental: {
     // Server Actionsの設定
-    serverActions: true,
+    serverActions: {
+      enabled: true
+    }
   },
   // 静的エクスポートを無効化
   output: 'standalone',
