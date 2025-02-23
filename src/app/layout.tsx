@@ -1,77 +1,95 @@
 import type { Metadata } from "next";
-import { Noto_Sans_JP } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "@/components/Navigation";
-import Image from "next/image";
+import { ThemeProvider } from "@/components/theme-provider";
 
-const notoSansJP = Noto_Sans_JP({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  variable: "--font-noto-sans-jp",
+  display: "swap",
+  preload: true
 });
 
 export const metadata: Metadata = {
-  title: "Sunlady Home",
-  description: "Sunlady official website",
+  metadataBase: new URL('https://sunlady.co.jp'),
+  title: {
+    default: 'Sunlady Home',
+    template: '%s | Sunlady Home'
+  },
+  description: 'ファッションショーおよびイベント企画制作運営、アパレル企画およびODM業務、企業プロモーション・PRおよびキャスティング業務を行うSunladyの公式サイトです。',
+  keywords: ['ファッションショー', 'イベント企画', 'アパレル企画', 'ODM', 'キャスティング', 'プロモーション'],
+  authors: [{ name: 'Sunlady' }],
+  creator: 'Sunlady',
+  publisher: 'Sunlady',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   icons: {
-    icon: {
-      url: '/favicon.svg',
-      type: 'image/svg+xml',
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
     },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'ja_JP',
+    url: 'https://sunlady.co.jp',
+    siteName: 'Sunlady Home',
+    title: 'Sunlady Home',
+    description: 'ファッションショーおよびイベント企画制作運営、アパレル企画およびODM業務、企業プロモーション・PRおよびキャスティング業務を行うSunladyの公式サイトです。',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Sunlady Home',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Sunlady Home',
+    description: 'ファッションショーおよびイベント企画制作運営、アパレル企画およびODM業務、企業プロモーション・PRおよびキャスティング業務を行うSunladyの公式サイトです。',
+    images: ['/og-image.jpg'],
   },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="ja" className={`${notoSansJP.variable} scroll-smooth`}>
-      <body className="min-h-screen flex flex-col antialiased bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-lg">
-          メインコンテンツにスキップ
-        </a>
-        <Navigation />
-        <main id="main-content" className="flex-grow w-full mt-20">
-          {children}
-        </main>
-        <footer className="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-auto" role="contentinfo">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div>
-                <h2 className="text-base font-semibold mb-4 text-gray-900 dark:text-white">会社情報</h2>
-                <div className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
-                  <p>株式会社 ファッション ディレクト サンレディ</p>
-                  <p>〒150-0021</p>
-                  <p>東京都渋谷区恵比寿西1-32-11</p>
-                  <p>ヴァイスハイム 3F</p>
-                </div>
-              </div>
-              <div>
-                <h2 className="text-base font-semibold mb-4 text-gray-900 dark:text-white">アクセス</h2>
-                <div className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
-                  <p>東急東横線 / 代官山駅 徒歩約3分</p>
-                  <p>JR山手線 / 恵比寿駅 徒歩約4分</p>
-                  <p>東京メトロ日比谷線 / 恵比寿駅 徒歩約4分</p>
-                </div>
-              </div>
-              <div>
-                <h2 className="text-base font-semibold mb-4 text-gray-900 dark:text-white">お問い合わせ</h2>
-                <div className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
-                  <a href="mailto:sunlady2@bp.iij4u.or.jp" className="block hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                    sunlady2@bp.iij4u.or.jp
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="border-t border-gray-200 dark:border-gray-700 mt-8 pt-8">
-              <p className="text-center text-sm text-gray-500 dark:text-gray-400">
-                © {new Date().getFullYear()} Sunlady. All rights reserved.
-              </p>
-            </div>
-          </div>
-        </footer>
+    <html lang="ja" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://images.microcms-assets.io" />
+      </head>
+      <body className={inter.className}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Navigation />
+          <main>{children}</main>
+        </ThemeProvider>
       </body>
     </html>
   );
