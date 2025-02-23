@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "@/components/Navigation";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -9,7 +9,16 @@ import { SkipLink } from '@/components/SkipLink';
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
-  preload: true
+  preload: true,
+  variable: '--font-inter'
+});
+
+const notoSansJP = Noto_Sans_JP({
+  subsets: ["latin"],
+  weight: ['300', '400', '500', '700'],
+  display: "swap",
+  preload: true,
+  variable: '--font-noto-sans-jp'
 });
 
 export const viewport: Viewport = {
@@ -88,7 +97,7 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://images.microcms-assets.io" />
       </head>
-      <body className={`${inter.className} min-h-screen flex flex-col`}>
+      <body className={`${inter.variable} ${notoSansJP.variable} min-h-screen flex flex-col font-sans`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
