@@ -45,6 +45,8 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
                   fill
                   className="object-contain brightness-0 invert"
                   priority
+                  sizes="(max-width: 640px) 200px, (max-width: 1024px) 300px, 400px"
+                  quality={90}
                 />
               </motion.div>
             </div>
