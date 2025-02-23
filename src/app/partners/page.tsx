@@ -15,7 +15,7 @@ export const metadata = {
 async function getPartnersList() {
   try {
     const response = await client.getList<Partner>({
-      endpoint: 'partners',
+      endpoint: 'partner',
       queries: {
         orders: '-publishedAt',
         limit: 100,
@@ -58,9 +58,9 @@ export default async function PartnersPage() {
                 </div>
                 <p className="text-sm text-muted-foreground mb-4">{partner.description}</p>
                 <div className="flex gap-2">
-                  {partner.homepage && (
+                  {partner.homelink && (
                     <Link
-                      href={partner.homepage}
+                      href={partner.homelink}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1 text-sm text-primary hover:text-primary/80"
@@ -69,9 +69,9 @@ export default async function PartnersPage() {
                       <span>ホームページ</span>
                     </Link>
                   )}
-                  {partner.instagram && (
+                  {partner.snslink && (
                     <Link
-                      href={partner.instagram}
+                      href={partner.snslink}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1 text-sm text-primary hover:text-primary/80"
