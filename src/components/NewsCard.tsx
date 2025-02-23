@@ -24,53 +24,34 @@ export default function NewsCard({ news, index }: NewsCardProps) {
   const plainContent = stripHtmlTags(news.content);
 
   return (
-    <Link 
-      href={`/news/${news.id}`}
-      aria-label={`${news.title}の詳細を読む`}
-      className="block w-full"
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
     >
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        whileHover={{ y: -4 }}
-        transition={{ duration: 0.3, delay: index * 0.1 }}
-      >
-        <Card className="h-full flex flex-col overflow-hidden hover:shadow-lg transition-all duration-300">
-          {news.image && (
-            <div className="relative aspect-[16/9] w-full overflow-hidden flex-shrink-0">
+      <Link href={`/news/${news.id}`} className="block group">
+        <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
+          <CardContent className="p-0">
+            <div className="relative aspect-video">
               <Image
                 src={news.image.url}
-                alt={`${news.title}のサムネイル画像`}
+                alt={news.title}
                 fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className="object-cover transform group-hover:scale-105 transition-transform duration-300"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             </div>
-          )}
-          <CardHeader className="space-y-2">
-            <div className="flex items-center text-muted-foreground text-xs sm:text-sm">
-              <CalendarIcon className="h-4 w-4 mr-1 flex-shrink-0" aria-hidden="true" />
-              <time dateTime={news.publishedAt}>
+            <div className="p-4">
+              <time className="text-sm text-muted-foreground" dateTime={news.publishedAt}>
                 {new Date(news.publishedAt).toLocaleDateString('ja-JP')}
               </time>
+              <h2 className="mt-2 text-lg font-medium line-clamp-2 group-hover:text-primary transition-colors">
+                {news.title}
+              </h2>
             </div>
-            <CardTitle className="text-base sm:text-lg line-clamp-2">
-              {news.title}
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="flex-grow">
-            <CardDescription className="line-clamp-2 text-xs sm:text-sm leading-relaxed">
-              {plainContent}
-            </CardDescription>
           </CardContent>
-          <CardFooter>
-            <Button variant="ghost" className="ml-auto p-0 h-auto hover:bg-transparent">
-              続きを読む
-              <ChevronRight className="ml-1 w-4 h-4" />
-            </Button>
-          </CardFooter>
         </Card>
-      </motion.div>
-    </Link>
+      </Link>
+    </motion.div>
   );
 }
