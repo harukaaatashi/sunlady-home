@@ -13,7 +13,7 @@ type NewsContentProps = {
   totalPages: number;
 };
 
-export default function NewsContent({ news, currentPage, totalPages }: NewsContentProps) {
+function NewsContent({ news, currentPage, totalPages }: NewsContentProps) {
   const renderPageNumbers = () => {
     const pages = [];
     const maxVisiblePages = 5;
@@ -127,4 +127,6 @@ export default function NewsContent({ news, currentPage, totalPages }: NewsConte
       )}
     </div>
   );
-} 
+}
+
+export default NewsContent; 
