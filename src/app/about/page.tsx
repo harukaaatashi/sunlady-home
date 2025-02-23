@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import dynamic from 'next/dynamic';
 
 // Google Mapsをダイナミックインポート
-const GoogleMap = dynamic(() => import('../../components/GoogleMap'), {
+const GoogleMap = dynamic(() => import('./GoogleMap'), {
   loading: () => <div className="aspect-[16/9] w-full bg-muted rounded-lg animate-pulse" />,
   ssr: false
 });
