@@ -1,3 +1,5 @@
+'use client';
+
 import { client } from '@/libs/microcms';
 import { News } from '@/types/news';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -63,7 +65,7 @@ function LoadingNews() {
 }
 
 export default async function NewsPage({ searchParams }: Props) {
-  const pageParam = searchParams?.page;
+  const pageParam = await searchParams?.page;
   const currentPage = typeof pageParam === 'string' ? Number(pageParam) : 1;
   const { contents: news, totalCount } = await getNewsList(currentPage);
   const totalPages = Math.ceil(totalCount / PER_PAGE);
