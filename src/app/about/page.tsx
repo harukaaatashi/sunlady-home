@@ -3,83 +3,94 @@
 import { BuildingOffice2Icon, MapPinIcon, ClockIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { Container } from '@/components/ui/container';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
-        {/* ヘッダーセクション */}
-        <div className="text-center mb-16">
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            会社概要
-          </h1>
-        </div>
+    <Container className="py-12 sm:py-16 lg:py-20">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <h1 className="text-3xl font-bold mb-8 text-center">会社概要</h1>
 
-        {/* 企業情報セクション */}
-        <motion.section 
-          className="max-w-4xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm overflow-hidden">
-            <dl className="divide-y divide-gray-100 dark:divide-gray-700">
-              <div className="px-6 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-8 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
-                <dt className="text-sm font-medium text-gray-900 dark:text-white">社名</dt>
-                <dd className="mt-1 text-sm text-gray-700 dark:text-gray-300 sm:col-span-2 sm:mt-0">
-                  株式会社　ファッション ディレクト サンレディ
-                </dd>
+        <div className="grid gap-8 max-w-4xl mx-auto">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <BuildingOffice2Icon className="h-6 w-6 text-primary" />
+                企業情報
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="font-medium text-muted-foreground">会社名</div>
+                <div className="sm:col-span-2">株式会社FDサンレディ</div>
               </div>
-              <div className="px-6 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-8 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
-                <dt className="text-sm font-medium text-gray-900 dark:text-white">所在地</dt>
-                <dd className="mt-1 text-sm text-gray-700 dark:text-gray-300 sm:col-span-2 sm:mt-0">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="font-medium text-muted-foreground">設立</div>
+                <div className="sm:col-span-2">2020年4月1日</div>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="font-medium text-muted-foreground">代表者</div>
+                <div className="sm:col-span-2">代表取締役 田代 晴香</div>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="font-medium text-muted-foreground">所在地</div>
+                <div className="sm:col-span-2">
                   〒150-0021<br />
-                  東京都渋谷区恵比寿西1-32-11 ヴァイスハイム 3F
-                </dd>
+                  東京都渋谷区恵比寿西1-32-11<br />
+                  ヴァイスハイム 3F
+                </div>
               </div>
-              <div className="px-6 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-8 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
-                <dt className="text-sm font-medium text-gray-900 dark:text-white">営業時間</dt>
-                <dd className="mt-1 text-sm text-gray-700 dark:text-gray-300 sm:col-span-2 sm:mt-0">
-                  平日 10:00 - 18:00
-                </dd>
-              </div>
-              <div className="px-6 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-8 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
-                <dt className="text-sm font-medium text-gray-900 dark:text-white">アクセス</dt>
-                <dd className="mt-1 text-sm text-gray-700 dark:text-gray-300 sm:col-span-2 sm:mt-0">
-                  東急東横線 / 代官山駅 徒歩約3分<br />
-                  JR山手線 / 恵比寿駅 徒歩約4分<br />
-                  東京メトロ日比谷線 / 恵比寿駅 徒歩約4分
-                </dd>
-              </div>
-            </dl>
-          </div>
-        </motion.section>
+            </CardContent>
+          </Card>
 
-        {/* 地図セクション */}
-        <motion.section 
-          className="max-w-4xl mx-auto mt-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm overflow-hidden">
-            <div className="aspect-video relative">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3242.2775528378527!2d139.70742631525905!3d35.64734988020197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b40c5aa0693%3A0x3c3c6c1d6f0a8f8c!2z44CSMTUwLTAwMjEg5p2x5Lqs6YO95riL6LC35Yy65rOJ5q-U5a-_6KW_77yR5LiB55uu77yT77yS4oiS77yR77yRIOODtOOCoeOCpOOCueODj-OCpOODoA!5e0!3m2!1sja!2sjp!4v1645577758619!5m2!1sja!2sjp"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="absolute inset-0"
-              ></iframe>
-            </div>
-          </div>
-        </motion.section>
-      </div>
-    </main>
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <MapPinIcon className="h-6 w-6 text-primary" />
+                アクセス
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="aspect-[16/9] relative rounded-lg overflow-hidden">
+                <Image
+                  src="/map.jpg"
+                  alt="オフィスの地図"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="space-y-2">
+                <p>JR恵比寿駅西口より徒歩5分</p>
+                <p>東京メトロ日比谷線恵比寿駅より徒歩7分</p>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <ClockIcon className="h-6 w-6 text-primary" />
+                営業時間
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="font-medium text-muted-foreground">営業時間</div>
+                <div className="sm:col-span-2">10:00 - 19:00</div>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="font-medium text-muted-foreground">定休日</div>
+                <div className="sm:col-span-2">土日祝日</div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </motion.div>
+    </Container>
   );
 } 

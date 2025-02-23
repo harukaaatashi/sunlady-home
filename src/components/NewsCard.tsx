@@ -19,7 +19,7 @@ type NewsCardProps = {
   index: number;
 };
 
-export const NewsCard = ({ news, index }: NewsCardProps) => {
+export default function NewsCard({ news, index }: NewsCardProps) {
   // 本文からHTMLタグを除去
   const plainContent = stripHtmlTags(news.content);
 
@@ -73,6 +73,4 @@ export const NewsCard = ({ news, index }: NewsCardProps) => {
       </motion.div>
     </Link>
   );
-};
-
-export default NewsCard;
+}
