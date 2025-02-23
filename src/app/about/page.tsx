@@ -71,7 +71,11 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <dt className="font-semibold">最寄り駅</dt>
-                  <dd>JR恵比寿駅 徒歩5分</dd>
+                  <dd className="space-y-1">
+                    <p>東急東横線 代官山駅 徒歩約3分</p>
+                    <p>JR山手線 恵比寿駅 徒歩約4分</p>
+                    <p>東京メトロ日比谷線 恵比寿駅 徒歩約4分</p>
+                  </dd>
                 </div>
                 <div className="aspect-[4/3] bg-muted rounded-lg overflow-hidden">
                   <Image
