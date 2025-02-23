@@ -37,11 +37,10 @@ const nextConfig = {
     // メモリに保持するページの最大数
     pagesBufferLength: 2,
   },
-  // 開発サーバーの設定を追加
-  devServer: {
+  // サーバーの設定
+  server: {
     host: '0.0.0.0',
     port: 3000,
-    allowedHosts: ['localhost', '127.0.0.1', '0.0.0.0'],
   },
   async headers() {
     return [

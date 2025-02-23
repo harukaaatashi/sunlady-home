@@ -97,7 +97,7 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://images.microcms-assets.io" />
       </head>
-      <body className={`${inter.variable} ${notoSansJP.variable} min-h-screen flex flex-col font-sans`}>
+      <body className={`${inter.variable} ${notoSansJP.variable} min-h-screen flex flex-col font-sans antialiased bg-background text-foreground`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -106,8 +106,10 @@ export default function RootLayout({
         >
           <SkipLink />
           <Navigation />
-          <main id="main-content" className="flex-grow pt-20">
-            {children}
+          <main id="main-content" className="flex-grow pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto">
+              {children}
+            </div>
           </main>
           <Footer />
         </ThemeProvider>

@@ -35,7 +35,8 @@
     --radius: 0.5rem;
 
     --header-height: 80px;
-    --section-padding: 3rem;
+    --section-padding: clamp(2rem, 5vw, 4rem);
+    --container-padding: clamp(1rem, 3vw, 2rem);
   }
  
   .dark {
@@ -74,20 +75,23 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground selection:bg-primary/20;
     font-family: var(--font-inter), var(--font-noto-sans-jp), -apple-system, BlinkMacSystemFont, sans-serif;
     line-height: 1.7;
     letter-spacing: 0.02em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
     overflow-x: hidden;
-    width: 100vw;
+    width: 100%;
   }
 
   html {
     font-size: 14px;
     scroll-behavior: smooth;
     overflow-x: hidden;
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
   }
 
   @media (min-width: 640px) {
@@ -102,6 +106,7 @@
     line-height: 1.2;
     margin: 2rem 0 1rem;
     letter-spacing: -0.02em;
+    @apply text-foreground/90;
   }
 
   @media (min-width: 640px) {
@@ -111,48 +116,26 @@
   }
 
   h1 {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: 300;
     line-height: 1.1;
-  }
-
-  @media (min-width: 640px) {
-    h1 {
-      font-size: 3.5rem;
-    }
+    @apply tracking-tight;
   }
 
   h2 {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
     font-weight: 500;
-  }
-
-  @media (min-width: 640px) {
-    h2 {
-      font-size: 2.5rem;
-    }
+    @apply tracking-tight;
   }
 
   h3 {
-    font-size: 1.5rem;
+    font-size: clamp(1.25rem, 3vw, 2rem);
     font-weight: 500;
-  }
-
-  @media (min-width: 640px) {
-    h3 {
-      font-size: 2rem;
-    }
   }
 
   h4 {
-    font-size: 1.25rem;
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
     font-weight: 500;
-  }
-
-  @media (min-width: 640px) {
-    h4 {
-      font-size: 1.5rem;
-    }
   }
 
   h5 {
@@ -168,6 +151,7 @@
   p {
     margin-bottom: 1.5rem;
     font-weight: 400;
+    @apply text-foreground/80;
   }
 
   @media (min-width: 640px) {
@@ -175,11 +159,27 @@
       margin-bottom: 1.75rem;
     }
   }
+
+  a {
+    @apply text-primary hover:text-primary/80 transition-colors duration-200;
+  }
+
+  img {
+    @apply max-w-full h-auto;
+  }
 }
 
 @layer components {
   .section {
-    padding: var(--section-padding) 0;
+    padding: var(--section-padding) var(--container-padding);
+  }
+
+  .container {
+    @apply mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
+  }
+
+  .prose {
+    @apply max-w-prose mx-auto;
   }
 }
 
@@ -190,6 +190,10 @@
     color: transparent;
     background-image: linear-gradient(45deg, var(--primary), var(--secondary));
   }
+
+  .text-balance {
+    text-wrap: balance;
+  }
 }
 
 /* Swiperのスタイル調整 */
@@ -197,10 +201,12 @@
   overflow: hidden !important;
   margin: 0 auto;
   width: 100%;
+  @apply py-4;
 }
 
 .partner-swiper .swiper-slide {
   width: auto;
   height: auto;
+  @apply transition-transform duration-300 hover:scale-105;
 }
 
