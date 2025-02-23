@@ -1,9 +1,12 @@
 import { client } from '@/libs/microcms';
 import { Partner } from '@/types/partner';
 import { Container } from '@/components/ui/container';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { Globe, Instagram } from 'lucide-react';
+import Link from 'next/link';
 
 export const metadata = {
   title: 'パートナー企業 | Sunlady Home',
@@ -52,7 +55,7 @@ export default async function PartnersPage() {
       <h1 className="text-3xl font-bold mb-8 text-center">パートナー企業</h1>
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {partners.map((partner, index) => (
-          <Card key={partner.id} className="overflow-hidden">
+          <Card key={partner.id} className="overflow-hidden flex flex-col">
             <CardHeader>
               <CardTitle className="text-xl">{partner.name}</CardTitle>
               {partner.subtitle && (
@@ -74,6 +77,26 @@ export default async function PartnersPage() {
                   <p className="mt-4 text-muted-foreground">{partner.description}</p>
                 )}
               </CardContent>
+            )}
+            {(partner.homelink || partner.snslink) && (
+              <CardFooter className="mt-auto flex gap-2">
+                {partner.homelink && (
+                  <Button variant="outline" size="sm" asChild>
+                    <Link href={partner.homelink} target="_blank" rel="noopener noreferrer" className="flex items-center">
+                      <Globe className="w-4 h-4 mr-2" />
+                      ホームページ
+                    </Link>
+                  </Button>
+                )}
+                {partner.snslink && (
+                  <Button variant="outline" size="sm" asChild>
+                    <Link href={partner.snslink} target="_blank" rel="noopener noreferrer" className="flex items-center">
+                      <Instagram className="w-4 h-4 mr-2" />
+                      SNS
+                    </Link>
+                  </Button>
+                )}
+              </CardFooter>
             )}
           </Card>
         ))}
