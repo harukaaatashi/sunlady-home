@@ -120,18 +120,20 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
               <Button 
                 variant="outline"
                 size="icon"
-                className="partner-prev-button"
+                className="partner-prev-button group relative"
                 aria-label="前のパートナーを表示"
               >
-                <ChevronLeft className="h-4 w-4" />
+                <ChevronLeft className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" />
+                <span className="sr-only">前のパートナーを表示</span>
               </Button>
               <Button 
                 variant="outline"
                 size="icon"
-                className="partner-next-button"
+                className="partner-next-button group relative"
                 aria-label="次のパートナーを表示"
               >
-                <ChevronRight className="h-4 w-4" />
+                <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                <span className="sr-only">次のパートナーを表示</span>
               </Button>
             </div>
           </div>
@@ -143,37 +145,39 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
               navigation={{
                 prevEl: '.partner-prev-button',
                 nextEl: '.partner-next-button',
+                disabledClass: 'opacity-50 cursor-not-allowed'
               }}
               autoplay={{ 
-                delay: 3000, 
+                delay: 4000, 
                 disableOnInteraction: false,
                 pauseOnMouseEnter: true
               }}
               loop={true}
-              speed={800}
+              speed={600}
               breakpoints={{
                 320: {
-                  slidesPerView: 2,
-                  spaceBetween: 16
+                  slidesPerView: 1.2,
+                  spaceBetween: 16,
+                  centeredSlides: true
                 },
                 480: {
-                  slidesPerView: 3,
+                  slidesPerView: 2,
                   spaceBetween: 20
                 },
                 640: {
-                  slidesPerView: 4,
+                  slidesPerView: 3,
                   spaceBetween: 24
                 },
                 1024: {
-                  slidesPerView: 5,
+                  slidesPerView: 4,
                   spaceBetween: 30
                 },
                 1280: {
-                  slidesPerView: 6,
+                  slidesPerView: 5,
                   spaceBetween: 30
                 }
               }}
-              className="partner-swiper"
+              className="partner-swiper [&_.swiper-slide]:!h-auto"
               aria-label="パートナースライダー"
             >
               {partners && partners.length > 0 ? (
@@ -183,7 +187,7 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: index * 0.1 }}
-                      viewport={{ once: true }}
+                      viewport={{ once: true, margin: "-100px" }}
                     >
                       <PartnerCard partner={partner} index={index} />
                     </motion.div>
