@@ -18,15 +18,7 @@ type Props = {
   searchParams: { page?: string };
 };
 
-export default function NewsPage({ searchParams }: Props) {
-  return (
-    <Container>
-      <NewsPageContent searchParams={searchParams} />
-    </Container>
-  );
-}
-
-async function NewsPageContent({ searchParams }: Props) {
+export default async function NewsPage({ searchParams }: Props) {
   const page = searchParams?.page;
   const currentPage = Math.max(1, Number(page) || 1);
 
@@ -43,18 +35,24 @@ async function NewsPageContent({ searchParams }: Props) {
     const { contents: news, totalCount } = response;
     const totalPages = Math.ceil(totalCount / PER_PAGE);
 
-    return <NewsContent news={news} currentPage={currentPage} totalPages={totalPages} />;
+    return (
+      <Container>
+        <NewsContent news={news} currentPage={currentPage} totalPages={totalPages} />
+      </Container>
+    );
   } catch (error) {
     console.error('ニュースの取得に失敗しました:', error);
     return (
-      <div className="py-12 text-center">
-        <h1 className="text-4xl font-light mb-6">エラーが発生しました</h1>
-        <p className="text-muted-foreground">
-          申し訳ありません。ニュースの取得中にエラーが発生しました。
-          <br />
-          しばらく時間をおいて再度お試しください。
-        </p>
-      </div>
+      <Container>
+        <div className="py-12 text-center">
+          <h1 className="text-4xl font-light mb-6">エラーが発生しました</h1>
+          <p className="text-muted-foreground">
+            申し訳ありません。ニュースの取得中にエラーが発生しました。
+            <br />
+            しばらく時間をおいて再度お試しください。
+          </p>
+        </div>
+      </Container>
     );
   }
 } 
