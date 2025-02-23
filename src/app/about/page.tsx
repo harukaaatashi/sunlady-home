@@ -1,13 +1,11 @@
 import { Container } from '@/components/ui/container';
-import AboutMap from '@/components/AboutMap';
+import AboutContent from '@/components/AboutContent';
 
 export default function AboutPage() {
   return (
     <Container className="py-8">
-      <h1>会社概要</h1>
-      <div className="mt-8">
-        <AboutMap />
-      </div>
+      <h1 className="text-4xl font-light mb-12">会社概要</h1>
+      <AboutContent />
     </Container>
   );
 } 
