@@ -1,40 +1,27 @@
 import { client } from '@/libs/microcms';
 import { Partner } from '@/types/partner';
-import PartnersContent from '@/components/PartnersContent';
+import { Container } from '@/components/ui/container';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import { Globe, Instagram } from 'lucide-react';
+import Link from 'next/link';
 
 export const metadata = {
   title: 'パートナー企業 | Sunlady Home',
   description: 'Sunladyのパートナー企業をご紹介します。',
 };
 
-export const revalidate = 60; // 1分ごとに再検証
-
 async function getPartnersList() {
   try {
-    // まず総件数を取得
-    const totalResponse = await client.getList<Partner>({
-      endpoint: 'partner',
-      queries: { limit: 0 }
+    const response = await client.getList<Partner>({
+      endpoint: 'partners',
+      queries: {
+        orders: '-publishedAt',
+        limit: 100,
+      },
     });
-
-    const allPartners = [];
-    const limit = 100; // 1回のリクエストで取得する最大件数
-    const totalCount = totalResponse.totalCount;
-
-    // 全件を取得
-    for (let offset = 0; offset < totalCount; offset += limit) {
-      const response = await client.getList<Partner>({
-        endpoint: 'partner',
-        queries: {
-          orders: 'createdAt', // 古い順
-          limit,
-          offset,
-        },
-      });
-      allPartners.push(...response.contents);
-    }
-
-    return allPartners;
+    return response.contents;
   } catch (error) {
     console.error('パートナー企業の取得に失敗しました:', error);
     return [];
@@ -43,5 +30,62 @@ async function getPartnersList() {
 
 export default async function PartnersPage() {
   const partners = await getPartnersList();
-  return <PartnersContent partners={partners} />;
+
+  return (
+    <Container>
+      <h1 className="text-3xl font-bold mb-8 text-center">パートナー企業</h1>
+      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        {partners.map((partner, index) => (
+          <motion.div
+            key={partner.id}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+          >
+            <Card className="h-full hover:shadow-lg transition-shadow duration-300">
+              <CardHeader>
+                <CardTitle className="text-xl">{partner.name}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="aspect-[16/9] mb-4 bg-muted rounded-lg overflow-hidden">
+                  <Image
+                    src={partner.image.url}
+                    alt={partner.name}
+                    width={partner.image.width}
+                    height={partner.image.height}
+                    className="object-cover w-full h-full"
+                  />
+                </div>
+                <p className="text-sm text-muted-foreground mb-4">{partner.description}</p>
+                <div className="flex gap-2">
+                  {partner.homepage && (
+                    <Link
+                      href={partner.homepage}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-sm text-primary hover:text-primary/80"
+                    >
+                      <Globe className="w-4 h-4" />
+                      <span>ホームページ</span>
+                    </Link>
+                  )}
+                  {partner.instagram && (
+                    <Link
+                      href={partner.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-sm text-primary hover:text-primary/80"
+                    >
+                      <Instagram className="w-4 h-4" />
+                      <span>Instagram</span>
+                    </Link>
+                  )}
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        ))}
+      </div>
+    </Container>
+  );
 }
