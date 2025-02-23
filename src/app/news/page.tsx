@@ -3,7 +3,6 @@ import { client } from '@/libs/microcms';
 import { News } from '@/types/news';
 import { Container } from '@/components/ui/container';
 import NewsContent from '@/components/NewsContent';
-import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   title: 'ニュース一覧 | Sunlady Home',
@@ -41,27 +40,15 @@ async function getNewsList(page: number) {
   }
 }
 
-export default function NewsPage({ searchParams }: Props) {
-  const LoadingFallback = () => (
-    <div className="flex items-center justify-center min-h-[50vh]">
-      <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary"></div>
-    </div>
-  );
-
-  return (
-    <Container>
-      <Suspense fallback={<LoadingFallback />}>
-        <NewsPageContent searchParams={searchParams} />
-      </Suspense>
-    </Container>
-  );
-}
-
-async function NewsPageContent({ searchParams }: Props) {
+export default async function NewsPage({ searchParams }: Props) {
   const page = searchParams?.page;
   const currentPage = Math.max(1, Number(page) || 1);
   const { contents: news, totalCount } = await getNewsList(currentPage);
   const totalPages = Math.ceil(totalCount / PER_PAGE);
 
-  return <NewsContent news={news} currentPage={currentPage} totalPages={totalPages} />;
+  return (
+    <Container>
+      <NewsContent news={news} currentPage={currentPage} totalPages={totalPages} />
+    </Container>
+  );
 } 
