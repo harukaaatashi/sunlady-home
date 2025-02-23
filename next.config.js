@@ -42,22 +42,6 @@ const nextConfig = {
     host: '0.0.0.0',
     port: 3000,
   },
-  // HTTPS設定
-  async redirects() {
-    return [
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'sunlady.tokyo',
-          },
-        ],
-        destination: 'https://sunlady.co.jp/:path*',
-        permanent: true,
-      },
-    ];
-  },
   // セキュリティヘッダーの設定
   async headers() {
     return [
