@@ -3,6 +3,7 @@ import { client } from '@/libs/microcms';
 import { News } from '@/types/news';
 import { Container } from '@/components/ui/container';
 import NewsContent from '@/components/NewsContent';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   title: 'ニュース一覧 | Sunlady Home',
@@ -40,15 +41,24 @@ async function getNewsList(page: number) {
   }
 }
 
-export default async function NewsPage({ searchParams }: Props) {
+async function NewsPageContent({ searchParams }: Props) {
   const page = searchParams?.page;
   const currentPage = Math.max(1, Number(page) || 1);
   const { contents: news, totalCount } = await getNewsList(currentPage);
   const totalPages = Math.ceil(totalCount / PER_PAGE);
 
   return (
+    <NewsContent news={news} currentPage={currentPage} totalPages={totalPages} />
+  );
+}
+
+export default function NewsPage(props: Props) {
+  return (
     <Container>
-      <NewsContent news={news} currentPage={currentPage} totalPages={totalPages} />
+      <Suspense fallback={<div>Loading...</div>}>
+        {/* @ts-expect-error Async Server Component */}
+        <NewsPageContent {...props} />
+      </Suspense>
     </Container>
   );
 } 
