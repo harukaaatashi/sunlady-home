@@ -14,13 +14,30 @@ export const revalidate = 60; // 1分ごとに再検証
 
 async function getPartnersList() {
   try {
-    const response = await client.getList<Partner>({
+    // まず総件数を取得
+    const totalResponse = await client.getList<Partner>({
       endpoint: 'partner',
-      queries: {
-        orders: '-publishedAt',
-      },
+      queries: { limit: 0 }
     });
-    return response.contents;
+
+    const allPartners = [];
+    const limit = 100; // 1回のリクエストで取得する最大件数
+    const totalCount = totalResponse.totalCount;
+
+    // 全件を取得
+    for (let offset = 0; offset < totalCount; offset += limit) {
+      const response = await client.getList<Partner>({
+        endpoint: 'partner',
+        queries: {
+          orders: 'createdAt', // 古い順
+          limit,
+          offset,
+        },
+      });
+      allPartners.push(...response.contents);
+    }
+
+    return allPartners;
   } catch (error) {
     console.error('パートナー企業の取得に失敗しました:', error);
     return [];
