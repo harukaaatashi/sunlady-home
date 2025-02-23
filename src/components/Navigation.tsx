@@ -24,6 +24,7 @@ export const Navigation = () => {
   const pathname = usePathname();
   const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleScroll = useCallback(() => {
     setScrolled(window.scrollY > 10);
@@ -108,7 +109,7 @@ export const Navigation = () => {
           </div>
 
           <div className="md:hidden flex items-center">
-            <Sheet>
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="h-10 w-10">
                   <Menu className="h-6 w-6" />
@@ -125,6 +126,7 @@ export const Navigation = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center px-2 py-1 text-lg font-medium transition-colors hover:text-primary"
+                        onClick={() => setIsOpen(false)}
                       >
                         {item.label}
                         <ArrowTopRightOnSquareIcon className="ml-1 h-4 w-4" />
@@ -137,6 +139,7 @@ export const Navigation = () => {
                           "flex items-center px-2 py-1 text-lg font-medium transition-colors hover:text-primary",
                           pathname === item.href && "text-primary"
                         )}
+                        onClick={() => setIsOpen(false)}
                       >
                         {item.label}
                       </Link>
