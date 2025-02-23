@@ -7,13 +7,14 @@ async function getPartnersList() {
     const response = await client.getList<Partner>({
       endpoint: 'partner',
       queries: {
-        orders: '-publishedAt',
+        orders: 'createdAt',
         limit: 100,
       },
     });
     return response.contents;
   } catch (error) {
     console.error('パートナー企業の取得に失敗しました:', error);
+    console.error('エラーの詳細:', error);
     return [];
   }
 }
