@@ -1,5 +1,5 @@
 import { Container } from '@/components/ui/container';
-import AboutContent from '@/components/AboutContent';
+import AboutContent from './AboutContent';
 
 export default function AboutPage() {
   return (
