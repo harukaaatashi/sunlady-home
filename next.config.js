@@ -42,17 +42,54 @@ const nextConfig = {
     host: '0.0.0.0',
     port: 3000,
   },
+  // HTTPS設定
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'sunlady.tokyo',
+          },
+        ],
+        destination: 'https://sunlady.co.jp/:path*',
+        permanent: true,
+      },
+    ];
+  },
+  // セキュリティヘッダーの設定
   async headers() {
     return [
       {
         source: '/:path*',
         headers: [
           {
-            key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=()',
+            key: 'Strict-Transport-Security',
+            value: 'max-age=31536000; includeSubDomains'
           },
-        ],
-      },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff'
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY'
+          },
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block'
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin'
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()'
+          }
+        ]
+      }
     ];
   },
   async rewrites() {
