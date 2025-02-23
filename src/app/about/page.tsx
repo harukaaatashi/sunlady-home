@@ -6,11 +6,6 @@ import Image from 'next/image';
 import { Container } from '@/components/ui/container';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
-export const metadata = {
-  title: '会社概要 | Sunlady Home',
-  description: 'Sunlady Homeの会社概要ページです。',
-};
-
 export default function AboutPage() {
   return (
     <Container className="py-12 sm:py-16 lg:py-20">
