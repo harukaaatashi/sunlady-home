@@ -1,9 +1,13 @@
 import { client } from '@/libs/microcms';
 import { News } from '@/types/news';
-import NewsCard from '@/components/NewsCard';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { NewspaperIcon } from '@heroicons/react/24/outline';
 import { Suspense } from 'react';
 import Pagination from '@/components/Pagination';
+import { Container } from '@/components/ui/container';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import { formatDate } from '@/lib/utils';
 
 export const metadata = {
   title: 'ニュース一覧 | Sunlady Home',
@@ -45,12 +49,14 @@ function LoadingNews() {
   return (
     <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full">
       {[...Array(6)].map((_, index) => (
-        <div key={index} className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-3 sm:p-4 animate-pulse w-full">
-          <div className="aspect-[16/9] mb-3 sm:mb-4 bg-gray-200 dark:bg-gray-700 rounded-lg w-full" />
-          <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded mb-2 w-1/3" />
-          <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-full mb-2" />
-          <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-2/3" />
-        </div>
+        <Card key={index} className="animate-pulse">
+          <CardContent className="p-3 sm:p-4">
+            <div className="aspect-[16/9] mb-3 sm:mb-4 bg-gray-200 dark:bg-gray-700 rounded-lg w-full" />
+            <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded mb-2 w-1/3" />
+            <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-full mb-2" />
+            <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-2/3" />
+          </CardContent>
+        </Card>
       ))}
     </div>
   );
@@ -63,39 +69,45 @@ export default async function NewsPage({ searchParams }: Props) {
   const totalPages = Math.ceil(totalCount / PER_PAGE);
 
   return (
-    <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-12 w-full">
-      <div className="text-center mb-6 sm:mb-12">
-        <div className="flex items-center justify-center mb-3 sm:mb-4">
-          <NewspaperIcon className="h-8 w-8 text-blue-600 dark:text-blue-400 mr-3" />
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">ニュース一覧</h1>
+    <Container>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <h1 className="text-3xl font-bold mb-8 text-center">ニュース</h1>
+        <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          {news.map((item) => (
+            <Card key={item.id} className="group overflow-hidden">
+              <CardContent className="p-3 sm:p-4">
+                <div className="aspect-[16/9] mb-3 sm:mb-4 bg-muted rounded-lg overflow-hidden">
+                  <Image
+                    src={item.image.url}
+                    alt={item.title}
+                    width={item.image.width}
+                    height={item.image.height}
+                    className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <CardTitle className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors line-clamp-2">
+                  {item.title}
+                </CardTitle>
+                <CardDescription className="text-sm line-clamp-2">
+                  {item.description}
+                </CardDescription>
+                <div className="mt-2 text-xs text-muted-foreground">
+                  {formatDate(item.publishedAt)}
+                </div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
-        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-4">
-          Sunladyの最新ニュースをお届けします。
-          企業の最新情報、イベント情報、プレスリリースなどを掲載しています。
-        </p>
-      </div>
-
-      <Suspense fallback={<LoadingNews />}>
-        <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full">
-          {news && news.length > 0 ? (
-            news.map((item, index) => (
-              <NewsCard key={item.id} news={item} index={index} />
-            ))
-          ) : (
-            <div className="col-span-full text-center py-8 sm:py-12">
-              <NewspaperIcon className="h-10 w-10 sm:h-12 sm:w-12 text-gray-400 mx-auto mb-3 sm:mb-4" />
-              <p className="text-gray-500 text-base sm:text-lg">現在、ニュースはありません</p>
-            </div>
-          )}
-        </div>
-        {totalPages > 1 && (
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            basePath="/news"
-          />
-        )}
-      </Suspense>
-    </div>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          basePath="/news"
+        />
+      </motion.div>
+    </Container>
   );
 } 
