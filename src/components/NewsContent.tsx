@@ -6,19 +6,12 @@ import Pagination from '@/components/Pagination';
 import NewsCard from './NewsCard';
 
 type NewsContentProps = {
-  newsPromise: Promise<{
-    contents: News[];
-    totalCount: number;
-  }>;
+  news: News[];
   currentPage: number;
+  totalPages: number;
 };
 
-const PER_PAGE = 6;
-
-export default async function NewsContent({ newsPromise, currentPage }: NewsContentProps) {
-  const { contents: news, totalCount } = await newsPromise;
-  const totalPages = Math.ceil(totalCount / PER_PAGE);
-
+export default function NewsContent({ news, currentPage, totalPages }: NewsContentProps) {
   return (
     <div className="py-12">
       <h1 className="text-4xl font-light mb-12">ニュース一覧</h1>

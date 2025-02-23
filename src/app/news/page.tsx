@@ -40,16 +40,15 @@ async function getNewsList(page: number) {
   }
 }
 
-export default function NewsPage({ searchParams }: Props) {
+export default async function NewsPage({ searchParams }: Props) {
   const page = searchParams?.page;
   const currentPage = Math.max(1, Number(page) || 1);
-
-  const newsPromise = getNewsList(currentPage);
+  const { contents: news, totalCount } = await getNewsList(currentPage);
+  const totalPages = Math.ceil(totalCount / PER_PAGE);
 
   return (
     <Container>
-      {/* @ts-expect-error Async Server Component */}
-      <NewsContent newsPromise={newsPromise} currentPage={currentPage} />
+      <NewsContent news={news} currentPage={currentPage} totalPages={totalPages} />
     </Container>
   );
 } 
