@@ -17,7 +17,7 @@ export default function PartnersContent({ partners }: PartnersContentProps) {
   return (
     <Container className="py-12 sm:py-16 lg:py-20">
       <motion.h1 
-        className="text-3xl font-bold mb-8 text-center"
+        className="text-4xl font-light mb-12"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
