@@ -41,6 +41,19 @@ const nextConfig = {
     port: 3000,
     allowedHosts: ['localhost', '127.0.0.1', '0.0.0.0'],
   },
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()',
+          },
+        ],
+      },
+    ];
+  },
   async rewrites() {
     return [
       {
