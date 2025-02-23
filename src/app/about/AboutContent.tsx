@@ -41,13 +41,6 @@ export default function AboutContent() {
       variants={containerVariants}
       className="max-w-5xl mx-auto"
     >
-      <motion.h1 
-        className="text-2xl sm:text-3xl font-bold mb-8 sm:mb-12 text-center"
-        variants={itemVariants}
-      >
-        会社概要
-      </motion.h1>
-
       <div className="grid gap-6 sm:gap-8">
         <motion.div variants={itemVariants}>
           <Card className="overflow-hidden">
