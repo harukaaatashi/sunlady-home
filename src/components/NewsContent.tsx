@@ -1,12 +1,11 @@
 'use client';
 
 import { News } from '@/types/news';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { formatDate } from '@/lib/utils';
-import Pagination from '@/components/Pagination';
 import Link from 'next/link';
+import Pagination from '@/components/Pagination';
 
 type NewsContentProps = {
   news: News[];
@@ -16,56 +15,47 @@ type NewsContentProps = {
 
 export default function NewsContent({ news, currentPage, totalPages }: NewsContentProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="py-12 sm:py-16"
-    >
-      <h1 className="text-3xl font-bold mb-8 text-center">ニュース</h1>
-      <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="py-12">
+      <h1 className="text-4xl font-light mb-12">ニュース一覧</h1>
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {news.map((item, index) => (
-          <Link 
-            key={item.id} 
-            href={`/news/${item.id}`}
-            className="block group"
+          <motion.div
+            key={item.id}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
           >
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <Card className="h-full hover:shadow-lg transition-shadow duration-300">
-                <CardContent className="p-3 sm:p-4">
-                  <div className="aspect-[16/9] mb-3 sm:mb-4 bg-muted rounded-lg overflow-hidden">
+            <Link href={`/news/${item.id}`} className="block group">
+              <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                <CardContent className="p-0">
+                  <div className="relative aspect-video">
                     <Image
                       src={item.image.url}
                       alt={item.title}
-                      width={item.image.width}
-                      height={item.image.height}
-                      className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-300"
+                      fill
+                      className="object-cover transform group-hover:scale-105 transition-transform duration-300"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                   </div>
-                  <CardTitle className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors line-clamp-2">
-                    {item.title}
-                  </CardTitle>
-                  <CardDescription className="text-sm line-clamp-2">
-                    {item.description}
-                  </CardDescription>
-                  <div className="mt-2 text-xs text-muted-foreground">
-                    {formatDate(item.publishedAt)}
+                  <div className="p-4">
+                    <time className="text-sm text-muted-foreground" dateTime={item.publishedAt}>
+                      {new Date(item.publishedAt).toLocaleDateString('ja-JP')}
+                    </time>
+                    <h2 className="mt-2 text-lg font-medium line-clamp-2 group-hover:text-primary transition-colors">
+                      {item.title}
+                    </h2>
                   </div>
                 </CardContent>
               </Card>
-            </motion.div>
-          </Link>
+            </Link>
+          </motion.div>
         ))}
       </div>
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        basePath="/news"
-      />
-    </motion.div>
+      {totalPages > 1 && (
+        <div className="mt-8 flex justify-center">
+          <Pagination currentPage={currentPage} totalPages={totalPages} basePath="/news" />
+        </div>
+      )}
+    </div>
   );
 } 
