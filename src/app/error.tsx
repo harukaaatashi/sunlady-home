@@ -1,6 +1,10 @@
 'use client';
 
 import { useEffect } from 'react';
+import { Container } from '@/components/ui/container';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { AlertCircle } from 'lucide-react';
 
 export default function Error({
   error,
@@ -22,25 +26,29 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-md max-w-md w-full">
-        <h2 className="text-2xl font-bold text-gray-800 mb-4">
-          エラーが発生しました
-        </h2>
-        {process.env.NODE_ENV === 'development' ? (
-          <p className="text-gray-600 mb-4">{error.message}</p>
-        ) : (
-          <p className="text-gray-600 mb-4">
-            申し訳ありませんが、エラーが発生しました。しばらく時間をおいて再度お試しください。
-          </p>
-        )}
-        <button
-          onClick={reset}
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors"
-        >
-          もう一度試す
-        </button>
-      </div>
-    </div>
+    <Container className="min-h-[calc(100vh-4rem)] flex items-center justify-center">
+      <Card className="max-w-md w-full">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2 text-destructive">
+            <AlertCircle className="h-5 w-5" />
+            エラーが発生しました
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="text-muted-foreground">
+            {process.env.NODE_ENV === 'development' ? (
+              error.message
+            ) : (
+              '申し訳ありませんが、エラーが発生しました。しばらく時間をおいて再度お試しください。'
+            )}
+          </div>
+        </CardContent>
+        <CardFooter>
+          <Button onClick={reset} variant="default" className="w-full">
+            もう一度試す
+          </Button>
+        </CardFooter>
+      </Card>
+    </Container>
   );
 } 
