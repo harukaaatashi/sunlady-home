@@ -41,17 +41,27 @@ async function getNewsList(page: number) {
   }
 }
 
-export default async function NewsPage({ searchParams }: Props) {
+export default function NewsPage({ searchParams }: Props) {
+  const LoadingFallback = () => (
+    <div className="flex items-center justify-center min-h-[50vh]">
+      <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary"></div>
+    </div>
+  );
+
+  return (
+    <Container>
+      <Suspense fallback={<LoadingFallback />}>
+        <NewsPageContent searchParams={searchParams} />
+      </Suspense>
+    </Container>
+  );
+}
+
+async function NewsPageContent({ searchParams }: Props) {
   const page = searchParams?.page;
   const currentPage = Math.max(1, Number(page) || 1);
   const { contents: news, totalCount } = await getNewsList(currentPage);
   const totalPages = Math.ceil(totalCount / PER_PAGE);
 
-  return (
-    <Container>
-      <Suspense fallback={<div>Loading...</div>}>
-        <NewsContent news={news} currentPage={currentPage} totalPages={totalPages} />
-      </Suspense>
-    </Container>
-  );
+  return <NewsContent news={news} currentPage={currentPage} totalPages={totalPages} />;
 } 
