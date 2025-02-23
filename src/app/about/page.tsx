@@ -101,19 +101,11 @@ export default function AboutPage() {
               <dl className="space-y-4">
                 <div>
                   <dt className="font-semibold">営業時間</dt>
-                  <dd>10:00 - 19:00</dd>
+                  <dd>10:00 - 18:00</dd>
                 </div>
                 <div>
                   <dt className="font-semibold">定休日</dt>
                   <dd>土日祝日</dd>
-                </div>
-                <div>
-                  <dt className="font-semibold">電話番号</dt>
-                  <dd>03-3496-5922</dd>
-                </div>
-                <div>
-                  <dt className="font-semibold">FAX</dt>
-                  <dd>03-3496-5923</dd>
                 </div>
               </dl>
             </CardContent>
