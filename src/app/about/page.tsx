@@ -29,7 +29,7 @@ export default function AboutPage() {
               <dl className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
                   <dt className="font-semibold text-lg mb-2">会社名</dt>
-                  <dd className="text-muted-foreground">ファッション ディレクト サンレディ</dd>
+                  <dd className="text-muted-foreground">株式会社ファッション ディレクト サンレディ</dd>
                 </div>
                 <div>
                   <dt className="font-semibold text-lg mb-2">設立</dt>

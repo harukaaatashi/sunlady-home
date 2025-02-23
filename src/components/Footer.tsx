@@ -35,21 +35,11 @@ export function Footer() {
               <div className="flex items-center gap-2">
                 <Mail className="h-4 w-4 flex-shrink-0" />
                 <Link 
-                  href="mailto:info@sunlady.co.jp"
+                  href="mailto:sunaldy2@bp.iij.or.jp"
                   className="hover:text-primary transition-colors"
                   aria-label="メールでのお問い合わせ"
                 >
-                  info@sunlady.co.jp
-                </Link>
-              </div>
-              <div className="flex items-center gap-2">
-                <Phone className="h-4 w-4 flex-shrink-0" />
-                <Link 
-                  href="tel:03-3770-4641"
-                  className="hover:text-primary transition-colors"
-                  aria-label="電話でのお問い合わせ"
-                >
-                  03-3770-4641
+                  sunaldy2@bp.iij.or.jp
                 </Link>
               </div>
             </div>
