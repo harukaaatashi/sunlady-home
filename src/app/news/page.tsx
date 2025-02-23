@@ -41,23 +41,16 @@ async function getNewsList(page: number) {
   }
 }
 
-async function NewsPageContent({ searchParams }: Props) {
+export default async function NewsPage({ searchParams }: Props) {
   const page = searchParams?.page;
   const currentPage = Math.max(1, Number(page) || 1);
   const { contents: news, totalCount } = await getNewsList(currentPage);
   const totalPages = Math.ceil(totalCount / PER_PAGE);
 
   return (
-    <NewsContent news={news} currentPage={currentPage} totalPages={totalPages} />
-  );
-}
-
-export default function NewsPage(props: Props) {
-  return (
     <Container>
       <Suspense fallback={<div>Loading...</div>}>
-        {/* @ts-expect-error Async Server Component */}
-        <NewsPageContent {...props} />
+        <NewsContent news={news} currentPage={currentPage} totalPages={totalPages} />
       </Suspense>
     </Container>
   );
