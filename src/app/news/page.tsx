@@ -14,7 +14,7 @@ export const revalidate = 60; // 1分ごとに再検証
 const PER_PAGE = 6;
 
 type Props = {
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: { page?: string };
 };
 
 async function getNewsList(page: number) {
@@ -41,9 +41,7 @@ async function getNewsList(page: number) {
 }
 
 export default async function NewsPage({ searchParams }: Props) {
-  const page = await searchParams?.page;
-  const pageParam = typeof page === 'string' ? page : '1';
-  const currentPage = Math.max(1, parseInt(pageParam, 10) || 1);
+  const currentPage = Math.max(1, parseInt(searchParams?.page ?? '1', 10));
 
   const { contents: news, totalCount } = await getNewsList(currentPage);
   const totalPages = Math.ceil(totalCount / PER_PAGE);
