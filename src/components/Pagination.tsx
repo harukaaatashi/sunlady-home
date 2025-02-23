@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, MoreHorizontal } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 type PaginationProps = {
@@ -9,8 +9,71 @@ type PaginationProps = {
 };
 
 export default function Pagination({ currentPage, totalPages, basePath }: PaginationProps) {
+  const renderPageNumbers = () => {
+    const pages = [];
+    const maxVisiblePages = 5;
+    const halfVisible = Math.floor(maxVisiblePages / 2);
+
+    let startPage = Math.max(1, currentPage - halfVisible);
+    let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+
+    if (endPage - startPage + 1 < maxVisiblePages) {
+      startPage = Math.max(1, endPage - maxVisiblePages + 1);
+    }
+
+    // 最初のページ
+    if (startPage > 1) {
+      pages.push(
+        <Button key={1} variant="outline" size="sm" asChild>
+          <Link href={`${basePath}?page=1`}>1</Link>
+        </Button>
+      );
+      if (startPage > 2) {
+        pages.push(
+          <Button key="start-ellipsis" variant="ghost" size="sm" disabled>
+            <MoreHorizontal className="h-4 w-4" />
+          </Button>
+        );
+      }
+    }
+
+    // ページ番号
+    for (let i = startPage; i <= endPage; i++) {
+      pages.push(
+        <Button
+          key={i}
+          variant={currentPage === i ? "default" : "outline"}
+          size="sm"
+          asChild
+        >
+          <Link href={`${basePath}?page=${i}`}>{i}</Link>
+        </Button>
+      );
+    }
+
+    // 最後のページ
+    if (endPage < totalPages) {
+      if (endPage < totalPages - 1) {
+        pages.push(
+          <Button key="end-ellipsis" variant="ghost" size="sm" disabled>
+            <MoreHorizontal className="h-4 w-4" />
+          </Button>
+        );
+      }
+      pages.push(
+        <Button key={totalPages} variant="outline" size="sm" asChild>
+          <Link href={`${basePath}?page=${totalPages}`}>{totalPages}</Link>
+        </Button>
+      );
+    }
+
+    return pages;
+  };
+
+  if (totalPages <= 1) return null;
+
   return (
-    <div className="flex justify-center items-center space-x-2 mt-8">
+    <nav className="flex justify-center items-center gap-2 mt-8" aria-label="ページネーション">
       <Button
         variant="outline"
         size="icon"
@@ -19,24 +82,14 @@ export default function Pagination({ currentPage, totalPages, basePath }: Pagina
       >
         <Link
           href={`${basePath}?page=${currentPage - 1}`}
+          aria-label="前のページ"
           aria-disabled={currentPage <= 1}
         >
           <ChevronLeft className="h-4 w-4" />
         </Link>
       </Button>
       
-      {[...Array(totalPages)].map((_, i) => (
-        <Button
-          key={i}
-          variant={currentPage === i + 1 ? "default" : "outline"}
-          size="sm"
-          asChild
-        >
-          <Link href={`${basePath}?page=${i + 1}`}>
-            {i + 1}
-          </Link>
-        </Button>
-      ))}
+      {renderPageNumbers()}
 
       <Button
         variant="outline"
@@ -46,11 +99,12 @@ export default function Pagination({ currentPage, totalPages, basePath }: Pagina
       >
         <Link
           href={`${basePath}?page=${currentPage + 1}`}
+          aria-label="次のページ"
           aria-disabled={currentPage >= totalPages}
         >
           <ChevronRight className="h-4 w-4" />
         </Link>
       </Button>
-    </div>
+    </nav>
   );
 } 
