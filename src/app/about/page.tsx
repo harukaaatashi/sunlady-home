@@ -13,35 +13,36 @@ export default function AboutPage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
+        className="max-w-5xl mx-auto"
       >
-        <h1 className="text-3xl font-bold mb-8 text-center">会社概要</h1>
+        <h1 className="text-3xl font-bold mb-12 text-center">会社概要</h1>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <Card className="col-span-full lg:col-span-2">
-            <CardHeader>
+        <div className="grid gap-8 md:grid-cols-2">
+          <Card className="md:col-span-2">
+            <CardHeader className="border-b">
               <CardTitle className="flex items-center gap-2">
                 <BuildingOfficeIcon className="h-6 w-6" />
                 会社情報
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <dl className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <CardContent className="pt-6">
+              <dl className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <dt className="font-semibold">会社名</dt>
-                  <dd>ファッション ディレクト サンレディ</dd>
+                  <dt className="font-semibold text-lg mb-2">会社名</dt>
+                  <dd className="text-muted-foreground">ファッション ディレクト サンレディ</dd>
                 </div>
                 <div>
-                  <dt className="font-semibold">設立</dt>
-                  <dd>1968年</dd>
+                  <dt className="font-semibold text-lg mb-2">設立</dt>
+                  <dd className="text-muted-foreground">1968年</dd>
                 </div>
                 <div>
-                  <dt className="font-semibold">代表者</dt>
-                  <dd>代表取締役 田代修一</dd>
+                  <dt className="font-semibold text-lg mb-2">代表者</dt>
+                  <dd className="text-muted-foreground">代表取締役 田代修一</dd>
                 </div>
                 <div className="sm:col-span-2">
-                  <dt className="font-semibold">事業内容</dt>
+                  <dt className="font-semibold text-lg mb-2">事業内容</dt>
                   <dd>
-                    <ul className="list-disc list-inside space-y-1">
+                    <ul className="list-disc list-inside space-y-2 text-muted-foreground">
                       <li>ファッションショーおよびイベント企画制作運営</li>
                       <li>アパレル企画およびODM業務</li>
                       <li>企業プロモーション・PRおよびキャスティング業務</li>
@@ -57,21 +58,21 @@ export default function AboutPage() {
           </Card>
 
           <Card>
-            <CardHeader>
+            <CardHeader className="border-b">
               <CardTitle className="flex items-center gap-2">
                 <MapPinIcon className="h-6 w-6" />
                 アクセス
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
+            <CardContent className="pt-6">
+              <div className="space-y-6">
                 <div>
-                  <dt className="font-semibold">住所</dt>
-                  <dd>〒150-0021<br />東京都渋谷区恵比寿1-32-11<br />ヴァイスハイム 3F</dd>
+                  <dt className="font-semibold text-lg mb-2">住所</dt>
+                  <dd className="text-muted-foreground">〒150-0021<br />東京都渋谷区恵比寿1-32-11<br />ヴァイスハイム 3F</dd>
                 </div>
                 <div>
-                  <dt className="font-semibold">最寄り駅</dt>
-                  <dd className="space-y-1">
+                  <dt className="font-semibold text-lg mb-2">最寄り駅</dt>
+                  <dd className="space-y-2 text-muted-foreground">
                     <p>東急東横線 代官山駅 徒歩約3分</p>
                     <p>JR山手線 恵比寿駅 徒歩約4分</p>
                     <p>東京メトロ日比谷線 恵比寿駅 徒歩約4分</p>
@@ -91,21 +92,21 @@ export default function AboutPage() {
           </Card>
 
           <Card>
-            <CardHeader>
+            <CardHeader className="border-b">
               <CardTitle className="flex items-center gap-2">
                 <ClockIcon className="h-6 w-6" />
                 営業時間
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <dl className="space-y-4">
+            <CardContent className="pt-6">
+              <dl className="space-y-6">
                 <div>
-                  <dt className="font-semibold">営業時間</dt>
-                  <dd>10:00 - 18:00</dd>
+                  <dt className="font-semibold text-lg mb-2">営業時間</dt>
+                  <dd className="text-muted-foreground">10:00 - 18:00</dd>
                 </div>
                 <div>
-                  <dt className="font-semibold">定休日</dt>
-                  <dd>土日祝日</dd>
+                  <dt className="font-semibold text-lg mb-2">定休日</dt>
+                  <dd className="text-muted-foreground">土日祝日</dd>
                 </div>
               </dl>
             </CardContent>
