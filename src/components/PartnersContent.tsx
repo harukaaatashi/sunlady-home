@@ -2,12 +2,8 @@
 
 import { Partner } from '@/types/partner';
 import { Container } from '@/components/ui/container';
-import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Globe, Instagram } from 'lucide-react';
-import Link from 'next/link';
+import PartnerCard from '@/components/PartnerCard';
 
 type PartnersContentProps = {
   partners: Partner[];
@@ -24,59 +20,9 @@ export default function PartnersContent({ partners }: PartnersContentProps) {
       >
         パートナー企業
       </motion.h1>
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {partners.map((partner, index) => (
-          <motion.div
-            key={partner.id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-          >
-            <Card className="overflow-hidden flex flex-col h-full hover:shadow-lg transition-shadow duration-300">
-              <CardHeader>
-                <CardTitle className="text-xl">{partner.name}</CardTitle>
-                {partner.subtitle && (
-                  <p className="text-sm text-muted-foreground">{partner.subtitle}</p>
-                )}
-              </CardHeader>
-              {partner.image && (
-                <CardContent>
-                  <div className="relative aspect-[16/9] w-full">
-                    <Image
-                      src={partner.image.url}
-                      alt={`${partner.name}のロゴ`}
-                      fill
-                      className="object-contain transform hover:scale-105 transition-transform duration-300"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
-                  </div>
-                  {partner.description && (
-                    <p className="mt-4 text-muted-foreground">{partner.description}</p>
-                  )}
-                </CardContent>
-              )}
-              {(partner.homelink || partner.snslink) && (
-                <CardFooter className="mt-auto flex gap-2">
-                  {partner.homelink && (
-                    <Button variant="outline" size="sm" asChild>
-                      <Link href={partner.homelink} target="_blank" rel="noopener noreferrer" className="flex items-center">
-                        <Globe className="w-4 h-4 mr-2" />
-                        ホームページ
-                      </Link>
-                    </Button>
-                  )}
-                  {partner.snslink && (
-                    <Button variant="outline" size="sm" asChild>
-                      <Link href={partner.snslink} target="_blank" rel="noopener noreferrer" className="flex items-center">
-                        <Instagram className="w-4 h-4 mr-2" />
-                        SNS
-                      </Link>
-                    </Button>
-                  )}
-                </CardFooter>
-              )}
-            </Card>
-          </motion.div>
+          <PartnerCard key={partner.id} partner={partner} index={index} />
         ))}
       </div>
     </Container>
