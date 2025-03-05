@@ -9,6 +9,8 @@ export const metadata: Metadata = {
   description: 'Sunlady公式ウェブサイト',
 };
 
+export const revalidate = 60;
+
 async function getLatestNews() {
   try {
     const response = await client.getList<News>({
