@@ -8,15 +8,15 @@ import { SkipLink } from '@/components/SkipLink';
 
 const inter = Inter({
   subsets: ["latin"],
-  display: "swap",
+  display: "optional", // ブロッキングを防ぐ
   fallback: ['system-ui', 'arial'],
   variable: '--font-inter'
 });
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ["latin"],
-  weight: ['300', '400', '500', '700'],
-  display: "swap",
+  weight: ['400', '500', '700'], // 重量を減らしてロード時間短縮
+  display: "optional", // ブロッキングを防ぐ
   fallback: ['-apple-system', 'BlinkMacSystemFont', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'sans-serif'],
   variable: '--font-noto-sans-jp'
 });
