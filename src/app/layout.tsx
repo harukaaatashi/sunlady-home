@@ -1,12 +1,25 @@
 import type { Metadata, Viewport } from "next";
+import { Inter, Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "@/components/Navigation";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Footer } from '@/components/Footer';
 import { SkipLink } from '@/components/SkipLink';
 
-// 一時的にGoogle Fontsを無効化してシステムフォントを使用
-const fontClasses = 'font-sans';
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  fallback: ['system-ui', 'arial'],
+  variable: '--font-inter'
+});
+
+const notoSansJP = Noto_Sans_JP({
+  subsets: ["latin"],
+  weight: ['300', '400', '500', '700'],
+  display: "swap",
+  fallback: ['-apple-system', 'BlinkMacSystemFont', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'sans-serif'],
+  variable: '--font-noto-sans-jp'
+});
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -84,7 +97,7 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://images.microcms-assets.io" />
       </head>
-      <body className={`${fontClasses} min-h-screen flex flex-col antialiased bg-background text-foreground`}>
+      <body className={`${inter.variable} ${notoSansJP.variable} min-h-screen flex flex-col font-sans antialiased bg-background text-foreground`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
