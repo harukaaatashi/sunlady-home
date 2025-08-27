@@ -68,6 +68,7 @@ export const Navigation = () => {
                 width={160}
                 height={40}
                 priority
+                unoptimized
                 className="h-8 w-auto dark:brightness-0 dark:invert"
               />
             </Link>
