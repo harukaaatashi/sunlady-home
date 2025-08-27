@@ -1,25 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "@/components/Navigation";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Footer } from '@/components/Footer';
 import { SkipLink } from '@/components/SkipLink';
 
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  preload: true,
-  variable: '--font-inter'
-});
-
-const notoSansJP = Noto_Sans_JP({
-  subsets: ["latin"],
-  weight: ['300', '400', '500', '700'],
-  display: "swap",
-  preload: true,
-  variable: '--font-noto-sans-jp'
-});
+// 一時的にGoogle Fontsを無効化してシステムフォントを使用
+const fontClasses = 'font-sans';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -97,7 +84,7 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://images.microcms-assets.io" />
       </head>
-      <body className={`${inter.variable} ${notoSansJP.variable} min-h-screen flex flex-col font-sans antialiased bg-background text-foreground`}>
+      <body className={`${fontClasses} min-h-screen flex flex-col antialiased bg-background text-foreground`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

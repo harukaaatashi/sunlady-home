@@ -25,23 +25,9 @@ const nextConfig = {
       enabled: true
     }
   },
-  // 静的エクスポートを無効化
-  output: 'standalone',
   // ページ遷移の最適化
   reactStrictMode: true,
   poweredByHeader: false,
-  // キャッシュの設定
-  onDemandEntries: {
-    // ページをメモリに保持する時間
-    maxInactiveAge: 25 * 1000,
-    // メモリに保持するページの最大数
-    pagesBufferLength: 2,
-  },
-  // サーバーの設定
-  server: {
-    host: '0.0.0.0',
-    port: 3000,
-  },
   // セキュリティヘッダーの設定
   async headers() {
     return [
