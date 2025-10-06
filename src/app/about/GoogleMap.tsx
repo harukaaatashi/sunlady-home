@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 
 export default function GoogleMap() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const address = "〒150-0021 東京都渋谷区恵比寿西1-32-11";
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -28,19 +29,29 @@ export default function GoogleMap() {
     };
   }, []);
 
+  const handleMapClick = () => {
+    const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+    window.open(googleMapsUrl, '_blank');
+  };
+
   return (
-    <div className="aspect-[16/9] w-full">
+    <div className="aspect-[16/9] w-full relative group cursor-pointer" onClick={handleMapClick}>
       <iframe
         ref={iframeRef}
         width="100%"
         height="100%"
-        style={{ border: 0 }}
+        style={{ border: 0, pointerEvents: 'none' }}
         allowFullScreen
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
         className="rounded-lg"
         title="Google Maps"
       />
+      <div className="absolute inset-0 bg-transparent group-hover:bg-black/10 transition-colors duration-200 rounded-lg flex items-center justify-center">
+        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-white/90 px-4 py-2 rounded-md shadow-lg">
+          <p className="text-sm font-medium text-gray-800">クリックして Google Maps で開く</p>
+        </div>
+      </div>
     </div>
   );
 } 
