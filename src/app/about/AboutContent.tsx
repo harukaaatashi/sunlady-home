@@ -119,7 +119,7 @@ export default function AboutContent() {
                     <dt className="font-semibold text-base sm:text-lg mb-2">住所</dt>
                     <dd className="text-muted-foreground text-sm sm:text-base">
                       〒150-0021<br />
-                      東京都渋谷区恵比寿1-32-11<br />
+                      東京都渋谷区恵比寿西1-32-11<br />
                       ヴァイスハイム 3F
                     </dd>
                   </div>
