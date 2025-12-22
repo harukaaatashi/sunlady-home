@@ -25,10 +25,10 @@ async function getNewsDetail(id: string) {
 }
 
 export async function generateMetadata(
-  { params }: { params: { id: string } }
+  props: { params: Promise<{ id: string }> }
 ): Promise<Metadata> {
-  const newsId = await Promise.resolve(params.id);
-  const news = await getNewsDetail(newsId);
+  const params = await props.params;
+  const news = await getNewsDetail(params.id);
   
   if (!news) {
     return {
@@ -43,13 +43,11 @@ export async function generateMetadata(
   };
 }
 
-export default async function NewsDetailPage({
-  params,
-}: {
-  params: { id: string };
+export default async function NewsDetailPage(props: {
+  params: Promise<{ id: string }>;
 }) {
-  const newsId = await Promise.resolve(params.id);
-  const news = await getNewsDetail(newsId);
+  const params = await props.params;
+  const news = await getNewsDetail(params.id);
 
   if (!news) {
     notFound();
@@ -65,15 +63,17 @@ export default async function NewsDetailPage({
           </div>
         </CardHeader>
         <CardContent>
-          <div className="aspect-[16/9] mb-6 bg-muted rounded-lg overflow-hidden">
-            <Image
-              src={news.image.url}
-              alt={news.title}
-              width={news.image.width}
-              height={news.image.height}
-              className="object-cover w-full h-full"
-            />
-          </div>
+          {news.image?.url && (
+            <div className="aspect-[16/9] mb-6 bg-muted rounded-lg overflow-hidden">
+              <Image
+                src={news.image.url}
+                alt={news.title}
+                width={news.image.width}
+                height={news.image.height}
+                className="object-cover w-full h-full"
+              />
+            </div>
+          )}
           <div
             className="prose prose-sm sm:prose lg:prose-lg max-w-none"
             dangerouslySetInnerHTML={{ __html: news.content }}

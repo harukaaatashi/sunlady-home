@@ -74,22 +74,24 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
               {latestNews && latestNews.length > 0 ? (
                 <div className="divide-y">
                   {latestNews.map((news) => (
-                    <Link 
-                      key={news.id} 
+                    <Link
+                      key={news.id}
                       href={`/news/${news.id}`}
                       className="block p-3 sm:p-4 hover:bg-accent/50 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-inset"
                       aria-label={`${news.title}の詳細を読む`}
                     >
                       <div className="flex items-start gap-3 sm:gap-4">
-                        <div className="relative w-20 h-14 sm:w-24 sm:h-16 flex-shrink-0 rounded-lg overflow-hidden">
-                          <Image
-                            src={news.image.url}
-                            alt={`${news.title}のサムネイル画像`}
-                            fill
-                            className="object-cover"
-                            sizes="(max-width: 768px) 96px, 96px"
-                          />
-                        </div>
+                        {news.image?.url && (
+                          <div className="relative w-20 h-14 sm:w-24 sm:h-16 flex-shrink-0 rounded-lg overflow-hidden">
+                            <Image
+                              src={news.image.url}
+                              alt={`${news.title}のサムネイル画像`}
+                              fill
+                              className="object-cover"
+                              sizes="(max-width: 768px) 96px, 96px"
+                            />
+                          </div>
+                        )}
                         <div className="flex-1 min-w-0">
                           <time className="text-xs sm:text-sm text-muted-foreground mb-1" dateTime={news.publishedAt}>
                             {new Date(news.publishedAt).toLocaleDateString('ja-JP')}
