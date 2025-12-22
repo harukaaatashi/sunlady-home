@@ -27,9 +27,9 @@ async function getNewsList(page: number) {
   }
 }
 
-export default async function Page({ searchParams }: Props) {
-  const pageParam = await Promise.resolve(searchParams?.page);
-  const currentPage = Math.max(1, Number(pageParam) || 1);
+export default async function Page(props: Props) {
+  const searchParams = await props.searchParams;
+  const currentPage = Math.max(1, Number(searchParams?.page) || 1);
   const { contents: news, totalPages } = await getNewsList(currentPage);
 
   return (

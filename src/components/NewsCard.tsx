@@ -32,15 +32,17 @@ export default function NewsCard({ news, index }: NewsCardProps) {
       <Link href={`/news/${news.id}`} className="block group">
         <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
           <CardContent className="p-0">
-            <div className="relative aspect-video">
-              <Image
-                src={news.image.url}
-                alt={news.title}
-                fill
-                className="object-cover transform group-hover:scale-105 transition-transform duration-300"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              />
-            </div>
+            {news.image?.url && (
+              <div className="relative aspect-video">
+                <Image
+                  src={news.image.url}
+                  alt={news.title}
+                  fill
+                  className="object-cover transform group-hover:scale-105 transition-transform duration-300"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+              </div>
+            )}
             <div className="p-4">
               <time className="text-sm text-muted-foreground" dateTime={news.publishedAt}>
                 {new Date(news.publishedAt).toLocaleDateString('ja-JP')}

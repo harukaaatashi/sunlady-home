@@ -5,7 +5,7 @@ export type News = {
   title: string;
   description: string;
   content: string;
-  image: MicroCMSImage;
+  image?: MicroCMSImage;
   publishedAt: string;
   revisedAt: string;
   updatedAt: string;
