@@ -1,55 +1,22 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { LRUCache } from 'lru-cache';
 
-// レート制限の設定
+// レート制限の設定（APIルート専用）
 const rateLimit = new LRUCache({
   max: 500,
   ttl: 60 * 1000, // 1分
 });
 
-// CSPポリシーの定義
-const cspHeader = `
-  default-src 'self';
-  script-src 'self' 'unsafe-inline' 'unsafe-eval' https://maps.googleapis.com;
-  style-src 'self' 'unsafe-inline';
-  img-src 'self' https://images.microcms-assets.io data: https://*.googleapis.com https://*.gstatic.com;
-  font-src 'self' https://fonts.gstatic.com;
-  frame-src 'self' https://www.google.com;
-  connect-src 'self' https://api.microcms.io https://*.googleapis.com;
-  frame-ancestors 'none';
-  form-action 'self';
-  upgrade-insecure-requests;
-`.replace(/\s{2,}/g, ' ').trim();
-
-// セキュリティヘッダーの設定
-const securityHeaders = {
-  'Content-Security-Policy': cspHeader,
-  'X-Content-Type-Options': 'nosniff',
-  'X-Frame-Options': 'DENY',
-  'X-XSS-Protection': '1; mode=block',
-  'Referrer-Policy': 'strict-origin-when-cross-origin',
-  'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
-  'Strict-Transport-Security': 'max-age=31536000; includeSubDomains',
-  'X-Permitted-Cross-Domain-Policies': 'none',
-  'X-DNS-Prefetch-Control': 'off',
-};
-
 export async function middleware(request: NextRequest) {
-  const response = NextResponse.next();
-
-  // セキュリティヘッダーの設定
-  Object.entries(securityHeaders).forEach(([key, value]) => {
-    response.headers.set(key, value);
-  });
-
-  // APIエンドポイントに対するレート制限
+  // APIエンドポイントに対するレート制限のみ実施
+  // セキュリティヘッダーは next.config.js の headers() で設定済み
   if (request.nextUrl.pathname.startsWith('/api/')) {
     const forwardedFor = request.headers.get('x-forwarded-for');
     const ip = forwardedFor ? forwardedFor.split(',')[0] : request.headers.get('x-real-ip') ?? 'anonymous';
     const tokenCount = (rateLimit.get(ip) as number) || 0;
 
     if (tokenCount > 50) { // 1分間に50リクエストまで
-      return new NextResponse(JSON.stringify({ 
+      return new NextResponse(JSON.stringify({
         error: 'Too many requests',
         retryAfter: 60,
       }), {
@@ -65,21 +32,16 @@ export async function middleware(request: NextRequest) {
     }
 
     rateLimit.set(ip, tokenCount + 1);
+    const response = NextResponse.next();
     response.headers.set('X-RateLimit-Limit', '50');
     response.headers.set('X-RateLimit-Remaining', String(50 - (tokenCount + 1)));
+    return response;
   }
 
-  return response;
+  return NextResponse.next();
 }
 
 export const config = {
-  matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     */
-    '/((?!_next/static|_next/image|favicon.ico).*)',
-  ],
-}; 
+  // APIルートのみに適用（静的ファイルや通常ページは対象外）
+  matcher: ['/api/:path*'],
+};

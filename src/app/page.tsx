@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: 'Sunlady公式ウェブサイト',
 };
 
-export const revalidate = 60;
+export const revalidate = 3600; // 1時間ごとに再生成（コンテンツ更新頻度に合わせて調整）
 
 async function getLatestNews() {
   try {

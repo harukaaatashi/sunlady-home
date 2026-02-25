@@ -9,24 +9,4 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-# リダイレクトとrewriteルール
-[[redirects]]
-  from = "/partners"
-  to = "/partners"
-  status = 200
-  
-[[redirects]]
-  from = "/news/*"
-  to = "/news/:splat"
-  status = 200
-
-[[redirects]]
-  from = "/about"
-  to = "/about"  
-  status = 200
-
-# SPA フォールバック
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200 
+# Next.js plugin がルーティングを処理するため、カスタムリダイレクトは不要
