@@ -11,6 +11,18 @@ import { ArrowLeftIcon, CalendarIcon } from '@heroicons/react/24/outline';
 
 export const revalidate = 3600; // 1時間ごとに再生成（コンテンツ更新頻度に合わせて調整）
 
+export async function generateStaticParams() {
+  try {
+    const { contents } = await client.getList<News>({
+      endpoint: 'news',
+      queries: { limit: 100, fields: 'id' },
+    });
+    return contents.map((item) => ({ id: item.id }));
+  } catch {
+    return [];
+  }
+}
+
 async function getNewsDetail(id: string) {
   try {
     const news = await client.get<News>({
