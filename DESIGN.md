@@ -105,10 +105,18 @@
 
 ## § 6 Animation
 
-- duration: 150–300ms
-- easing: `ease-out`（enter）/ `ease-in`（exit）
-- transform / opacity のみアニメーション（width・height 禁止）
-- `prefers-reduced-motion` 対応必須
+ファッション代理店らしいシャープで抑制されたアニメーション。動きで主張しない。
+
+| 項目 | 値 |
+|---|---|
+| duration | 0.3s（標準）/ 0.5s（ヒーローのみ） |
+| easing | `easeOut` |
+| y offset | 6px のみ（20px 禁止） |
+| scale | 禁止（ヒーロー含む） |
+| stagger | 0.04s（0.1s 禁止） |
+| hover scale | 禁止（画像の scale-105 等） |
+| opacity 変化 | 主役。y はあくまで添え物 |
+| `prefers-reduced-motion` | 対応必須 |
 
 ---
 

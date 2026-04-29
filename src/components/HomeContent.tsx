@@ -35,9 +35,9 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
             <div className="flex items-center justify-center h-full">
               <motion.div 
                 className="relative w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] lg:w-[400px] lg:h-[400px]"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, ease: 'easeOut' }}
               >
                 <Image
                   src="/hero-logo.svg"
@@ -188,9 +188,9 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
                 partners.map((partner, index) => (
                   <SwiperSlide key={partner.id}>
                     <motion.div
-                      initial={{ opacity: 0, y: 20 }}
+                      initial={{ opacity: 0, y: 6 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      transition={{ duration: 0.3, ease: 'easeOut', delay: index * 0.04 }}
                       viewport={{ once: true, margin: "-100px" }}
                     >
                       <PartnerCard partner={partner} index={index} />

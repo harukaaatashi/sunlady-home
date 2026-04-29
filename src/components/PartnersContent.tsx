@@ -14,9 +14,9 @@ export default function PartnersContent({ partners }: PartnersContentProps) {
     <Container className="py-12 sm:py-16 lg:py-20">
       <motion.h1 
         className="text-4xl font-light mb-12"
-        initial={{ opacity: 0, y: -20 }}
+        initial={{ opacity: 0, y: 6 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.3, ease: 'easeOut' }}
       >
         パートナー企業
       </motion.h1>

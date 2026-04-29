@@ -25,9 +25,9 @@ export default function NewsCard({ news, index }: NewsCardProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 6 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      transition={{ duration: 0.3, ease: 'easeOut', delay: index * 0.04 }}
     >
       <Link href={`/news/${news.id}`} className="block group">
         <Card className="overflow-hidden hover:border-primary/30 transition-colors duration-200">
@@ -38,7 +38,7 @@ export default function NewsCard({ news, index }: NewsCardProps) {
                   src={news.image.url}
                   alt={news.title}
                   fill
-                  className="object-cover transform group-hover:scale-105 transition-transform duration-300"
+                  className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
