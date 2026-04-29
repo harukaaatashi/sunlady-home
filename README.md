@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# sunlady-home
 
-## Getting Started
+株式会社ファッション ディレクト サンレディの公式ウェブサイト。
 
-First, run the development server:
+## 技術スタック
+
+| 用途 | 技術 |
+|---|---|
+| フレームワーク | Next.js 15 (App Router) |
+| 言語 | TypeScript |
+| スタイル | Tailwind CSS + shadcn/ui |
+| CMS | microCMS |
+| ホスティング | Netlify |
+| エラー監視 | Sentry |
+
+## ページ構成
+
+- `/` — トップ（最新ニュース・パートナー一覧）
+- `/news` — ニュース一覧
+- `/news/[id]` — ニュース詳細
+- `/about` — 会社概要
+- `/partners` — パートナー一覧
+
+## ローカル開発
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`http://localhost:3000` で確認できます。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 環境変数
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+`.env.local` を作成して以下を設定してください。
 
-## Learn More
+```
+MICROCMS_SERVICE_DOMAIN=your-service-domain
+MICROCMS_API_KEY=your-api-key
+```
 
-To learn more about Next.js, take a look at the following resources:
+## デプロイ
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+main ブランチへの push で Netlify が自動デプロイします。
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Node.js バージョンは `netlify.toml` で 18 に固定されています。
 
-## Deploy on Vercel
+## CI / セキュリティ
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| ワークフロー | タイミング | 内容 |
+|---|---|---|
+| security-scan | push / PR / 毎週日曜 | npm audit・lint・型チェック |
+| security-audit | 毎月1日 | npm audit・outdated チェック |
+| Dependabot | 毎週月曜（npm）/ 毎月（Actions） | 依存パッケージの自動更新 PR |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+脆弱性が検出された場合は Issue が自動で作成されます。Dependabot の PR をマージするだけで依存関係を最新に保てます。
