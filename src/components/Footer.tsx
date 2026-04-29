@@ -8,7 +8,7 @@ export function Footer() {
       <Container className="py-12 sm:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div>
-            <h2 className="text-lg font-semibold mb-4">会社情報</h2>
+            <h2 className="text-sm font-medium tracking-widest uppercase text-foreground/70 mb-4">会社情報</h2>
             <address className="not-italic space-y-2 text-sm text-muted-foreground">
               <p>株式会社 ファッション ディレクト サンレディ</p>
               <p>〒150-0021</p>
@@ -17,7 +17,7 @@ export function Footer() {
             </address>
           </div>
           <div>
-            <h2 className="text-lg font-semibold mb-4">アクセス</h2>
+            <h2 className="text-sm font-medium tracking-widest uppercase text-foreground/70 mb-4">アクセス</h2>
             <div className="space-y-2 text-sm text-muted-foreground">
               <div className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 mt-1 flex-shrink-0" />
@@ -30,7 +30,7 @@ export function Footer() {
             </div>
           </div>
           <div>
-            <h2 className="text-lg font-semibold mb-4">お問い合わせ</h2>
+            <h2 className="text-sm font-medium tracking-widest uppercase text-foreground/70 mb-4">お問い合わせ</h2>
             <div className="space-y-4 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
                 <Mail className="h-4 w-4 flex-shrink-0" />

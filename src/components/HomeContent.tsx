@@ -4,7 +4,6 @@ import { News } from '@/types/news';
 import { Partner } from '@/types/partner';
 import PartnerCard from '@/components/PartnerCard';
 import NewsCard from '@/components/NewsCard';
-import { NewspaperIcon, BuildingOffice2Icon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -58,10 +57,7 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
       <section className="py-12 sm:py-20" aria-labelledby="news-heading">
         <Container>
           <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center">
-              <NewspaperIcon className="h-8 w-8 text-primary mr-3" aria-hidden="true" />
-              <h2 id="news-heading" className="text-3xl font-semibold">新着ニュース</h2>
-            </div>
+            <h2 id="news-heading" className="text-lg font-light tracking-widest uppercase text-foreground/80">News</h2>
             <Button variant="ghost" asChild>
               <Link href="/news" aria-label="ニュース一覧ページへ移動">
                 一覧を見る
@@ -116,10 +112,7 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
       <section className="py-12 sm:py-20 overflow-hidden" aria-labelledby="partners-heading">
         <Container>
           <div className="flex items-center justify-between mb-8">
-            <div className="flex items-center">
-              <BuildingOffice2Icon className="h-8 w-8 text-primary mr-3" aria-hidden="true" />
-              <h2 id="partners-heading" className="text-3xl font-semibold">パートナー</h2>
-            </div>
+            <h2 id="partners-heading" className="text-lg font-light tracking-widest uppercase text-foreground/80">Partners</h2>
             <div className="flex gap-2">
               <Button 
                 variant="outline"

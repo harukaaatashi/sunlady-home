@@ -15,8 +15,8 @@ const inter = Inter({
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ["latin"],
-  weight: ['400', '500', '700'], // 重量を減らしてロード時間短縮
-  display: "optional", // ブロッキングを防ぐ
+  weight: ['300', '400', '500'],
+  display: "swap",
   fallback: ['-apple-system', 'BlinkMacSystemFont', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'sans-serif'],
   variable: '--font-noto-sans-jp'
 });

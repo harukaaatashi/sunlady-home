@@ -38,7 +38,7 @@ export default async function Page(props: Props) {
     <Container>
       <Suspense fallback={
         <div className="py-12 text-center">
-          <h1 className="text-4xl font-light mb-6">読み込み中...</h1>
+          <h1 className="text-lg font-light tracking-widest uppercase text-foreground/80 mb-6">News</h1>
         </div>
       }>
         <NewsContent

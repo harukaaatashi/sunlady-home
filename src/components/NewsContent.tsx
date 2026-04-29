@@ -78,12 +78,12 @@ function NewsContent({ news, currentPage, totalPages }: NewsContentProps) {
   return (
     <div className="py-12">
       <motion.h1
-        className="text-4xl font-light mb-12"
-        initial={{ opacity: 0, y: 20 }}
+        className="text-lg font-light tracking-widest uppercase text-foreground/80 mb-10"
+        initial={{ opacity: 0, y: 6 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.3, ease: 'easeOut' }}
       >
-        ニュース一覧
+        News
       </motion.h1>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {news.map((item, index) => (

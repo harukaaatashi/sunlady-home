@@ -69,7 +69,7 @@ export default async function NewsDetailPage(props: {
     <Container>
       <Card className="max-w-4xl mx-auto">
         <CardHeader>
-          <CardTitle className="text-3xl">{news.title}</CardTitle>
+          <CardTitle className="text-xl font-medium leading-snug">{news.title}</CardTitle>
           <div className="text-sm text-muted-foreground">
             {formatDate(news.publishedAt)}
           </div>
