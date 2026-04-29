@@ -27,8 +27,8 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
     <div className="w-full">
       {/* ヒーローセクション */}
       <section className="relative h-[60vh] sm:h-[80vh] min-h-[400px] sm:min-h-[600px] w-full" aria-label="ヒーローセクション">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1a237e] to-[#283593]">
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1a237e]/70 to-[#283593]/40" aria-hidden="true" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary/70">
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/60 to-primary/20" aria-hidden="true" />
         </div>
         <div className="relative h-full w-full">
           <Container className="h-full">

@@ -21,7 +21,7 @@ export default function PartnerCard({ partner, index }: PartnerCardProps) {
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className="h-full"
     >
-      <Card className="p-4 h-full flex flex-col hover:shadow-lg transition-all duration-300 border-2 border-opacity-10 hover:border-primary/20">
+      <Card className="p-4 h-full flex flex-col hover:shadow-lg transition-[box-shadow,border-color] duration-300 border-2 border-opacity-10 hover:border-primary/20">
         <CardHeader className="pb-2 pt-2">
           <h3 className="text-lg font-medium line-clamp-1">{partner.name}</h3>
           {partner.subtitle && (
