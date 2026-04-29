@@ -4,9 +4,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Partner } from '@/types/partner';
-import { Card, CardHeader, CardContent, CardFooter } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Globe, Instagram } from 'lucide-react';
+import { ArrowUpRightIcon } from '@heroicons/react/24/outline';
 
 type PartnerCardProps = {
   partner: Partner;
@@ -14,52 +12,63 @@ type PartnerCardProps = {
 };
 
 export default function PartnerCard({ partner, index }: PartnerCardProps) {
+  const href = partner.homelink || partner.snslink;
+
+  const inner = (
+    <div className="border border-border hover:border-primary/30 transition-colors duration-200 flex flex-col h-full group">
+      <div className="relative w-full aspect-[4/3] bg-muted overflow-hidden">
+        <Image
+          src={partner.image.url}
+          alt={`${partner.name}のロゴ`}
+          fill
+          className="object-contain p-4"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+        />
+      </div>
+      <div className="p-4 flex flex-col flex-1">
+        <div className="flex items-start justify-between gap-2">
+          <div>
+            <h3 className="text-sm font-medium leading-snug">{partner.name}</h3>
+            {partner.subtitle && (
+              <p className="text-xs text-muted-foreground mt-0.5">{partner.subtitle}</p>
+            )}
+          </div>
+          {href && (
+            <ArrowUpRightIcon className="h-4 w-4 text-muted-foreground flex-shrink-0 mt-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+          )}
+        </div>
+        {partner.description && (
+          <p className="text-xs text-muted-foreground mt-2 line-clamp-2">{partner.description}</p>
+        )}
+      </div>
+    </div>
+  );
+
+  if (href) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, delay: index * 0.05 }}
+        viewport={{ once: true }}
+        className="h-full"
+      >
+        <Link href={href} target="_blank" rel="noopener noreferrer" className="block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+          {inner}
+        </Link>
+      </motion.div>
+    );
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, delay: index * 0.05 }}
+      viewport={{ once: true }}
       className="h-full"
     >
-      <Card className="p-4 h-full flex flex-col hover:shadow-lg transition-[box-shadow,border-color] duration-300 border-2 border-opacity-10 hover:border-primary/20">
-        <CardHeader className="pb-2 pt-2">
-          <h3 className="text-lg font-medium line-clamp-1">{partner.name}</h3>
-          {partner.subtitle && (
-            <p className="text-sm text-muted-foreground line-clamp-1">{partner.subtitle}</p>
-          )}
-        </CardHeader>
-        <CardContent className="flex-grow pb-2">
-          <div className="relative w-full h-32 mb-3 bg-gray-50 rounded-md overflow-hidden">
-            <Image
-              src={partner.image.url}
-              alt={`${partner.name}のロゴ`}
-              fill
-              className="object-contain p-2 hover:scale-105 transition-transform duration-300"
-            />
-          </div>
-          {partner.description && (
-            <p className="text-sm text-muted-foreground line-clamp-2 mt-2">{partner.description}</p>
-          )}
-        </CardContent>
-        <CardFooter className="pt-2 flex gap-2 justify-end">
-          {partner.homelink && (
-            <Button variant="outline" size="sm" asChild className="h-8">
-              <Link href={partner.homelink} target="_blank" rel="noopener noreferrer" className="flex items-center">
-                <Globe className="w-3.5 h-3.5 mr-1" />
-                <span className="text-xs">ホームページ</span>
-              </Link>
-            </Button>
-          )}
-          {partner.snslink && (
-            <Button variant="outline" size="sm" asChild className="h-8">
-              <Link href={partner.snslink} target="_blank" rel="noopener noreferrer" className="flex items-center">
-                <Instagram className="w-3.5 h-3.5 mr-1" />
-                <span className="text-xs">SNS</span>
-              </Link>
-            </Button>
-          )}
-        </CardFooter>
-      </Card>
+      {inner}
     </motion.div>
   );
-} 
+}

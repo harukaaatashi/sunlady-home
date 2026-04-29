@@ -30,7 +30,7 @@ export default function NewsCard({ news, index }: NewsCardProps) {
       transition={{ duration: 0.5, delay: index * 0.1 }}
     >
       <Link href={`/news/${news.id}`} className="block group">
-        <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
+        <Card className="overflow-hidden hover:border-primary/30 transition-colors duration-200">
           <CardContent className="p-0">
             {news.image?.url && (
               <div className="relative aspect-video">

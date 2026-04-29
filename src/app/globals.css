@@ -35,7 +35,7 @@
     --input: 220 13% 91%;
     --ring: 234 66% 32%;
 
-    --radius: 0.5rem;
+    --radius: 0.125rem;
 
     --header-height: 80px;
     --section-padding: clamp(2rem, 5vw, 4rem);
