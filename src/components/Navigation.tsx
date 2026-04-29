@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
 import {
   NavigationMenu,
@@ -118,6 +118,7 @@ export const Navigation = () => {
                 </Button>
               </SheetTrigger>
               <SheetContent>
+                <SheetTitle className="sr-only">ナビゲーションメニュー</SheetTitle>
                 <nav className="flex flex-col gap-4">
                   {menuItems.map((item) => (
                     item.isExternal ? (
