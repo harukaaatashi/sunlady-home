@@ -58,7 +58,7 @@ export default function AboutContent() {
                 </div>
                 <div>
                   <dt className="font-semibold text-base sm:text-lg mb-2">設立</dt>
-                  <dd className="text-muted-foreground text-sm sm:text-base">1968年</dd>
+                  <dd className="text-muted-foreground text-sm sm:text-base">1971年10月20日</dd>
                 </div>
                 <div>
                   <dt className="font-semibold text-base sm:text-lg mb-2">代表者</dt>
