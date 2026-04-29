@@ -106,10 +106,8 @@ export default function RootLayout({
         >
           <SkipLink />
           <Navigation />
-          <main id="main-content" className="flex-grow pt-24 pb-16 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-7xl mx-auto">
-              {children}
-            </div>
+          <main id="main-content" className="flex-grow pt-20">
+            {children}
           </main>
           <Footer />
         </ThemeProvider>

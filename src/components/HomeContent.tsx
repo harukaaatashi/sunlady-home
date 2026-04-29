@@ -55,7 +55,7 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
       </section>
 
       {/* ニュースセクション */}
-      <section className="py-12 sm:py-24" aria-labelledby="news-heading">
+      <section className="py-12 sm:py-20" aria-labelledby="news-heading">
         <Container>
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center">
@@ -113,7 +113,7 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
       </section>
 
       {/* パートナー企業セクション */}
-      <section className="py-12 sm:py-24 overflow-hidden" aria-labelledby="partners-heading">
+      <section className="py-12 sm:py-20 overflow-hidden" aria-labelledby="partners-heading">
         <Container>
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center">

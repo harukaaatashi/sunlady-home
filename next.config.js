@@ -14,6 +14,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'images.microcms-assets.io',
       },
+      {
+        protocol: 'https',
+        hostname: 'placehold.co',
+      },
     ],
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
