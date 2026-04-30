@@ -77,8 +77,8 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
                       aria-label={`${news.title}の詳細を読む`}
                     >
                       <div className="flex items-start gap-3 sm:gap-4">
-                        {news.image?.url && (
-                          <div className="relative w-20 h-14 sm:w-24 sm:h-16 flex-shrink-0 rounded-lg overflow-hidden">
+                        <div className="relative w-20 h-14 sm:w-24 sm:h-16 flex-shrink-0 overflow-hidden bg-primary">
+                          {news.image?.url ? (
                             <Image
                               src={news.image.url}
                               alt={`${news.title}のサムネイル画像`}
@@ -86,8 +86,19 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
                               className="object-cover"
                               sizes="(max-width: 768px) 96px, 96px"
                             />
-                          </div>
-                        )}
+                          ) : (
+                            <div className="absolute inset-0 flex items-center justify-center">
+                              <Image
+                                src="/hero-logo.svg"
+                                alt=""
+                                width={48}
+                                height={48}
+                                className="brightness-0 invert opacity-90 w-1/2 h-auto"
+                                aria-hidden="true"
+                              />
+                            </div>
+                          )}
+                        </div>
                         <div className="flex-1 min-w-0">
                           <time className="text-xs sm:text-sm text-muted-foreground mb-1" dateTime={news.publishedAt}>
                             {new Date(news.publishedAt).toLocaleDateString('ja-JP')}
