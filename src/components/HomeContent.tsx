@@ -179,12 +179,13 @@ export default function HomeContent({ latestNews, partners }: HomeContentProps) 
             >
               {partners && partners.length > 0 ? (
                 partners.map((partner, index) => (
-                  <SwiperSlide key={partner.id}>
+                  <SwiperSlide key={partner.id} className="!h-auto">
                     <motion.div
                       initial={{ opacity: 0, y: 6 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, ease: 'easeOut', delay: index * 0.04 }}
                       viewport={{ once: true, margin: "-100px" }}
+                      className="h-full"
                     >
                       <PartnerCard partner={partner} index={index} />
                     </motion.div>
