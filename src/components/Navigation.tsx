@@ -64,7 +64,7 @@ export const Navigation = () => {
             <Link href="/" className="focus:outline-none focus:ring-2 focus:ring-primary rounded-lg">
               <Image
                 src="/sunlady-partner-logo.svg"
-                alt="Sunlady ロゴ"
+                alt="株式会社ファッション ディレクト サンレディ"
                 width={160}
                 height={40}
                 priority

@@ -5,8 +5,8 @@ import { Partner } from '@/types/partner';
 import HomeContent from '@/components/HomeContent';
 
 export const metadata: Metadata = {
-  title: 'Sunlady Home',
-  description: 'Sunlady公式ウェブサイト',
+  title: '株式会社ファッション ディレクト サンレディ',
+  description: 'ファッションショーおよびイベント企画制作運営、アパレル企画およびODM業務、企業プロモーション・PRおよびキャスティング業務を行うSunladyの公式サイトです。',
 };
 
 export const revalidate = 3600; // 1時間ごとに再生成（コンテンツ更新頻度に合わせて調整）
