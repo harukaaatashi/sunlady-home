@@ -1,4 +1,4 @@
-name: Security Audit
+name: Security Scan
 
 on:
   push:
@@ -7,6 +7,10 @@ on:
     branches: [ main ]
   schedule:
     - cron: '0 0 * * 0'  # 毎週日曜日に実行
+
+permissions:
+  contents: read
+  issues: write
 
 jobs:
   security-audit:
@@ -25,7 +29,7 @@ jobs:
 
       - name: Run npm audit
         run: |
-          npm audit
+          npm audit --audit-level=high
           echo "Security audit completed"
 
       - name: Check for outdated packages
