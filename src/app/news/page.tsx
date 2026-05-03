@@ -1,4 +1,4 @@
-export const revalidate = 3600; // 1時間キャッシュ
+export const revalidate = 60; // 60秒キャッシュ
 
 import { Container } from '@/components/ui/container';
 import { client } from '@/libs/microcms';

@@ -9,7 +9,7 @@ import { formatDate } from '@/lib/utils';
 import Link from 'next/link';
 import { ArrowLeftIcon, CalendarIcon } from '@heroicons/react/24/outline';
 
-export const revalidate = 3600; // 1時間ごとに再生成（コンテンツ更新頻度に合わせて調整）
+export const revalidate = 60; // 60秒ごとに再生成
 
 export async function generateStaticParams() {
   try {

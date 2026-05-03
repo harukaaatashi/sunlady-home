@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: 'ファッションショーおよびイベント企画制作運営、アパレル企画およびODM業務、企業プロモーション・PRおよびキャスティング業務を行うSunladyの公式サイトです。',
 };
 
-export const revalidate = 3600; // 1時間ごとに再生成（コンテンツ更新頻度に合わせて調整）
+export const revalidate = 60; // 60秒ごとに再生成（CMS更新が早く反映されるように）
 
 async function getLatestNews() {
   try {
