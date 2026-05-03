@@ -5,7 +5,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-background" role="contentinfo">
+    <footer className="bg-muted/50" role="contentinfo">
       <Container className="pt-16 pb-10 sm:pt-24 sm:pb-12">
         {/* 3カラム情報 */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 max-w-5xl mx-auto">
