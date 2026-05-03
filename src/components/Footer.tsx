@@ -1,25 +1,12 @@
 import { Container } from '@/components/ui/container';
 import Link from 'next/link';
-import Image from 'next/image';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-background border-t border-border" role="contentinfo">
+    <footer className="bg-background" role="contentinfo">
       <Container className="pt-16 pb-10 sm:pt-24 sm:pb-12">
-        {/* ロゴ（中央） */}
-        <div className="flex justify-center mb-12 sm:mb-20">
-          <Image
-            src="/sunlady-partner-logo.svg"
-            alt="株式会社ファッション ディレクト サンレディ"
-            width={160}
-            height={40}
-            className="h-9 w-auto opacity-80 dark:brightness-0 dark:invert"
-            unoptimized
-          />
-        </div>
-
         {/* 3カラム情報 */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 max-w-5xl mx-auto">
           <div>
