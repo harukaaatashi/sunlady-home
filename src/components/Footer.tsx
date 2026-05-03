@@ -1,56 +1,71 @@
 import { Container } from '@/components/ui/container';
-import { Mail, MapPin, Phone } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-background border-t" role="contentinfo">
-      <Container className="py-12 sm:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <footer className="bg-background border-t border-border" role="contentinfo">
+      <Container className="pt-16 pb-10 sm:pt-24 sm:pb-12">
+        {/* ロゴ（中央） */}
+        <div className="flex justify-center mb-12 sm:mb-20">
+          <Image
+            src="/sunlady-partner-logo.svg"
+            alt="株式会社ファッション ディレクト サンレディ"
+            width={160}
+            height={40}
+            className="h-9 w-auto opacity-80 dark:brightness-0 dark:invert"
+            unoptimized
+          />
+        </div>
+
+        {/* 3カラム情報 */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 max-w-5xl mx-auto">
           <div>
-            <h2 className="text-sm font-medium tracking-widest uppercase text-foreground/70 mb-4">会社情報</h2>
-            <address className="not-italic space-y-2 text-sm text-muted-foreground">
+            <h2 className="text-[11px] font-medium tracking-[0.25em] uppercase text-foreground/60 pb-3 mb-5 border-b border-border">
+              Company
+            </h2>
+            <address className="not-italic space-y-1.5 text-sm leading-relaxed text-foreground/80">
               <p>株式会社 ファッション ディレクト サンレディ</p>
-              <p>〒150-0021</p>
-              <p>東京都渋谷区恵比寿西1-32-11</p>
+              <p className="tabular-nums">〒150-0021</p>
+              <p>東京都渋谷区恵比寿西 1-32-11</p>
               <p>ヴァイスハイム 3F</p>
             </address>
           </div>
+
           <div>
-            <h2 className="text-sm font-medium tracking-widest uppercase text-foreground/70 mb-4">アクセス</h2>
-            <div className="space-y-2 text-sm text-muted-foreground">
-              <div className="flex items-start gap-2">
-                <MapPin className="h-4 w-4 mt-1 flex-shrink-0" />
-                <div>
-                  <p>東急東横線 代官山駅 徒歩約3分</p>
-                  <p>JR山手線 恵比寿駅 徒歩約4分</p>
-                  <p>東京メトロ日比谷線 恵比寿駅 徒歩約4分</p>
-                </div>
-              </div>
-            </div>
+            <h2 className="text-[11px] font-medium tracking-[0.25em] uppercase text-foreground/60 pb-3 mb-5 border-b border-border">
+              Access
+            </h2>
+            <ul className="space-y-1.5 text-sm leading-relaxed text-foreground/80">
+              <li>東急東横線 代官山駅 徒歩約 3 分</li>
+              <li>JR 山手線 恵比寿駅 徒歩約 4 分</li>
+              <li>東京メトロ日比谷線 恵比寿駅 徒歩約 4 分</li>
+            </ul>
           </div>
+
           <div>
-            <h2 className="text-sm font-medium tracking-widest uppercase text-foreground/70 mb-4">お問い合わせ</h2>
-            <div className="space-y-4 text-sm text-muted-foreground">
-              <div className="flex items-center gap-2">
-                <Mail className="h-4 w-4 flex-shrink-0" />
-                <Link 
-                  href="mailto:sunaldy2@bp.iij.or.jp"
-                  className="hover:text-primary transition-colors"
-                  aria-label="メールでのお問い合わせ"
-                >
-                  sunaldy2@bp.iij.or.jp
-                </Link>
-              </div>
-            </div>
+            <h2 className="text-[11px] font-medium tracking-[0.25em] uppercase text-foreground/60 pb-3 mb-5 border-b border-border">
+              Contact
+            </h2>
+            <Link
+              href="mailto:sunaldy2@bp.iij.or.jp"
+              className="text-sm text-foreground/80 underline-offset-4 hover:text-primary hover:underline transition-colors"
+              aria-label="メールでのお問い合わせ"
+            >
+              sunaldy2@bp.iij.or.jp
+            </Link>
           </div>
         </div>
-        <div className="border-t mt-8 pt-8">
-          <p className="text-center text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Sunlady. All rights reserved.
+
+        {/* 著作権 */}
+        <div className="mt-16 sm:mt-24 pt-6 border-t border-border">
+          <p className="text-center text-[11px] tracking-[0.2em] uppercase text-foreground/50">
+            © {currentYear} Sunlady. All rights reserved.
           </p>
         </div>
       </Container>
     </footer>
   );
-} 
+}
