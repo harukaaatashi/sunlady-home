@@ -66,7 +66,7 @@ export default async function NewsDetailPage(props: {
   }
 
   return (
-    <Container>
+    <Container className="py-12 sm:py-20">
       <Card className="max-w-4xl mx-auto">
         <CardHeader>
           <CardTitle className="text-xl font-medium leading-snug">{news.title}</CardTitle>

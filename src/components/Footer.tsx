@@ -5,7 +5,7 @@ import Link from 'next/link';
 export function Footer() {
   return (
     <footer className="bg-background border-t" role="contentinfo">
-      <Container className="py-12 sm:py-16">
+      <Container className="py-12 sm:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div>
             <h2 className="text-sm font-medium tracking-widest uppercase text-foreground/70 mb-4">会社情報</h2>

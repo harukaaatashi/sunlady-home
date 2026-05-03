@@ -76,7 +76,7 @@ function NewsContent({ news, currentPage, totalPages }: NewsContentProps) {
   };
 
   return (
-    <div className="py-12">
+    <div className="py-12 sm:py-20">
       <motion.h1
         className="text-lg font-light tracking-widest uppercase text-foreground/80 mb-10"
         initial={{ opacity: 0, y: 6 }}

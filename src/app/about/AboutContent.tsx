@@ -35,7 +35,6 @@ export default function AboutContent() {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="max-w-5xl mx-auto"
     >
       <div className="grid gap-6 sm:gap-8">
         <motion.div variants={itemVariants}>

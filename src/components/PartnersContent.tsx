@@ -11,7 +11,7 @@ type PartnersContentProps = {
 
 export default function PartnersContent({ partners }: PartnersContentProps) {
   return (
-    <Container className="py-12 sm:py-16 lg:py-20">
+    <Container className="py-12 sm:py-20">
       <motion.h1
         className="text-lg font-light tracking-widest uppercase text-foreground/80 mb-10"
         initial={{ opacity: 0, y: 6 }}
