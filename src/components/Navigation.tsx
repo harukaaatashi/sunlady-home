@@ -41,7 +41,7 @@ export const Navigation = () => {
     { href: '/partners', label: 'PARTNERS' },
     { href: '/about', label: 'ABOUT' },
     { 
-      href: 'https://sunlady.base.shop/', 
+      href: 'https://sunladytokyo.stores.jp/',
       label: 'SHOP',
       isExternal: true 
     },
