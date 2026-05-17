@@ -1,5 +1,6 @@
 import { Container } from '@/components/ui/container';
 import Link from 'next/link';
+import { company } from '@/lib/company';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -14,10 +15,11 @@ export function Footer() {
               Company
             </h2>
             <address className="not-italic space-y-1.5 text-sm leading-relaxed text-foreground/80">
-              <p>株式会社 ファッション ディレクト サンレディ</p>
-              <p className="tabular-nums">〒150-0021</p>
-              <p>東京都渋谷区恵比寿西 1-32-11</p>
-              <p>ヴァイスハイム 3F</p>
+              <p>{company.name}</p>
+              <p className="tabular-nums">{company.postalCode}</p>
+              {company.addressLines.map((line) => (
+                <p key={line}>{line}</p>
+              ))}
             </address>
           </div>
 
@@ -26,9 +28,9 @@ export function Footer() {
               Access
             </h2>
             <ul className="space-y-1.5 text-sm leading-relaxed text-foreground/80">
-              <li>東急東横線 代官山駅 徒歩約 3 分</li>
-              <li>JR 山手線 恵比寿駅 徒歩約 4 分</li>
-              <li>東京メトロ日比谷線 恵比寿駅 徒歩約 4 分</li>
+              {company.accessLines.map((line) => (
+                <li key={line}>{line}</li>
+              ))}
             </ul>
           </div>
 
@@ -37,11 +39,11 @@ export function Footer() {
               Contact
             </h2>
             <Link
-              href="mailto:sunaldy2@bp.iij.or.jp"
+              href={`mailto:${company.email}`}
               className="text-sm text-foreground/80 underline-offset-4 hover:text-primary hover:underline transition-colors"
               aria-label="メールでのお問い合わせ"
             >
-              sunaldy2@bp.iij.or.jp
+              {company.email}
             </Link>
           </div>
         </div>

@@ -1,10 +1,11 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { company } from '@/lib/company';
 
 export default function GoogleMap() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  const address = "〒150-0021 東京都渋谷区恵比寿西1-32-11";
+  const address = `${company.postalCode} ${company.addressLines[0]}`;
 
   useEffect(() => {
     const observer = new IntersectionObserver(

@@ -19,6 +19,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { cn } from '@/lib/utils';
+import { company } from '@/lib/company';
 
 export const Navigation = () => {
   const pathname = usePathname();
@@ -46,7 +47,7 @@ export const Navigation = () => {
       isExternal: true 
     },
     { 
-      href: 'https://www.google.com/maps/search/?api=1&query=東京都渋谷区恵比寿西1-32-11+ヴァイスハイム+3F', 
+      href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(company.addressFull)}`,
       label: 'ACCESS',
       isExternal: true 
     },
