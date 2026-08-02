@@ -11,7 +11,6 @@
 | スタイル | Tailwind CSS + shadcn/ui |
 | CMS | microCMS |
 | ホスティング | Netlify |
-| エラー監視 | Sentry |
 
 ## ページ構成
 
