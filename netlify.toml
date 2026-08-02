@@ -3,7 +3,9 @@
   publish = ".next"
 
 [build.environment]
-  NODE_VERSION = "18"
+  # sharp 0.35 系が Node >= 20.9.0 を要求するため 18 からは上げる必要がある。
+  # Node 18 は 2025-04 に EOL 済み。
+  NODE_VERSION = "22"
   NPM_FLAGS = "--legacy-peer-deps"
 
 [[plugins]]
