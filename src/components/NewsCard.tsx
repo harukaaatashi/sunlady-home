@@ -1,18 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { CalendarIcon } from '@heroicons/react/24/outline';
 import { News } from '@/types/news';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { ChevronRight } from 'lucide-react';
-
-// HTMLタグを除去する関数
-function stripHtmlTags(html: string): string {
-  return html.replace(/<[^>]*>/g, '');
-}
+import { Card, CardContent } from '@/components/ui/card';
 
 type NewsCardProps = {
   news: News;
@@ -20,9 +12,6 @@ type NewsCardProps = {
 };
 
 export default function NewsCard({ news, index }: NewsCardProps) {
-  // 本文からHTMLタグを除去
-  const plainContent = stripHtmlTags(news.content);
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 6 }}

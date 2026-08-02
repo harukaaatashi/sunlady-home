@@ -6,8 +6,6 @@ import { Container } from '@/components/ui/container';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Image from 'next/image';
 import { formatDate } from '@/lib/utils';
-import Link from 'next/link';
-import { ArrowLeftIcon, CalendarIcon } from '@heroicons/react/24/outline';
 
 export const revalidate = 60; // 60秒ごとに再生成
 

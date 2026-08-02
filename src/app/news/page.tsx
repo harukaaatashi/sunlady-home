@@ -9,7 +9,8 @@ import { Suspense } from 'react';
 const PER_PAGE = 6;
 
 type Props = {
-  searchParams: { page?: string };
+  // Next.js 15 から searchParams は Promise で渡される
+  searchParams: Promise<{ page?: string }>;
 };
 
 async function getNewsList(page: number) {

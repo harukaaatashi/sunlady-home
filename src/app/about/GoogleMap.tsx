@@ -8,25 +8,26 @@ export default function GoogleMap() {
   const address = `${company.postalCode} ${company.addressLines[0]}`;
 
   useEffect(() => {
+    // cleanup 時には ref が別の要素を指している可能性があるため、
+    // effect 実行時点の要素をローカルに退避してから使う
+    const iframe = iframeRef.current;
+    if (!iframe) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && iframeRef.current) {
-            iframeRef.current.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3242.0!2d139.7086!3d35.6475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z44CSMTUwLTAwMjEg5p2x5Lqs6YO95riL6LC35Yy65oiQ5q2j6KW_77yR5LiB55uu77yT77yS4oiS77yR77yR!5e0!3m2!1sja!2sjp!4v1";
+          if (entry.isIntersecting) {
+            iframe.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3242.0!2d139.7086!3d35.6475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z44CSMTUwLTAwMjEg5p2x5Lqs6YO95riL6LC35Yy65oiQ5q2j6KW_77yR5LiB55uu77yT77yS4oiS77yR77yR!5e0!3m2!1sja!2sjp!4v1";
           }
         });
       },
       { threshold: 0.1 }
     );
 
-    if (iframeRef.current) {
-      observer.observe(iframeRef.current);
-    }
+    observer.observe(iframe);
 
     return () => {
-      if (iframeRef.current) {
-        observer.unobserve(iframeRef.current);
-      }
+      observer.unobserve(iframe);
     };
   }, []);
 

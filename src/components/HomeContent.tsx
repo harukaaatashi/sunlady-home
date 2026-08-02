@@ -3,7 +3,6 @@
 import { News } from '@/types/news';
 import { Partner } from '@/types/partner';
 import PartnerCard from '@/components/PartnerCard';
-import NewsCard from '@/components/NewsCard';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
