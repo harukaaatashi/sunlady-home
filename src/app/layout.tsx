@@ -33,7 +33,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://sunlady.co.jp'),
+  metadataBase: new URL('https://sunlady.tokyo'),
   title: {
     default: '株式会社ファッション ディレクト サンレディ',
     template: '%s | 株式会社ファッション ディレクト サンレディ'
@@ -66,24 +66,18 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'ja_JP',
-    url: 'https://sunlady.co.jp',
+    url: 'https://sunlady.tokyo',
     siteName: '株式会社ファッション ディレクト サンレディ',
     title: '株式会社ファッション ディレクト サンレディ',
     description: 'ファッションショーおよびイベント企画制作運営、アパレル企画およびODM業務、企業プロモーション・PRおよびキャスティング業務を行うSunladyの公式サイトです。',
-    images: [
-      {
-        url: '/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: '株式会社ファッション ディレクト サンレディ',
-      },
-    ],
+    // images は指定しない: src/app/opengraph-image.tsx が生成した画像が自動で使われる
+    // （存在しない /og-image.jpg を指していたため、共有時にサムネイルが出ていなかった）
   },
   twitter: {
     card: 'summary_large_image',
     title: '株式会社ファッション ディレクト サンレディ',
     description: 'ファッションショーおよびイベント企画制作運営、アパレル企画およびODM業務、企業プロモーション・PRおよびキャスティング業務を行うSunladyの公式サイトです。',
-    images: ['/og-image.jpg'],
+    // images は指定しない: 同上（opengraph-image.tsx が twitter:image にも使われる）
   },
 };
 

@@ -12,6 +12,13 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "start"],
       "port": 3000
+    },
+    {
+      "//": "npm run dev は --port 3000 を固定しているため、空きポートで起動したいときはこちらを使う",
+      "name": "Next.js Dev Server (auto port)",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["next", "dev"],
+      "autoPort": true
     }
   ]
 }
