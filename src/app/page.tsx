@@ -16,7 +16,7 @@ async function getLatestNews() {
     const response = await client.getList<News>({
       endpoint: 'news',
       queries: {
-        limit: 3,
+        limit: 6, // DESIGN.md § 5.1: トップは6件（グリッド2行）で「活動の記録」として見せる
         orders: '-publishedAt',
       },
     });

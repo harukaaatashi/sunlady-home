@@ -11,7 +11,7 @@ export function Footer() {
         {/* 3カラム情報 */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 max-w-5xl mx-auto">
           <div>
-            <h2 className="text-[11px] font-medium tracking-[0.25em] uppercase text-foreground/60 pb-3 mb-5 border-b border-border">
+            <h2 className="text-xs font-medium tracking-[0.25em] uppercase text-foreground/60 pb-3 mb-5 border-b border-border">
               Company
             </h2>
             <address className="not-italic space-y-1.5 text-sm leading-relaxed text-foreground/80">
@@ -24,7 +24,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h2 className="text-[11px] font-medium tracking-[0.25em] uppercase text-foreground/60 pb-3 mb-5 border-b border-border">
+            <h2 className="text-xs font-medium tracking-[0.25em] uppercase text-foreground/60 pb-3 mb-5 border-b border-border">
               Access
             </h2>
             <ul className="space-y-1.5 text-sm leading-relaxed text-foreground/80">
@@ -35,12 +35,13 @@ export function Footer() {
           </div>
 
           <div>
-            <h2 className="text-[11px] font-medium tracking-[0.25em] uppercase text-foreground/60 pb-3 mb-5 border-b border-border">
+            <h2 className="text-xs font-medium tracking-[0.25em] uppercase text-foreground/60 pb-3 mb-5 border-b border-border">
               Contact
             </h2>
             <Link
               href={`mailto:${company.email}`}
-              className="text-sm text-foreground/80 underline-offset-4 hover:text-primary hover:underline transition-colors"
+              // DESIGN.md § 3.2: タップ領域 44px を py で確保する
+              className="link-underline inline-flex items-center min-h-[44px] text-sm text-foreground/80 hover:text-primary transition-colors duration-200"
               aria-label="メールでのお問い合わせ"
             >
               {company.email}
@@ -50,7 +51,7 @@ export function Footer() {
 
         {/* 著作権 */}
         <div className="mt-16 sm:mt-24 pt-6 border-t border-border">
-          <p className="text-center text-[11px] tracking-[0.2em] uppercase text-foreground/50">
+          <p className="text-center text-xs tracking-[0.2em] uppercase text-foreground/50">
             © {currentYear} Sunlady. All rights reserved.
           </p>
         </div>

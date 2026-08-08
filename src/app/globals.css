@@ -91,18 +91,17 @@
     width: 100%;
   }
 
+  /*
+    DESIGN.md § 3.1: root font-size は全端末 16px。
+    モバイルだけ 14px にすると rem ベースの寸法が一律 12.5% 縮み、
+    最も可読性が要る画面で text-xs が 10.5px、h-10 が 35px になってしまう。
+  */
   html {
-    font-size: 14px;
+    font-size: 16px;
     scroll-behavior: smooth;
     overflow-x: hidden;
     text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
-  }
-
-  @media (min-width: 640px) {
-    html {
-      font-size: 16px;
-    }
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -179,18 +178,70 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  /*
+    DESIGN.md § 6.2: ホバーの下線
+    背景色ではなく下線で反応させる。個別に擬似要素を書かず、ここだけを使い回す。
+  */
+  .link-underline {
+    position: relative;
+  }
+
+  .link-underline::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 1px;
+    width: 0;
+    background-color: hsl(var(--brand-red));
+    transition: width 200ms ease-out;
+  }
+
+  .link-underline:hover::after,
+  .link-underline:focus-visible::after {
+    width: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .link-underline::after {
+      transition: none;
+    }
+  }
 }
 
-/* Swiperのスタイル調整 */
-.partner-swiper {
-  overflow: hidden !important;
-  margin: 0 auto;
-  width: 100%;
-  @apply py-4;
+/*
+  DESIGN.md § 6.1: 継続アニメーション（マーキー）
+
+  Swiper の autoplay は delay:0 でも1枚ずつスナップするため等速にならない。
+  CSS アニメーションなら linear を保証でき、ライブラリにも依存しない。
+
+  .marquee-track は中身をちょうど2セット並べる前提。
+  -50% まで動かした時点が0%と同じ絵になるので、継ぎ目なくループする。
+*/
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
 }
 
-.partner-swiper .swiper-slide {
-  width: auto;
-  height: auto;
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
 }
 

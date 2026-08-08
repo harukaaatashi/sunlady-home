@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import dynamic from 'next/dynamic';
 import { company } from '@/lib/company';
 
-const GoogleMap = dynamic(() => import('./GoogleMap'), {
+const GoogleMap = dynamic(() => import('@/components/GoogleMap'), {
   loading: () => <div className="aspect-[16/9] w-full bg-muted animate-pulse" />,
   ssr: false
 });
