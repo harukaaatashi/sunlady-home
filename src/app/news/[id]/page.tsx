@@ -47,9 +47,30 @@ export async function generateMetadata(
     };
   }
 
+  // DESIGN.md § 5.4: ニュースは記事のサムネイルを OG 画像に使う。
+  // 画像未設定の記事はサイト共通の OG（ネイビー＋白ロゴ）に落とす。
+  // openGraph を明示すると親のファイルベース OG は継承されないので、
+  // フォールバック先も自分で指定する必要がある。
+  const ogImage = news.image
+    ? [{ url: news.image.url, width: news.image.width, height: news.image.height, alt: news.title }]
+    : ['/opengraph-image'];
+
   return {
     title: `${news.title} | Sunlady Home`,
     description: news.description,
+    openGraph: {
+      type: 'article',
+      title: news.title,
+      description: news.description,
+      publishedTime: news.publishedAt,
+      images: ogImage,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: news.title,
+      description: news.description,
+      images: ogImage,
+    },
   };
 }
 
