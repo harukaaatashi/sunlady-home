@@ -124,7 +124,28 @@
 
 ## § 11 git アカウント
 
-リモートは `spago-official/sunlady-home`。
+**リポジトリの実体は `harukaaatashi/sunlady-home`。**
+`origin` は `spago-official/sunlady-home` を指しているが、これはリダイレクト。
+push は通るが、**`gh` の PR 操作は実体側を明示しないと失敗する**。
 
-push 時に「Permission denied」になったら `gh auth status` で確認し、
-必要に応じて `gh auth switch -u spago-official` でアカウント切り替え。
+```bash
+gh pr create --repo harukaaatashi/sunlady-home --head <branch> --base main ...
+```
+
+`gh` が「must be a collaborator」を返すときは、アクティブアカウントが
+オーナー（`harukaaatashi`）以外になっている。切り替える:
+
+```bash
+gh auth status          # アクティブアカウントを確認
+gh auth switch -u harukaaatashi
+```
+
+### main への直 push はできない
+
+GitHub Ruleset「main protection」が `security-audit` を必須チェックにしている。
+ただし **`security-audit.yml` は `schedule` と `workflow_dispatch` でしか起動しない**ため、
+PR 上でこのチェックが走ることはなく、通常の手順では緑にならない。
+
+そのため main への反映は、オーナー権限の bypass によるマージが必要。
+チェックを正常に機能させたい場合は、ワークフローに `pull_request` トリガーを足し、
+ジョブ名を必須コンテキスト名（`security-audit`）に合わせる必要がある。
